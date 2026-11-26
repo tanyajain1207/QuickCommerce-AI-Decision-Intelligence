@@ -1,7 +1,5 @@
 # ⚡ AI-Powered Business Decision Intelligence System
-### Quick-Commerce Operations | Major Project — 15B29CI692
-**Institute:** Jaypee Institute of Information Technology (JIIT), Noida  
-**Supervisor:** Dr. Diksha Chawla  
+### Quick-Commerce Operations 
 **Domain:** Quick-Commerce (Blinkit / Zepto / Swiggy Instamart style)
 
 ---
@@ -165,6 +163,3 @@ python ai/insights.py 3 7   # Both stores
 - **XGBoost vs fallback:** XGBoost is the primary model. If not installed, scripts fall back to Random Forest / Gradient Boosting Regressor with comparable performance.
 - **`.env` file:** Never commit this to public GitHub. Each team member needs their own Gemini API key (free at aistudio.google.com).
 
----
-
-*Major Project | 4th Year IT | Jaypee Institute of Information Technology | 2026*
