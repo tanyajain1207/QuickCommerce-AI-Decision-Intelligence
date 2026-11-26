@@ -1,0 +1,32 @@
+# Environment variables and secrets
+.env
+*.env
+!.env.example
+
+# Python virtual environment
+.venv/
+venv/
+ENV/
+env/
+
+# Python cache & bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyd
+
+# Operating System files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE & Editor settings
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Large archives
+*.zip
+*.tar.gz
+*.rar

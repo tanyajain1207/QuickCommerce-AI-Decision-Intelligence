@@ -1,0 +1,501 @@
+customer_id,city,customer_segment,total_orders,total_spend,avg_order_value,cancellation_rate_pct,delay_rate_pct,avg_rating,days_since_last_order,churn_probability,risk_label,primary_risk_driver,recommended_action
+1,Noida,Premium,8,4673.45,584.18125,0.0,0.0,4.0,3.0,0.0164,LOW,Normal Ordering Cycle,Standard loyalty engagement
+2,Gurugram,Regular,9,3718.11,413.123333,0.0,22.22222,3.3333,3.0,0.0313,LOW,Normal Ordering Cycle,Standard loyalty engagement
+3,Noida,Regular,5,1833.43,366.686,0.0,20.0,3.0,0.0,0.0386,LOW,Normal Ordering Cycle,Standard loyalty engagement
+4,Noida,Regular,7,3328.47,475.495714,14.28571,0.0,3.5,11.0,0.0561,LOW,Normal Ordering Cycle,Standard loyalty engagement
+5,Bengaluru,New,5,2985.16,597.032,0.0,0.0,5.0,3.0,0.0076,LOW,Normal Ordering Cycle,Standard loyalty engagement
+6,Gurugram,New,9,3635.61,403.956667,0.0,0.0,4.5,5.0,0.1364,LOW,Normal Ordering Cycle,Standard loyalty engagement
+7,Bengaluru,At-Risk,4,1568.05,392.0125,0.0,0.0,4.2,30.0,0.0575,LOW,Normal Ordering Cycle,Standard loyalty engagement
+8,Delhi,Regular,7,2973.13,424.732857,0.0,14.28571,4.0,4.0,0.0443,LOW,Normal Ordering Cycle,Standard loyalty engagement
+9,Gurugram,Regular,5,2405.62,481.124,0.0,0.0,5.0,11.0,0.0193,LOW,Normal Ordering Cycle,Standard loyalty engagement
+10,Bengaluru,Regular,5,2109.79,421.958,0.0,0.0,3.0,3.0,0.0206,LOW,Normal Ordering Cycle,Standard loyalty engagement
+11,Delhi,Premium,10,4025.73,402.573,0.0,10.0,4.6667,2.0,0.0225,LOW,Normal Ordering Cycle,Standard loyalty engagement
+12,Noida,Regular,6,2713.53,452.255,0.0,0.0,3.0,1.0,0.0307,LOW,Normal Ordering Cycle,Standard loyalty engagement
+13,Noida,New,10,5200.6,520.06,0.0,10.0,3.75,3.0,0.0139,LOW,Normal Ordering Cycle,Standard loyalty engagement
+14,Delhi,New,8,3645.81,455.72625,0.0,0.0,4.3333,7.0,0.0263,LOW,Normal Ordering Cycle,Standard loyalty engagement
+15,Bengaluru,Regular,8,4224.14,528.0175,0.0,12.5,4.2,13.0,0.0495,LOW,Normal Ordering Cycle,Standard loyalty engagement
+16,Gurugram,Regular,9,4111.77,456.863333,11.11111,0.0,3.5,28.0,0.1768,LOW,Normal Ordering Cycle,Standard loyalty engagement
+17,Bengaluru,Regular,3,629.63,209.876667,0.0,0.0,4.2,32.0,0.9727,HIGH,Inactivity (32.0d since last order),Send 'We Miss You' WhatsApp reminder with 25% off coupon
+18,Noida,New,4,1767.69,441.9225,0.0,0.0,3.5,12.0,0.0105,LOW,Normal Ordering Cycle,Standard loyalty engagement
+19,Noida,At-Risk,6,2727.95,454.658333,0.0,20.0,4.2,1.0,0.0628,LOW,Normal Ordering Cycle,Standard loyalty engagement
+20,Delhi,Regular,3,1421.78,473.926667,0.0,0.0,4.0,14.0,0.0468,LOW,Normal Ordering Cycle,Standard loyalty engagement
+21,Bengaluru,New,7,3785.73,540.818571,0.0,0.0,4.5,25.0,0.0286,LOW,Normal Ordering Cycle,Standard loyalty engagement
+22,Bengaluru,Regular,12,5529.57,460.7975,0.0,0.0,3.5,3.0,0.0544,LOW,Normal Ordering Cycle,Standard loyalty engagement
+23,Gurugram,Regular,7,3143.1,449.014286,0.0,0.0,4.2,13.0,0.0476,LOW,Normal Ordering Cycle,Standard loyalty engagement
+24,Delhi,Premium,7,3122.51,446.072857,14.28571,16.66667,4.0,16.0,0.0564,LOW,Normal Ordering Cycle,Standard loyalty engagement
+25,Noida,Premium,6,3022.43,503.738333,16.66667,0.0,3.0,5.0,0.0159,LOW,Frequent Cancellations (16.7%),Standard loyalty engagement
+26,Bengaluru,Regular,7,2547.25,363.892857,0.0,14.28571,3.0,9.0,0.011,LOW,Normal Ordering Cycle,Standard loyalty engagement
+27,Noida,New,9,4059.24,451.026667,11.11111,0.0,4.2,21.0,0.03,LOW,Normal Ordering Cycle,Standard loyalty engagement
+28,Gurugram,Regular,10,4809.94,480.994,0.0,0.0,3.3333,14.0,0.244,LOW,Normal Ordering Cycle,Standard loyalty engagement
+29,Gurugram,Premium,5,2488.93,497.786,0.0,0.0,4.2,4.0,0.075,LOW,Normal Ordering Cycle,Standard loyalty engagement
+30,Gurugram,At-Risk,3,1728.56,576.186667,0.0,0.0,3.0,11.0,0.0096,LOW,Normal Ordering Cycle,Standard loyalty engagement
+31,Noida,At-Risk,5,2594.76,518.952,0.0,0.0,4.2,29.0,0.0166,LOW,Normal Ordering Cycle,Standard loyalty engagement
+32,Bengaluru,New,7,2733.15,390.45,0.0,14.28571,3.3333,22.0,0.0087,LOW,Normal Ordering Cycle,Standard loyalty engagement
+33,Noida,Premium,6,2787.94,464.656667,0.0,0.0,4.3333,7.0,0.0146,LOW,Normal Ordering Cycle,Standard loyalty engagement
+34,Noida,New,10,5615.9,561.59,0.0,0.0,4.2,5.0,0.0346,LOW,Normal Ordering Cycle,Standard loyalty engagement
+35,Delhi,Regular,5,2643.83,528.766,0.0,0.0,3.0,2.0,0.0111,LOW,Normal Ordering Cycle,Standard loyalty engagement
+36,Noida,Regular,4,1691.85,422.9625,0.0,0.0,4.2,13.0,0.0425,LOW,Normal Ordering Cycle,Standard loyalty engagement
+37,Noida,Regular,4,1833.89,458.4725,0.0,0.0,3.0,16.0,0.0558,LOW,Normal Ordering Cycle,Standard loyalty engagement
+38,Gurugram,New,9,4746.62,527.402222,0.0,0.0,4.0,17.0,0.0379,LOW,Normal Ordering Cycle,Standard loyalty engagement
+39,Gurugram,Regular,7,3702.39,528.912857,0.0,0.0,4.2,6.0,0.05,LOW,Normal Ordering Cycle,Standard loyalty engagement
+40,Delhi,At-Risk,7,4101.35,585.907143,14.28571,16.66667,4.2,10.0,0.0483,LOW,Normal Ordering Cycle,Standard loyalty engagement
+41,Delhi,Premium,9,2988.31,332.034444,0.0,0.0,4.0,6.0,0.071,LOW,Normal Ordering Cycle,Standard loyalty engagement
+42,Noida,Regular,3,1512.21,504.07,0.0,33.33333,4.0,16.0,0.034,LOW,High Delivery Delays (33.3%),Standard loyalty engagement
+43,Delhi,New,4,2035.49,508.8725,0.0,0.0,4.0,20.0,0.0149,LOW,Normal Ordering Cycle,Standard loyalty engagement
+44,Delhi,Regular,11,5213.96,473.996364,0.0,9.09091,4.3333,7.0,0.1307,LOW,Normal Ordering Cycle,Standard loyalty engagement
+45,Gurugram,Regular,10,4794.62,479.462,0.0,0.0,4.2,6.0,0.2806,LOW,Normal Ordering Cycle,Standard loyalty engagement
+46,Delhi,Regular,5,2371.39,474.278,0.0,20.0,3.0,22.0,0.0235,LOW,Normal Ordering Cycle,Standard loyalty engagement
+47,Gurugram,At-Risk,4,1767.7,441.925,0.0,0.0,4.2,2.0,0.0613,LOW,Normal Ordering Cycle,Standard loyalty engagement
+48,Noida,New,6,2337.3,389.55,0.0,0.0,4.0,15.0,0.0085,LOW,Normal Ordering Cycle,Standard loyalty engagement
+49,Delhi,Premium,6,2941.15,490.191667,0.0,0.0,4.0,10.0,0.049,LOW,Normal Ordering Cycle,Standard loyalty engagement
+50,Noida,Regular,9,3915.71,435.078889,11.11111,0.0,5.0,4.0,0.1167,LOW,Normal Ordering Cycle,Standard loyalty engagement
+51,Delhi,Premium,2,721.94,360.97,0.0,0.0,5.0,27.0,0.0704,LOW,Normal Ordering Cycle,Standard loyalty engagement
+52,Delhi,At-Risk,8,3448.44,431.055,0.0,0.0,4.5,3.0,0.0594,LOW,Normal Ordering Cycle,Standard loyalty engagement
+53,Bengaluru,At-Risk,2,738.19,369.095,50.0,0.0,4.2,23.0,0.029,LOW,Frequent Cancellations (50.0%),Standard loyalty engagement
+54,Noida,At-Risk,6,3066.91,511.151667,0.0,0.0,4.2,24.0,0.0223,LOW,Normal Ordering Cycle,Standard loyalty engagement
+55,Bengaluru,New,4,1955.24,488.81,0.0,0.0,4.0,5.0,0.03,LOW,Normal Ordering Cycle,Standard loyalty engagement
+56,Gurugram,New,5,2581.35,516.27,0.0,0.0,4.2,16.0,0.0126,LOW,Normal Ordering Cycle,Standard loyalty engagement
+57,Noida,Regular,4,1898.88,474.72,0.0,0.0,3.5,2.0,0.0425,LOW,Normal Ordering Cycle,Standard loyalty engagement
+58,Noida,Regular,9,2421.3,269.033333,0.0,0.0,4.2,12.0,0.0267,LOW,Normal Ordering Cycle,Standard loyalty engagement
+59,Bengaluru,Premium,5,2077.29,415.458,0.0,0.0,4.0,3.0,0.022,LOW,Normal Ordering Cycle,Standard loyalty engagement
+60,Delhi,New,10,4864.02,486.402,0.0,0.0,4.0,16.0,0.3391,LOW,Normal Ordering Cycle,Standard loyalty engagement
+61,Noida,Regular,7,3308.7,472.671429,28.57143,40.0,5.0,0.0,0.0317,LOW,High Delivery Delays (40.0%) | Frequent Cancellations (28.6%),Standard loyalty engagement
+62,Bengaluru,Regular,5,3445.16,689.032,0.0,0.0,4.2,2.0,0.0337,LOW,Normal Ordering Cycle,Standard loyalty engagement
+63,Gurugram,At-Risk,8,5152.39,644.04875,12.5,0.0,3.0,5.0,0.0912,LOW,Normal Ordering Cycle,Standard loyalty engagement
+64,Bengaluru,Regular,5,3046.54,609.308,0.0,0.0,3.0,4.0,0.0351,LOW,Normal Ordering Cycle,Standard loyalty engagement
+65,Bengaluru,At-Risk,6,2439.6,406.6,0.0,0.0,4.2,27.0,0.0272,LOW,Normal Ordering Cycle,Standard loyalty engagement
+66,Delhi,Regular,9,3902.84,433.648889,11.11111,0.0,4.5,1.0,0.2638,LOW,Normal Ordering Cycle,Standard loyalty engagement
+67,Delhi,Regular,5,1915.76,383.152,0.0,0.0,4.2,41.0,0.9808,HIGH,Inactivity (41.0d since last order),Send 'We Miss You' WhatsApp reminder with 25% off coupon
+68,Noida,New,5,1922.4,384.48,0.0,0.0,4.0,18.0,0.019,LOW,Normal Ordering Cycle,Standard loyalty engagement
+69,Noida,New,5,2553.96,510.792,0.0,0.0,3.0,30.0,0.0203,LOW,Normal Ordering Cycle,Standard loyalty engagement
+70,Gurugram,Regular,7,3452.14,493.162857,0.0,0.0,5.0,9.0,0.0129,LOW,Normal Ordering Cycle,Standard loyalty engagement
+71,Gurugram,Regular,8,4014.63,501.82875,0.0,12.5,3.6667,0.0,0.0401,LOW,Normal Ordering Cycle,Standard loyalty engagement
+72,Noida,At-Risk,10,4233.92,423.392,0.0,0.0,5.0,1.0,0.0311,LOW,Normal Ordering Cycle,Standard loyalty engagement
+73,Gurugram,Regular,7,2731.45,390.207143,0.0,0.0,3.5,13.0,0.0157,LOW,Normal Ordering Cycle,Standard loyalty engagement
+74,Bengaluru,New,6,2164.95,360.825,0.0,0.0,5.0,4.0,0.0148,LOW,Normal Ordering Cycle,Standard loyalty engagement
+75,Noida,New,3,1028.48,342.826667,0.0,0.0,4.2,48.0,0.9387,HIGH,Inactivity (48.0d since last order),Send 'We Miss You' WhatsApp reminder with 25% off coupon
+76,Bengaluru,Premium,4,2290.96,572.74,0.0,0.0,3.0,11.0,0.0059,LOW,Normal Ordering Cycle,Standard loyalty engagement
+77,Delhi,Premium,13,4969.47,382.266923,0.0,0.0,3.75,12.0,0.03,LOW,Normal Ordering Cycle,Standard loyalty engagement
+78,Delhi,Regular,4,1659.02,414.755,0.0,0.0,5.0,2.0,0.0333,LOW,Normal Ordering Cycle,Standard loyalty engagement
+79,Bengaluru,New,4,1987.5,496.875,0.0,0.0,5.0,6.0,0.0422,LOW,Normal Ordering Cycle,Standard loyalty engagement
+80,Noida,Regular,4,2341.65,585.4125,0.0,0.0,4.2,7.0,0.0053,LOW,Normal Ordering Cycle,Standard loyalty engagement
+81,Noida,At-Risk,4,1248.46,312.115,0.0,0.0,4.2,12.0,0.0165,LOW,Normal Ordering Cycle,Standard loyalty engagement
+82,Bengaluru,Regular,6,2974.5,495.75,0.0,16.66667,3.0,7.0,0.0224,LOW,Normal Ordering Cycle,Standard loyalty engagement
+83,Gurugram,Regular,4,1557.6,389.4,0.0,0.0,4.2,43.0,0.9715,HIGH,Inactivity (43.0d since last order),Send 'We Miss You' WhatsApp reminder with 25% off coupon
+84,Noida,Regular,11,6725.87,611.442727,0.0,10.0,4.2,7.0,0.0329,LOW,Normal Ordering Cycle,Standard loyalty engagement
+85,Noida,Regular,5,2673.46,534.692,0.0,0.0,5.0,16.0,0.0099,LOW,Normal Ordering Cycle,Standard loyalty engagement
+86,Delhi,Regular,5,2473.09,494.618,20.0,0.0,4.2,14.0,0.0361,LOW,Frequent Cancellations (20.0%),Standard loyalty engagement
+87,Bengaluru,At-Risk,7,2892.07,413.152857,0.0,0.0,4.2,15.0,0.0223,LOW,Normal Ordering Cycle,Standard loyalty engagement
+88,Gurugram,New,3,2003.26,667.753333,0.0,33.33333,4.2,3.0,0.0165,LOW,High Delivery Delays (33.3%),Standard loyalty engagement
+89,Bengaluru,Regular,9,4172.74,463.637778,0.0,0.0,4.0,15.0,0.1545,LOW,Normal Ordering Cycle,Standard loyalty engagement
+90,Noida,Regular,1,248.47,248.47,0.0,0.0,4.0,7.0,0.0333,LOW,Normal Ordering Cycle,Standard loyalty engagement
+91,Delhi,Premium,7,3976.34,568.048571,0.0,14.28571,5.0,12.0,0.0216,LOW,Normal Ordering Cycle,Standard loyalty engagement
+92,Gurugram,Regular,8,3408.59,426.07375,0.0,0.0,4.5,3.0,0.0406,LOW,Normal Ordering Cycle,Standard loyalty engagement
+93,Delhi,Regular,8,5117.46,639.6825,0.0,0.0,5.0,14.0,0.0539,LOW,Normal Ordering Cycle,Standard loyalty engagement
+94,Gurugram,New,6,3305.64,550.94,0.0,0.0,5.0,22.0,0.0201,LOW,Normal Ordering Cycle,Standard loyalty engagement
+95,Noida,Premium,6,3196.94,532.823333,0.0,0.0,4.2,7.0,0.026,LOW,Normal Ordering Cycle,Standard loyalty engagement
+96,Bengaluru,At-Risk,4,1362.64,340.66,0.0,0.0,5.0,12.0,0.018,LOW,Normal Ordering Cycle,Standard loyalty engagement
+97,Gurugram,At-Risk,10,5469.17,546.917,0.0,0.0,5.0,14.0,0.0424,LOW,Normal Ordering Cycle,Standard loyalty engagement
+98,Gurugram,At-Risk,5,2136.32,427.264,0.0,0.0,5.0,4.0,0.0272,LOW,Normal Ordering Cycle,Standard loyalty engagement
+99,Gurugram,Regular,4,1683.55,420.8875,0.0,25.0,5.0,37.0,0.9563,HIGH,Inactivity (37.0d since last order),Send 'We Miss You' WhatsApp reminder with 25% off coupon
+100,Bengaluru,Regular,7,3672.36,524.622857,0.0,0.0,4.2,14.0,0.0939,LOW,Normal Ordering Cycle,Standard loyalty engagement
+101,Delhi,Regular,3,1209.57,403.19,33.33333,0.0,4.0,58.0,0.9763,HIGH,Inactivity (58.0d since last order) | Frequent Cancellations (33.3%),Send 'We Miss You' WhatsApp reminder with 25% off coupon
+102,Noida,Regular,6,3064.41,510.735,0.0,0.0,4.3333,3.0,0.0224,LOW,Normal Ordering Cycle,Standard loyalty engagement
+103,Bengaluru,Regular,4,1703.49,425.8725,0.0,0.0,4.0,45.0,0.9594,HIGH,Inactivity (45.0d since last order),Send 'We Miss You' WhatsApp reminder with 25% off coupon
+104,Gurugram,Premium,6,3024.01,504.001667,0.0,16.66667,4.2,23.0,0.0237,LOW,Normal Ordering Cycle,Standard loyalty engagement
+105,Gurugram,Regular,4,1511.62,377.905,0.0,0.0,3.0,15.0,0.0354,LOW,Normal Ordering Cycle,Standard loyalty engagement
+106,Noida,Regular,6,1885.96,314.326667,0.0,0.0,3.5,2.0,0.1359,LOW,Normal Ordering Cycle,Standard loyalty engagement
+107,Delhi,At-Risk,8,2425.79,303.22375,0.0,0.0,3.75,6.0,0.0622,LOW,Normal Ordering Cycle,Standard loyalty engagement
+108,Noida,Premium,7,3385.86,483.694286,14.28571,0.0,5.0,1.0,0.0256,LOW,Normal Ordering Cycle,Standard loyalty engagement
+109,Gurugram,New,4,1933.6,483.4,0.0,0.0,5.0,22.0,0.018,LOW,Normal Ordering Cycle,Standard loyalty engagement
+110,Gurugram,New,6,2712.27,452.045,0.0,0.0,4.2,3.0,0.212,LOW,Normal Ordering Cycle,Standard loyalty engagement
+111,Gurugram,Regular,5,2388.45,477.69,20.0,0.0,5.0,14.0,0.0186,LOW,Frequent Cancellations (20.0%),Standard loyalty engagement
+112,Gurugram,New,5,2139.6,427.92,20.0,0.0,4.2,14.0,0.0091,LOW,Frequent Cancellations (20.0%),Standard loyalty engagement
+113,Delhi,Regular,1,331.58,331.58,100.0,0.0,4.2,55.0,0.9653,HIGH,Inactivity (55.0d since last order) | Frequent Cancellations (100.0%),Send 'We Miss You' WhatsApp reminder with 25% off coupon
+114,Delhi,Regular,6,2978.03,496.338333,16.66667,0.0,4.5,4.0,0.0251,LOW,Frequent Cancellations (16.7%),Standard loyalty engagement
+115,Noida,At-Risk,8,2781.08,347.635,12.5,14.28571,5.0,15.0,0.0083,LOW,Normal Ordering Cycle,Standard loyalty engagement
+116,Noida,Regular,6,3295.53,549.255,0.0,0.0,4.0,23.0,0.0253,LOW,Normal Ordering Cycle,Standard loyalty engagement
+117,Delhi,Premium,3,905.92,301.973333,0.0,0.0,4.2,15.0,0.0304,LOW,Normal Ordering Cycle,Standard loyalty engagement
+118,Bengaluru,Regular,4,1812.04,453.01,0.0,0.0,3.0,3.0,0.0926,LOW,Normal Ordering Cycle,Standard loyalty engagement
+119,Noida,Regular,7,3387.75,483.964286,0.0,0.0,4.2,14.0,0.0476,LOW,Normal Ordering Cycle,Standard loyalty engagement
+120,Delhi,Premium,3,1573.51,524.503333,0.0,0.0,4.2,12.0,0.0522,LOW,Normal Ordering Cycle,Standard loyalty engagement
+121,Bengaluru,Regular,4,1925.19,481.2975,0.0,0.0,3.5,7.0,0.0736,LOW,Normal Ordering Cycle,Standard loyalty engagement
+122,Gurugram,Regular,5,1857.62,371.524,0.0,0.0,4.2,1.0,0.0445,LOW,Normal Ordering Cycle,Standard loyalty engagement
+123,Gurugram,Regular,8,3831.66,478.9575,12.5,14.28571,1.0,5.0,0.0784,LOW,Low Satisfaction (Rating 1.0),Standard loyalty engagement
+124,Bengaluru,At-Risk,5,2994.12,598.824,0.0,0.0,5.0,55.0,0.9261,HIGH,Inactivity (55.0d since last order),Send 'We Miss You' WhatsApp reminder with 25% off coupon
+125,Bengaluru,New,5,2180.9,436.18,0.0,0.0,4.0,28.0,0.022,LOW,Normal Ordering Cycle,Standard loyalty engagement
+126,Gurugram,Premium,5,1956.02,391.204,0.0,20.0,4.2,30.0,0.023,LOW,Normal Ordering Cycle,Standard loyalty engagement
+127,Gurugram,Regular,3,1329.02,443.006667,33.33333,0.0,4.2,8.0,0.0224,LOW,Frequent Cancellations (33.3%),Standard loyalty engagement
+128,Gurugram,Regular,7,2658.08,379.725714,0.0,0.0,3.75,13.0,0.0209,LOW,Normal Ordering Cycle,Standard loyalty engagement
+129,Bengaluru,Premium,5,1970.74,394.148,20.0,0.0,4.0,17.0,0.0146,LOW,Frequent Cancellations (20.0%),Standard loyalty engagement
+130,Delhi,Premium,4,1385.04,346.26,0.0,0.0,4.2,27.0,0.0819,LOW,Normal Ordering Cycle,Standard loyalty engagement
+131,Gurugram,Regular,4,2176.88,544.22,0.0,0.0,5.0,7.0,0.0077,LOW,Normal Ordering Cycle,Standard loyalty engagement
+132,Delhi,At-Risk,6,2777.7,462.95,0.0,0.0,4.0,2.0,0.0502,LOW,Normal Ordering Cycle,Standard loyalty engagement
+133,Bengaluru,Premium,6,2176.87,362.811667,0.0,0.0,4.2,9.0,0.0073,LOW,Normal Ordering Cycle,Standard loyalty engagement
+134,Gurugram,Regular,6,2487.89,414.648333,0.0,0.0,3.0,12.0,0.0124,LOW,Normal Ordering Cycle,Standard loyalty engagement
+135,Gurugram,Regular,5,1994.53,398.906,0.0,0.0,4.0,11.0,0.0093,LOW,Normal Ordering Cycle,Standard loyalty engagement
+136,Noida,Premium,2,1593.66,796.83,0.0,0.0,4.5,53.0,0.9523,HIGH,Inactivity (53.0d since last order),Send 'We Miss You' WhatsApp reminder with 25% off coupon
+137,Noida,Regular,2,913.76,456.88,0.0,0.0,4.0,38.0,0.9742,HIGH,Inactivity (38.0d since last order),Send 'We Miss You' WhatsApp reminder with 25% off coupon
+138,Bengaluru,Regular,11,4741.45,431.040909,18.18182,0.0,4.0,1.0,0.1384,LOW,Frequent Cancellations (18.2%),Standard loyalty engagement
+139,Noida,Premium,2,659.61,329.805,0.0,0.0,5.0,33.0,0.9413,HIGH,Inactivity (33.0d since last order),Send 'We Miss You' WhatsApp reminder with 25% off coupon
+140,Bengaluru,Regular,5,1930.76,386.152,0.0,0.0,4.2,5.0,0.2405,LOW,Normal Ordering Cycle,Standard loyalty engagement
+141,Noida,New,4,2447.17,611.7925,25.0,0.0,4.2,0.0,0.0127,LOW,Frequent Cancellations (25.0%),Standard loyalty engagement
+142,Bengaluru,Regular,4,2108.1,527.025,0.0,25.0,4.0,36.0,0.9258,HIGH,Inactivity (36.0d since last order),Send 'We Miss You' WhatsApp reminder with 25% off coupon
+143,Delhi,New,5,2709.29,541.858,0.0,0.0,4.2,11.0,0.0158,LOW,Normal Ordering Cycle,Standard loyalty engagement
+144,Gurugram,At-Risk,6,3116.18,519.363333,16.66667,20.0,4.2,1.0,0.0099,LOW,Frequent Cancellations (16.7%),Standard loyalty engagement
+145,Noida,New,6,2277.51,379.585,0.0,0.0,4.0,26.0,0.0173,LOW,Normal Ordering Cycle,Standard loyalty engagement
+146,Delhi,Premium,6,3230.83,538.471667,0.0,16.66667,4.2,13.0,0.0235,LOW,Normal Ordering Cycle,Standard loyalty engagement
+147,Noida,Regular,9,2970.54,330.06,0.0,12.5,3.6667,4.0,0.0707,LOW,Normal Ordering Cycle,Standard loyalty engagement
+148,Gurugram,New,5,3324.75,664.95,0.0,0.0,3.5,31.0,0.923,HIGH,Inactivity (31.0d since last order),Send 'We Miss You' WhatsApp reminder with 25% off coupon
+149,Delhi,Regular,2,736.47,368.235,0.0,0.0,5.0,58.0,0.9765,HIGH,Inactivity (58.0d since last order),Send 'We Miss You' WhatsApp reminder with 25% off coupon
+150,Delhi,Premium,4,2321.68,580.42,0.0,0.0,4.2,10.0,0.0066,LOW,Normal Ordering Cycle,Standard loyalty engagement
+151,Noida,At-Risk,5,2882.81,576.562,0.0,0.0,4.2,14.0,0.0166,LOW,Normal Ordering Cycle,Standard loyalty engagement
+152,Gurugram,Regular,8,3004.16,375.52,0.0,0.0,5.0,5.0,0.0399,LOW,Normal Ordering Cycle,Standard loyalty engagement
+153,Bengaluru,Regular,6,3014.62,502.436667,0.0,0.0,4.0,7.0,0.0145,LOW,Normal Ordering Cycle,Standard loyalty engagement
+154,Noida,Regular,6,2795.77,465.961667,0.0,0.0,4.2,5.0,0.0581,LOW,Normal Ordering Cycle,Standard loyalty engagement
+155,Noida,New,8,3131.67,391.45875,25.0,0.0,5.0,25.0,0.0189,LOW,Frequent Cancellations (25.0%),Standard loyalty engagement
+156,Bengaluru,Regular,10,5444.25,544.425,0.0,10.0,3.6667,2.0,0.0147,LOW,Normal Ordering Cycle,Standard loyalty engagement
+157,Bengaluru,Premium,5,2532.57,506.514,0.0,0.0,4.0,20.0,0.0089,LOW,Normal Ordering Cycle,Standard loyalty engagement
+158,Gurugram,Regular,3,1509.26,503.086667,0.0,33.33333,4.2,13.0,0.0204,LOW,High Delivery Delays (33.3%),Standard loyalty engagement
+159,Bengaluru,Regular,10,4398.92,439.892,0.0,0.0,4.3333,4.0,0.0761,LOW,Normal Ordering Cycle,Standard loyalty engagement
+160,Delhi,Regular,4,1764.47,441.1175,0.0,0.0,4.2,15.0,0.0668,LOW,Normal Ordering Cycle,Standard loyalty engagement
+161,Gurugram,Regular,8,4177.56,522.195,0.0,0.0,4.6667,12.0,0.0173,LOW,Normal Ordering Cycle,Standard loyalty engagement
+162,Gurugram,Regular,4,1786.29,446.5725,0.0,50.0,4.2,32.0,0.9769,HIGH,Inactivity (32.0d since last order) | High Delivery Delays (50.0%),Dispatch Rs.100 SLA Apology Pass + Free Delivery for 30 days
+163,Bengaluru,Regular,4,1493.42,373.355,0.0,25.0,3.0,7.0,0.0133,LOW,Normal Ordering Cycle,Standard loyalty engagement
+164,Gurugram,Premium,6,2145.91,357.651667,0.0,0.0,4.5,2.0,0.0141,LOW,Normal Ordering Cycle,Standard loyalty engagement
+165,Gurugram,Regular,4,1373.59,343.3975,0.0,0.0,5.0,33.0,0.9558,HIGH,Inactivity (33.0d since last order),Send 'We Miss You' WhatsApp reminder with 25% off coupon
+166,Gurugram,Premium,6,2571.49,428.581667,0.0,0.0,4.2,1.0,0.0305,LOW,Normal Ordering Cycle,Standard loyalty engagement
+167,Gurugram,Regular,2,1615.57,807.785,0.0,50.0,3.0,28.0,0.0963,LOW,High Delivery Delays (50.0%),Standard loyalty engagement
+168,Gurugram,New,10,4857.71,485.771,10.0,0.0,4.0,1.0,0.065,LOW,Normal Ordering Cycle,Standard loyalty engagement
+169,Bengaluru,At-Risk,4,1862.64,465.66,25.0,0.0,4.0,1.0,0.0506,LOW,Frequent Cancellations (25.0%),Standard loyalty engagement
+170,Delhi,Regular,6,3106.49,517.748333,0.0,0.0,3.0,18.0,0.0197,LOW,Normal Ordering Cycle,Standard loyalty engagement
+171,Noida,Premium,8,2792.79,349.09875,12.5,0.0,4.0,23.0,0.0261,LOW,Normal Ordering Cycle,Standard loyalty engagement
+172,Delhi,New,4,1838.68,459.67,0.0,0.0,4.2,7.0,0.0213,LOW,Normal Ordering Cycle,Standard loyalty engagement
+173,Noida,At-Risk,6,1926.33,321.055,0.0,0.0,4.5,11.0,0.0098,LOW,Normal Ordering Cycle,Standard loyalty engagement
+174,Gurugram,Regular,5,2174.51,434.902,0.0,0.0,4.0,3.0,0.0326,LOW,Normal Ordering Cycle,Standard loyalty engagement
+175,Noida,Premium,12,4603.44,383.62,0.0,16.66667,3.0,9.0,0.0178,LOW,Normal Ordering Cycle,Standard loyalty engagement
+176,Noida,Regular,5,2278.16,455.632,0.0,0.0,4.0,34.0,0.9442,HIGH,Inactivity (34.0d since last order),Send 'We Miss You' WhatsApp reminder with 25% off coupon
+177,Bengaluru,Regular,7,2609.16,372.737143,0.0,14.28571,3.0,6.0,0.0339,LOW,Normal Ordering Cycle,Standard loyalty engagement
+178,Gurugram,Regular,5,2942.98,588.596,0.0,0.0,4.2,9.0,0.014,LOW,Normal Ordering Cycle,Standard loyalty engagement
+179,Bengaluru,Regular,3,1469.24,489.746667,0.0,0.0,5.0,2.0,0.0303,LOW,Normal Ordering Cycle,Standard loyalty engagement
+180,Noida,Regular,8,4163.05,520.38125,0.0,12.5,4.0,3.0,0.0179,LOW,Normal Ordering Cycle,Standard loyalty engagement
+181,Bengaluru,Regular,3,638.58,212.86,0.0,0.0,4.2,20.0,0.0414,LOW,Normal Ordering Cycle,Standard loyalty engagement
+182,Noida,Premium,4,1292.17,323.0425,0.0,25.0,5.0,12.0,0.0293,LOW,Normal Ordering Cycle,Standard loyalty engagement
+183,Bengaluru,Premium,6,2461.13,410.188333,0.0,0.0,4.2,7.0,0.0132,LOW,Normal Ordering Cycle,Standard loyalty engagement
+184,Delhi,At-Risk,8,3696.32,462.04,0.0,0.0,4.5,12.0,0.0406,LOW,Normal Ordering Cycle,Standard loyalty engagement
+185,Delhi,Premium,4,1984.57,496.1425,0.0,0.0,4.0,32.0,0.9747,HIGH,Inactivity (32.0d since last order),Send 'We Miss You' WhatsApp reminder with 25% off coupon
+186,Gurugram,Regular,4,1396.95,349.2375,0.0,0.0,5.0,5.0,0.0993,LOW,Normal Ordering Cycle,Standard loyalty engagement
+187,Gurugram,Regular,6,3135.72,522.62,0.0,0.0,4.5,25.0,0.0338,LOW,Normal Ordering Cycle,Standard loyalty engagement
+188,Delhi,At-Risk,0,0.0,0.0,0.0,0.0,4.2,,0.0251,LOW,Normal Ordering Cycle,Standard loyalty engagement
+189,Bengaluru,New,5,1129.62,225.924,0.0,0.0,3.5,37.0,0.902,HIGH,Inactivity (37.0d since last order),Send 'We Miss You' WhatsApp reminder with 25% off coupon
+190,Delhi,Regular,9,3757.89,417.543333,0.0,0.0,3.6667,16.0,0.0241,LOW,Normal Ordering Cycle,Standard loyalty engagement
+191,Delhi,Regular,5,2176.87,435.374,0.0,0.0,4.2,0.0,0.0734,LOW,Normal Ordering Cycle,Standard loyalty engagement
+192,Gurugram,Regular,6,3853.1,642.183333,0.0,0.0,3.0,0.0,0.0606,LOW,Normal Ordering Cycle,Standard loyalty engagement
+193,Noida,Premium,5,2672.94,534.588,0.0,0.0,4.2,61.0,0.9151,HIGH,Inactivity (61.0d since last order),Send 'We Miss You' WhatsApp reminder with 25% off coupon
+194,Noida,Regular,3,1946.26,648.753333,0.0,0.0,4.2,1.0,0.0501,LOW,Normal Ordering Cycle,Standard loyalty engagement
+195,Bengaluru,New,6,2219.04,369.84,0.0,16.66667,4.0,3.0,0.029,LOW,Normal Ordering Cycle,Standard loyalty engagement
+196,Bengaluru,Regular,7,2860.39,408.627143,0.0,0.0,4.2,5.0,0.1882,LOW,Normal Ordering Cycle,Standard loyalty engagement
+197,Bengaluru,Regular,6,2573.66,428.943333,0.0,16.66667,4.2,5.0,0.0863,LOW,Normal Ordering Cycle,Standard loyalty engagement
+198,Noida,Regular,6,2647.14,441.19,16.66667,40.0,4.2,0.0,0.0985,LOW,High Delivery Delays (40.0%) | Frequent Cancellations (16.7%),Standard loyalty engagement
+199,Bengaluru,New,4,1711.02,427.755,0.0,0.0,4.2,3.0,0.0459,LOW,Normal Ordering Cycle,Standard loyalty engagement
+200,Gurugram,At-Risk,6,2516.23,419.371667,0.0,0.0,4.2,12.0,0.0075,LOW,Normal Ordering Cycle,Standard loyalty engagement
+201,Delhi,Regular,3,1284.65,428.216667,0.0,33.33333,4.2,18.0,0.036,LOW,High Delivery Delays (33.3%),Standard loyalty engagement
+202,Bengaluru,Premium,5,2515.74,503.148,0.0,0.0,4.0,2.0,0.0132,LOW,Normal Ordering Cycle,Standard loyalty engagement
+203,Noida,At-Risk,5,2570.77,514.154,0.0,0.0,5.0,19.0,0.0043,LOW,Normal Ordering Cycle,Standard loyalty engagement
+204,Bengaluru,Regular,10,5087.86,508.786,0.0,10.0,4.0,3.0,0.0426,LOW,Normal Ordering Cycle,Standard loyalty engagement
+205,Noida,At-Risk,8,3744.16,468.02,0.0,0.0,3.0,11.0,0.0597,LOW,Normal Ordering Cycle,Standard loyalty engagement
+206,Noida,Premium,5,2355.22,471.044,0.0,0.0,3.0,42.0,0.9246,HIGH,Inactivity (42.0d since last order),Send 'We Miss You' WhatsApp reminder with 25% off coupon
+207,Bengaluru,Regular,4,1314.74,328.685,0.0,0.0,4.2,24.0,0.1249,LOW,Normal Ordering Cycle,Standard loyalty engagement
+208,Bengaluru,Regular,7,2648.71,378.387143,14.28571,0.0,3.5,14.0,0.0125,LOW,Normal Ordering Cycle,Standard loyalty engagement
+209,Gurugram,Regular,6,3426.97,571.161667,0.0,0.0,5.0,14.0,0.0102,LOW,Normal Ordering Cycle,Standard loyalty engagement
+210,Bengaluru,At-Risk,8,3317.33,414.66625,0.0,0.0,4.3333,21.0,0.0124,LOW,Normal Ordering Cycle,Standard loyalty engagement
+211,Bengaluru,New,11,6043.18,549.38,0.0,0.0,4.0,19.0,0.0723,LOW,Normal Ordering Cycle,Standard loyalty engagement
+212,Noida,Premium,4,1260.17,315.0425,0.0,0.0,4.2,38.0,0.9535,HIGH,Inactivity (38.0d since last order),Send 'We Miss You' WhatsApp reminder with 25% off coupon
+213,Noida,Regular,9,3986.92,442.991111,0.0,0.0,5.0,5.0,0.0533,LOW,Normal Ordering Cycle,Standard loyalty engagement
+214,Bengaluru,New,6,2159.26,359.876667,0.0,16.66667,5.0,2.0,0.0074,LOW,Normal Ordering Cycle,Standard loyalty engagement
+215,Bengaluru,Regular,2,1353.05,676.525,50.0,0.0,4.2,44.0,0.9793,HIGH,Inactivity (44.0d since last order) | Frequent Cancellations (50.0%),Send 'We Miss You' WhatsApp reminder with 25% off coupon
+216,Noida,At-Risk,3,1719.4,573.133333,33.33333,0.0,5.0,26.0,0.0631,LOW,Frequent Cancellations (33.3%),Standard loyalty engagement
+217,Gurugram,At-Risk,4,1626.2,406.55,0.0,0.0,3.0,1.0,0.0209,LOW,Normal Ordering Cycle,Standard loyalty engagement
+218,Gurugram,New,8,4953.84,619.23,0.0,0.0,4.0,8.0,0.0303,LOW,Normal Ordering Cycle,Standard loyalty engagement
+219,Bengaluru,Regular,7,4139.8,591.4,0.0,0.0,3.0,24.0,0.1005,LOW,Normal Ordering Cycle,Standard loyalty engagement
+220,Delhi,Regular,5,2293.76,458.752,20.0,0.0,4.0,19.0,0.0358,LOW,Frequent Cancellations (20.0%),Standard loyalty engagement
+221,Gurugram,Regular,6,1948.77,324.795,0.0,0.0,4.0,0.0,0.0812,LOW,Normal Ordering Cycle,Standard loyalty engagement
+222,Noida,New,4,1518.59,379.6475,0.0,0.0,4.0,0.0,0.0393,LOW,Normal Ordering Cycle,Standard loyalty engagement
+223,Bengaluru,Premium,5,1725.97,345.194,20.0,0.0,5.0,3.0,0.0604,LOW,Frequent Cancellations (20.0%),Standard loyalty engagement
+224,Delhi,Regular,9,4580.83,508.981111,0.0,12.5,4.2,3.0,0.0261,LOW,Normal Ordering Cycle,Standard loyalty engagement
+225,Bengaluru,Regular,4,1988.33,497.0825,0.0,0.0,4.2,28.0,0.078,LOW,Normal Ordering Cycle,Standard loyalty engagement
+226,Noida,Regular,3,979.47,326.49,0.0,0.0,4.2,35.0,0.9605,HIGH,Inactivity (35.0d since last order),Send 'We Miss You' WhatsApp reminder with 25% off coupon
+227,Delhi,Regular,6,2321.44,386.906667,0.0,0.0,4.2,43.0,0.9527,HIGH,Inactivity (43.0d since last order),Send 'We Miss You' WhatsApp reminder with 25% off coupon
+228,Bengaluru,New,13,6212.64,477.895385,0.0,0.0,3.0,1.0,0.031,LOW,Normal Ordering Cycle,Standard loyalty engagement
+229,Gurugram,New,5,1607.9,321.58,0.0,0.0,4.0,35.0,0.9276,HIGH,Inactivity (35.0d since last order),Send 'We Miss You' WhatsApp reminder with 25% off coupon
+230,Gurugram,New,10,4180.36,418.036,0.0,10.0,3.0,10.0,0.025,LOW,Normal Ordering Cycle,Standard loyalty engagement
+231,Noida,At-Risk,3,1681.1,560.366667,0.0,50.0,4.2,39.0,0.9528,HIGH,Inactivity (39.0d since last order) | High Delivery Delays (50.0%),Dispatch Rs.100 SLA Apology Pass + Free Delivery for 30 days
+232,Bengaluru,New,1,770.1,770.1,0.0,0.0,4.2,10.0,0.0157,LOW,Normal Ordering Cycle,Standard loyalty engagement
+233,Gurugram,Regular,3,1558.01,519.336667,0.0,0.0,4.2,7.0,0.0171,LOW,Normal Ordering Cycle,Standard loyalty engagement
+234,Gurugram,Premium,6,3828.15,638.025,0.0,0.0,4.2,17.0,0.0239,LOW,Normal Ordering Cycle,Standard loyalty engagement
+235,Delhi,At-Risk,10,4629.47,462.947,0.0,0.0,3.0,0.0,0.0903,LOW,Normal Ordering Cycle,Standard loyalty engagement
+236,Bengaluru,Regular,1,717.91,717.91,0.0,0.0,4.2,81.0,0.9717,HIGH,Inactivity (81.0d since last order),Send 'We Miss You' WhatsApp reminder with 25% off coupon
+237,Gurugram,At-Risk,9,3637.63,404.181111,0.0,0.0,4.0,0.0,0.0227,LOW,Normal Ordering Cycle,Standard loyalty engagement
+238,Noida,Regular,12,5314.85,442.904167,8.33333,0.0,4.0,3.0,0.1031,LOW,Normal Ordering Cycle,Standard loyalty engagement
+239,Gurugram,New,5,1387.23,277.446,20.0,0.0,4.2,6.0,0.092,LOW,Frequent Cancellations (20.0%),Standard loyalty engagement
+240,Gurugram,Regular,4,2291.52,572.88,0.0,0.0,4.2,16.0,0.0296,LOW,Normal Ordering Cycle,Standard loyalty engagement
+241,Gurugram,New,6,2825.8,470.966667,16.66667,0.0,3.0,35.0,0.9219,HIGH,Inactivity (35.0d since last order) | Frequent Cancellations (16.7%),Send 'We Miss You' WhatsApp reminder with 25% off coupon
+242,Gurugram,Regular,5,1562.24,312.448,0.0,0.0,4.5,0.0,0.1879,LOW,Normal Ordering Cycle,Standard loyalty engagement
+243,Delhi,Regular,8,4031.77,503.97125,0.0,0.0,5.0,4.0,0.0274,LOW,Normal Ordering Cycle,Standard loyalty engagement
+244,Delhi,At-Risk,5,2692.78,538.556,0.0,0.0,4.2,9.0,0.0245,LOW,Normal Ordering Cycle,Standard loyalty engagement
+245,Delhi,Regular,6,3579.54,596.59,16.66667,0.0,4.3333,4.0,0.0203,LOW,Frequent Cancellations (16.7%),Standard loyalty engagement
+246,Noida,Regular,7,3615.14,516.448571,0.0,0.0,4.2,21.0,0.039,LOW,Normal Ordering Cycle,Standard loyalty engagement
+247,Bengaluru,Regular,5,1835.83,367.166,0.0,0.0,3.0,18.0,0.0254,LOW,Normal Ordering Cycle,Standard loyalty engagement
+248,Noida,Premium,4,2580.65,645.1625,0.0,25.0,4.2,24.0,0.0366,LOW,Normal Ordering Cycle,Standard loyalty engagement
+249,Delhi,At-Risk,3,1712.3,570.766667,0.0,0.0,3.0,24.0,0.0717,LOW,Normal Ordering Cycle,Standard loyalty engagement
+250,Delhi,Regular,6,3117.52,519.586667,0.0,0.0,4.2,32.0,0.9627,HIGH,Inactivity (32.0d since last order),Send 'We Miss You' WhatsApp reminder with 25% off coupon
+251,Bengaluru,Regular,2,634.17,317.085,0.0,0.0,4.2,30.0,0.1579,LOW,Normal Ordering Cycle,Standard loyalty engagement
+252,Gurugram,At-Risk,6,2549.33,424.888333,0.0,0.0,5.0,5.0,0.009,LOW,Normal Ordering Cycle,Standard loyalty engagement
+253,Delhi,Regular,4,1102.38,275.595,0.0,0.0,5.0,40.0,0.9818,HIGH,Inactivity (40.0d since last order),Send 'We Miss You' WhatsApp reminder with 25% off coupon
+254,Bengaluru,At-Risk,5,2305.92,461.184,0.0,0.0,5.0,18.0,0.0142,LOW,Normal Ordering Cycle,Standard loyalty engagement
+255,Delhi,Premium,5,2221.56,444.312,0.0,0.0,4.2,8.0,0.0057,LOW,Normal Ordering Cycle,Standard loyalty engagement
+256,Delhi,Regular,5,2905.35,581.07,20.0,0.0,3.0,4.0,0.0533,LOW,Frequent Cancellations (20.0%),Standard loyalty engagement
+257,Gurugram,Premium,5,2336.15,467.23,0.0,0.0,4.2,23.0,0.0163,LOW,Normal Ordering Cycle,Standard loyalty engagement
+258,Bengaluru,At-Risk,5,2385.63,477.126,0.0,0.0,5.0,11.0,0.0064,LOW,Normal Ordering Cycle,Standard loyalty engagement
+259,Gurugram,New,3,960.58,320.193333,0.0,0.0,4.2,12.0,0.0149,LOW,Normal Ordering Cycle,Standard loyalty engagement
+260,Gurugram,Regular,3,1986.32,662.106667,0.0,0.0,5.0,28.0,0.0315,LOW,Normal Ordering Cycle,Standard loyalty engagement
+261,Noida,Regular,6,2279.2,379.866667,0.0,0.0,4.2,11.0,0.0096,LOW,Normal Ordering Cycle,Standard loyalty engagement
+262,Delhi,Regular,3,1959.03,653.01,0.0,0.0,4.2,60.0,0.9668,HIGH,Inactivity (60.0d since last order),Send 'We Miss You' WhatsApp reminder with 25% off coupon
+263,Noida,At-Risk,10,5171.78,517.178,10.0,0.0,4.0,6.0,0.0688,LOW,Normal Ordering Cycle,Standard loyalty engagement
+264,Delhi,New,4,1968.67,492.1675,0.0,0.0,4.0,1.0,0.0524,LOW,Normal Ordering Cycle,Standard loyalty engagement
+265,Delhi,Premium,5,1948.42,389.684,0.0,25.0,3.3333,9.0,0.0144,LOW,Normal Ordering Cycle,Standard loyalty engagement
+266,Gurugram,New,6,2879.9,479.983333,0.0,0.0,4.2,26.0,0.074,LOW,Normal Ordering Cycle,Standard loyalty engagement
+267,Noida,At-Risk,5,2595.36,519.072,0.0,0.0,4.2,7.0,0.0119,LOW,Normal Ordering Cycle,Standard loyalty engagement
+268,Delhi,Regular,4,2596.14,649.035,25.0,0.0,3.0,2.0,0.0209,LOW,Frequent Cancellations (25.0%),Standard loyalty engagement
+269,Gurugram,Regular,2,1623.79,811.895,0.0,0.0,5.0,41.0,0.9605,HIGH,Inactivity (41.0d since last order),Send 'We Miss You' WhatsApp reminder with 25% off coupon
+270,Bengaluru,Regular,2,658.41,329.205,0.0,0.0,5.0,13.0,0.0372,LOW,Normal Ordering Cycle,Standard loyalty engagement
+271,Delhi,Regular,8,2798.43,349.80375,0.0,0.0,5.0,26.0,0.0427,LOW,Normal Ordering Cycle,Standard loyalty engagement
+272,Noida,Regular,5,2875.44,575.088,0.0,0.0,4.0,29.0,0.035,LOW,Normal Ordering Cycle,Standard loyalty engagement
+273,Noida,At-Risk,6,2522.05,420.341667,0.0,0.0,4.6667,11.0,0.0032,LOW,Normal Ordering Cycle,Standard loyalty engagement
+274,Noida,Premium,10,5970.9,597.09,0.0,0.0,5.0,13.0,0.0807,LOW,Normal Ordering Cycle,Standard loyalty engagement
+275,Gurugram,At-Risk,4,2204.24,551.06,0.0,0.0,4.0,22.0,0.0122,LOW,Normal Ordering Cycle,Standard loyalty engagement
+276,Bengaluru,New,5,1838.8,367.76,0.0,0.0,4.6667,1.0,0.119,LOW,Normal Ordering Cycle,Standard loyalty engagement
+277,Gurugram,Regular,7,2454.87,350.695714,0.0,0.0,4.2,20.0,0.0173,LOW,Normal Ordering Cycle,Standard loyalty engagement
+278,Delhi,Regular,6,1416.9,236.15,16.66667,0.0,5.0,1.0,0.2146,LOW,Frequent Cancellations (16.7%),Standard loyalty engagement
+279,Gurugram,Regular,5,2633.88,526.776,0.0,0.0,3.0,4.0,0.0107,LOW,Normal Ordering Cycle,Standard loyalty engagement
+280,Delhi,Regular,2,889.46,444.73,0.0,0.0,4.2,62.0,0.9826,HIGH,Inactivity (62.0d since last order),Send 'We Miss You' WhatsApp reminder with 25% off coupon
+281,Delhi,Regular,4,1828.26,457.065,0.0,0.0,5.0,2.0,0.3675,MEDIUM,Normal Ordering Cycle,Include in weekend flash-deal push notification segment
+282,Gurugram,Regular,6,2326.19,387.698333,0.0,0.0,4.2,7.0,0.0051,LOW,Normal Ordering Cycle,Standard loyalty engagement
+283,Bengaluru,Regular,5,2750.02,550.004,0.0,0.0,3.0,0.0,0.0139,LOW,Normal Ordering Cycle,Standard loyalty engagement
+284,Noida,Premium,4,1719.7,429.925,0.0,0.0,5.0,15.0,0.0217,LOW,Normal Ordering Cycle,Standard loyalty engagement
+285,Noida,Regular,6,3277.46,546.243333,16.66667,20.0,5.0,0.0,0.0377,LOW,Frequent Cancellations (16.7%),Standard loyalty engagement
+286,Bengaluru,Regular,5,2098.79,419.758,0.0,20.0,3.3333,21.0,0.0091,LOW,Normal Ordering Cycle,Standard loyalty engagement
+287,Bengaluru,Regular,5,2069.57,413.914,0.0,33.33333,4.2,3.0,0.0498,LOW,High Delivery Delays (33.3%),Standard loyalty engagement
+288,Bengaluru,Premium,5,2495.34,499.068,0.0,20.0,4.2,5.0,0.0195,LOW,Normal Ordering Cycle,Standard loyalty engagement
+289,Noida,At-Risk,5,1761.26,352.252,0.0,0.0,5.0,8.0,0.0076,LOW,Normal Ordering Cycle,Standard loyalty engagement
+290,Gurugram,New,9,3451.76,383.528889,0.0,11.11111,4.2,28.0,0.0449,LOW,Normal Ordering Cycle,Standard loyalty engagement
+291,Gurugram,Regular,9,4405.93,489.547778,0.0,11.11111,5.0,11.0,0.0493,LOW,Normal Ordering Cycle,Standard loyalty engagement
+292,Delhi,New,6,1344.04,224.006667,0.0,0.0,5.0,30.0,0.0391,LOW,Normal Ordering Cycle,Standard loyalty engagement
+293,Bengaluru,Regular,6,2732.01,455.335,0.0,0.0,4.5,12.0,0.0364,LOW,Normal Ordering Cycle,Standard loyalty engagement
+294,Noida,Regular,7,2972.88,424.697143,0.0,14.28571,4.2,10.0,0.0132,LOW,Normal Ordering Cycle,Standard loyalty engagement
+295,Delhi,Premium,6,2874.47,479.078333,0.0,0.0,4.2,7.0,0.026,LOW,Normal Ordering Cycle,Standard loyalty engagement
+296,Noida,At-Risk,13,6099.26,469.173846,0.0,0.0,4.25,8.0,0.0418,LOW,Normal Ordering Cycle,Standard loyalty engagement
+297,Noida,Regular,1,530.83,530.83,0.0,0.0,4.2,12.0,0.0304,LOW,Normal Ordering Cycle,Standard loyalty engagement
+298,Noida,At-Risk,2,736.77,368.385,0.0,0.0,4.2,3.0,0.0845,LOW,Normal Ordering Cycle,Standard loyalty engagement
+299,Noida,Regular,7,2867.5,409.642857,0.0,0.0,4.2,0.0,0.0301,LOW,Normal Ordering Cycle,Standard loyalty engagement
+300,Bengaluru,Regular,11,4982.3,452.936364,9.09091,10.0,3.0,1.0,0.086,LOW,Normal Ordering Cycle,Standard loyalty engagement
+301,Gurugram,Premium,8,4371.31,546.41375,0.0,0.0,4.2,7.0,0.036,LOW,Normal Ordering Cycle,Standard loyalty engagement
+302,Bengaluru,Regular,9,5106.0,567.333333,0.0,0.0,4.2,12.0,0.2182,LOW,Normal Ordering Cycle,Standard loyalty engagement
+303,Delhi,New,7,3977.53,568.218571,0.0,0.0,4.2,9.0,0.0304,LOW,Normal Ordering Cycle,Standard loyalty engagement
+304,Bengaluru,Regular,5,2067.44,413.488,0.0,0.0,4.2,14.0,0.0188,LOW,Normal Ordering Cycle,Standard loyalty engagement
+305,Noida,Regular,4,2209.28,552.32,0.0,25.0,4.2,6.0,0.0128,LOW,Normal Ordering Cycle,Standard loyalty engagement
+306,Gurugram,Regular,0,0.0,0.0,0.0,0.0,4.2,,0.041,LOW,Normal Ordering Cycle,Standard loyalty engagement
+307,Bengaluru,New,8,3440.75,430.09375,12.5,0.0,4.2,1.0,0.0193,LOW,Normal Ordering Cycle,Standard loyalty engagement
+308,Bengaluru,Regular,10,4626.18,462.618,0.0,0.0,5.0,1.0,0.2171,LOW,Normal Ordering Cycle,Standard loyalty engagement
+309,Noida,Premium,13,6166.29,474.33,0.0,0.0,3.5,0.0,0.0367,LOW,Normal Ordering Cycle,Standard loyalty engagement
+310,Delhi,Regular,3,1427.38,475.793333,0.0,0.0,5.0,60.0,0.9853,HIGH,Inactivity (60.0d since last order),Send 'We Miss You' WhatsApp reminder with 25% off coupon
+311,Gurugram,Regular,4,2026.76,506.69,0.0,0.0,3.5,4.0,0.0161,LOW,Normal Ordering Cycle,Standard loyalty engagement
+312,Delhi,Premium,5,2391.26,478.252,0.0,20.0,4.2,14.0,0.0249,LOW,Normal Ordering Cycle,Standard loyalty engagement
+313,Delhi,Premium,8,2880.49,360.06125,0.0,0.0,3.0,6.0,0.0556,LOW,Normal Ordering Cycle,Standard loyalty engagement
+314,Noida,Regular,7,3848.56,549.794286,0.0,14.28571,3.0,31.0,0.9495,HIGH,Inactivity (31.0d since last order),Send 'We Miss You' WhatsApp reminder with 25% off coupon
+315,Bengaluru,Regular,8,4312.47,539.05875,0.0,0.0,4.0,12.0,0.0358,LOW,Normal Ordering Cycle,Standard loyalty engagement
+316,Delhi,Premium,9,3935.69,437.298889,0.0,0.0,3.5,3.0,0.1339,LOW,Normal Ordering Cycle,Standard loyalty engagement
+317,Delhi,At-Risk,6,3081.8,513.633333,0.0,0.0,5.0,22.0,0.0142,LOW,Normal Ordering Cycle,Standard loyalty engagement
+318,Bengaluru,New,1,196.27,196.27,0.0,0.0,4.0,72.0,0.9393,HIGH,Inactivity (72.0d since last order),Send 'We Miss You' WhatsApp reminder with 25% off coupon
+319,Noida,New,11,3436.29,312.39,27.27273,25.0,4.6667,0.0,0.0378,LOW,Frequent Cancellations (27.3%),Standard loyalty engagement
+320,Bengaluru,Premium,8,3318.08,414.76,12.5,0.0,4.2,1.0,0.0376,LOW,Normal Ordering Cycle,Standard loyalty engagement
+321,Noida,Regular,4,1770.6,442.65,0.0,0.0,4.2,25.0,0.0844,LOW,Normal Ordering Cycle,Standard loyalty engagement
+322,Noida,Regular,7,2572.84,367.548571,0.0,0.0,3.0,2.0,0.0334,LOW,Normal Ordering Cycle,Standard loyalty engagement
+323,Bengaluru,Regular,6,3195.33,532.555,0.0,0.0,5.0,1.0,0.0053,LOW,Normal Ordering Cycle,Standard loyalty engagement
+324,Bengaluru,Premium,7,2279.08,325.582857,0.0,0.0,4.0,7.0,0.0074,LOW,Normal Ordering Cycle,Standard loyalty engagement
+325,Bengaluru,Regular,9,4170.23,463.358889,0.0,0.0,3.5,8.0,0.106,LOW,Normal Ordering Cycle,Standard loyalty engagement
+326,Delhi,Regular,8,3158.94,394.8675,0.0,12.5,4.2,1.0,0.0769,LOW,Normal Ordering Cycle,Standard loyalty engagement
+327,Gurugram,Regular,4,1228.32,307.08,0.0,0.0,3.0,28.0,0.0869,LOW,Normal Ordering Cycle,Standard loyalty engagement
+328,Gurugram,Premium,4,1537.78,384.445,0.0,0.0,4.2,1.0,0.122,LOW,Normal Ordering Cycle,Standard loyalty engagement
+329,Delhi,Premium,7,2797.23,399.604286,0.0,0.0,3.0,2.0,0.0202,LOW,Normal Ordering Cycle,Standard loyalty engagement
+330,Bengaluru,Regular,7,3250.89,464.412857,0.0,0.0,4.2,7.0,0.0153,LOW,Normal Ordering Cycle,Standard loyalty engagement
+331,Bengaluru,At-Risk,5,2648.67,529.734,0.0,0.0,4.0,5.0,0.0437,LOW,Normal Ordering Cycle,Standard loyalty engagement
+332,Noida,Regular,3,745.69,248.563333,0.0,0.0,4.2,8.0,0.0178,LOW,Normal Ordering Cycle,Standard loyalty engagement
+333,Bengaluru,New,7,3859.79,551.398571,0.0,0.0,3.0,21.0,0.0361,LOW,Normal Ordering Cycle,Standard loyalty engagement
+334,Gurugram,At-Risk,9,5016.37,557.374444,0.0,11.11111,2.0,3.0,0.013,LOW,Low Satisfaction (Rating 2.0),Standard loyalty engagement
+335,Noida,Premium,4,1820.83,455.2075,0.0,0.0,5.0,9.0,0.0167,LOW,Normal Ordering Cycle,Standard loyalty engagement
+336,Gurugram,Regular,4,1490.91,372.7275,0.0,0.0,5.0,9.0,0.0187,LOW,Normal Ordering Cycle,Standard loyalty engagement
+337,Bengaluru,New,9,4065.19,451.687778,11.11111,0.0,4.2,15.0,0.0991,LOW,Normal Ordering Cycle,Standard loyalty engagement
+338,Noida,Regular,8,3437.98,429.7475,0.0,0.0,3.5,22.0,0.0422,LOW,Normal Ordering Cycle,Standard loyalty engagement
+339,Delhi,Regular,10,4770.14,477.014,0.0,0.0,4.25,9.0,0.2032,LOW,Normal Ordering Cycle,Standard loyalty engagement
+340,Bengaluru,New,11,3884.0,353.090909,0.0,0.0,4.25,7.0,0.0144,LOW,Normal Ordering Cycle,Standard loyalty engagement
+341,Noida,Premium,6,2255.04,375.84,0.0,0.0,5.0,14.0,0.0037,LOW,Normal Ordering Cycle,Standard loyalty engagement
+342,Bengaluru,Regular,5,1567.67,313.534,20.0,0.0,3.0,13.0,0.0467,LOW,Frequent Cancellations (20.0%),Standard loyalty engagement
+343,Bengaluru,Regular,5,1949.02,389.804,0.0,0.0,4.2,18.0,0.0463,LOW,Normal Ordering Cycle,Standard loyalty engagement
+344,Gurugram,New,3,2102.36,700.786667,0.0,0.0,5.0,5.0,0.0058,LOW,Normal Ordering Cycle,Standard loyalty engagement
+345,Bengaluru,Premium,6,1925.01,320.835,0.0,0.0,4.0,40.0,0.9391,HIGH,Inactivity (40.0d since last order),Send 'We Miss You' WhatsApp reminder with 25% off coupon
+346,Bengaluru,At-Risk,10,4974.25,497.425,10.0,0.0,3.6667,41.0,0.9603,HIGH,Inactivity (41.0d since last order),Send 'We Miss You' WhatsApp reminder with 25% off coupon
+347,Noida,New,13,6283.3,483.330769,7.69231,25.0,3.0,1.0,0.0415,LOW,Normal Ordering Cycle,Standard loyalty engagement
+348,Noida,Regular,4,1769.37,442.3425,0.0,0.0,4.0,26.0,0.0827,LOW,Normal Ordering Cycle,Standard loyalty engagement
+349,Bengaluru,Premium,9,3575.69,397.298889,0.0,11.11111,3.0,6.0,0.0315,LOW,Normal Ordering Cycle,Standard loyalty engagement
+350,Delhi,At-Risk,8,3406.66,425.8325,0.0,0.0,3.75,0.0,0.0503,LOW,Normal Ordering Cycle,Standard loyalty engagement
+351,Gurugram,Regular,7,2629.35,375.621429,14.28571,0.0,4.2,43.0,0.9304,HIGH,Inactivity (43.0d since last order),Send 'We Miss You' WhatsApp reminder with 25% off coupon
+352,Delhi,Premium,7,3180.72,454.388571,0.0,0.0,4.0,8.0,0.0623,LOW,Normal Ordering Cycle,Standard loyalty engagement
+353,Noida,Regular,8,3894.52,486.815,0.0,0.0,5.0,0.0,0.0327,LOW,Normal Ordering Cycle,Standard loyalty engagement
+354,Gurugram,New,3,2246.59,748.863333,66.66667,0.0,4.2,12.0,0.0092,LOW,Frequent Cancellations (66.7%),Standard loyalty engagement
+355,Noida,Regular,4,871.08,217.77,0.0,0.0,4.0,11.0,0.0281,LOW,Normal Ordering Cycle,Standard loyalty engagement
+356,Noida,New,10,3922.84,392.284,10.0,0.0,4.6667,2.0,0.0581,LOW,Normal Ordering Cycle,Standard loyalty engagement
+357,Noida,Regular,8,2641.07,330.13375,0.0,0.0,5.0,20.0,0.007,LOW,Normal Ordering Cycle,Standard loyalty engagement
+358,Bengaluru,Regular,9,3293.71,365.967778,0.0,0.0,4.0,2.0,0.1228,LOW,Normal Ordering Cycle,Standard loyalty engagement
+359,Noida,At-Risk,2,789.24,394.62,0.0,0.0,4.2,33.0,0.952,HIGH,Inactivity (33.0d since last order),Send 'We Miss You' WhatsApp reminder with 25% off coupon
+360,Bengaluru,New,7,2518.7,359.814286,0.0,0.0,4.2,6.0,0.0565,LOW,Normal Ordering Cycle,Standard loyalty engagement
+361,Bengaluru,Premium,6,2539.97,423.328333,0.0,0.0,4.0,6.0,0.0136,LOW,Normal Ordering Cycle,Standard loyalty engagement
+362,Delhi,Regular,6,2569.19,428.198333,0.0,0.0,4.2,5.0,0.0603,LOW,Normal Ordering Cycle,Standard loyalty engagement
+363,Bengaluru,At-Risk,9,3816.8,424.088889,0.0,11.11111,3.0,7.0,0.0208,LOW,Normal Ordering Cycle,Standard loyalty engagement
+364,Bengaluru,New,8,2838.31,354.78875,0.0,0.0,4.0,11.0,0.0188,LOW,Normal Ordering Cycle,Standard loyalty engagement
+365,Gurugram,Regular,6,3304.74,550.79,0.0,0.0,3.0,2.0,0.0337,LOW,Normal Ordering Cycle,Standard loyalty engagement
+366,Noida,Regular,3,1278.17,426.056667,0.0,0.0,4.2,5.0,0.1536,LOW,Normal Ordering Cycle,Standard loyalty engagement
+367,Noida,New,5,1910.9,382.18,0.0,20.0,3.5,5.0,0.0396,LOW,Normal Ordering Cycle,Standard loyalty engagement
+368,Noida,Regular,12,4116.98,343.081667,0.0,0.0,3.0,3.0,0.0321,LOW,Normal Ordering Cycle,Standard loyalty engagement
+369,Noida,Regular,5,2152.77,430.554,0.0,0.0,4.0,10.0,0.0218,LOW,Normal Ordering Cycle,Standard loyalty engagement
+370,Gurugram,Regular,7,2405.4,343.628571,0.0,28.57143,4.5,37.0,0.9217,HIGH,Inactivity (37.0d since last order),Send 'We Miss You' WhatsApp reminder with 25% off coupon
+371,Bengaluru,Premium,11,6850.33,622.757273,0.0,9.09091,3.5,1.0,0.031,LOW,Normal Ordering Cycle,Standard loyalty engagement
+372,Gurugram,New,6,2952.78,492.13,0.0,0.0,4.0,22.0,0.0272,LOW,Normal Ordering Cycle,Standard loyalty engagement
+373,Gurugram,Regular,3,1472.28,490.76,0.0,0.0,4.2,1.0,0.0493,LOW,Normal Ordering Cycle,Standard loyalty engagement
+374,Delhi,At-Risk,8,3166.23,395.77875,0.0,0.0,5.0,9.0,0.0066,LOW,Normal Ordering Cycle,Standard loyalty engagement
+375,Gurugram,New,6,3003.55,500.591667,0.0,16.66667,4.0,4.0,0.0322,LOW,Normal Ordering Cycle,Standard loyalty engagement
+376,Noida,Regular,3,1427.68,475.893333,0.0,0.0,4.2,44.0,0.9796,HIGH,Inactivity (44.0d since last order),Send 'We Miss You' WhatsApp reminder with 25% off coupon
+377,Delhi,Premium,3,1953.97,651.323333,0.0,0.0,4.0,24.0,0.1488,LOW,Normal Ordering Cycle,Standard loyalty engagement
+378,Bengaluru,Premium,1,806.2,806.2,0.0,0.0,4.2,63.0,0.9679,HIGH,Inactivity (63.0d since last order),Send 'We Miss You' WhatsApp reminder with 25% off coupon
+379,Bengaluru,Regular,6,3193.25,532.208333,0.0,0.0,3.0,10.0,0.0198,LOW,Normal Ordering Cycle,Standard loyalty engagement
+380,Bengaluru,Premium,6,2234.7,372.45,0.0,0.0,3.0,0.0,0.0239,LOW,Normal Ordering Cycle,Standard loyalty engagement
+381,Gurugram,New,6,1887.06,314.51,0.0,0.0,4.0,7.0,0.0141,LOW,Normal Ordering Cycle,Standard loyalty engagement
+382,Bengaluru,Regular,3,1721.91,573.97,0.0,0.0,4.2,40.0,0.9698,HIGH,Inactivity (40.0d since last order),Send 'We Miss You' WhatsApp reminder with 25% off coupon
+383,Noida,Regular,6,3104.13,517.355,0.0,33.33333,5.0,2.0,0.0212,LOW,High Delivery Delays (33.3%),Standard loyalty engagement
+384,Bengaluru,Premium,8,3680.93,460.11625,0.0,0.0,4.5,11.0,0.0604,LOW,Normal Ordering Cycle,Standard loyalty engagement
+385,Gurugram,Regular,8,3433.01,429.12625,0.0,0.0,3.5,11.0,0.0244,LOW,Normal Ordering Cycle,Standard loyalty engagement
+386,Bengaluru,Regular,11,4885.61,444.146364,0.0,9.09091,5.0,9.0,0.0301,LOW,Normal Ordering Cycle,Standard loyalty engagement
+387,Bengaluru,Regular,4,1265.14,316.285,0.0,0.0,4.5,13.0,0.0303,LOW,Normal Ordering Cycle,Standard loyalty engagement
+388,Noida,Regular,3,997.99,332.663333,33.33333,0.0,5.0,22.0,0.0308,LOW,Frequent Cancellations (33.3%),Standard loyalty engagement
+389,Gurugram,New,6,3585.56,597.593333,0.0,0.0,3.0,1.0,0.0188,LOW,Normal Ordering Cycle,Standard loyalty engagement
+390,Delhi,Regular,4,1408.43,352.1075,0.0,0.0,3.0,56.0,0.9571,HIGH,Inactivity (56.0d since last order),Send 'We Miss You' WhatsApp reminder with 25% off coupon
+391,Noida,Regular,9,4798.01,533.112222,0.0,12.5,3.25,0.0,0.0558,LOW,Normal Ordering Cycle,Standard loyalty engagement
+392,Gurugram,Regular,5,1663.51,332.702,0.0,0.0,4.2,0.0,0.1116,LOW,Normal Ordering Cycle,Standard loyalty engagement
+393,Noida,Regular,4,1696.59,424.1475,0.0,0.0,4.2,34.0,0.9804,HIGH,Inactivity (34.0d since last order),Send 'We Miss You' WhatsApp reminder with 25% off coupon
+394,Gurugram,Premium,4,2776.81,694.2025,0.0,0.0,5.0,13.0,0.0085,LOW,Normal Ordering Cycle,Standard loyalty engagement
+395,Bengaluru,Regular,6,2466.18,411.03,0.0,0.0,5.0,5.0,0.0231,LOW,Normal Ordering Cycle,Standard loyalty engagement
+396,Bengaluru,Regular,6,2713.48,452.246667,0.0,0.0,4.5,12.0,0.0138,LOW,Normal Ordering Cycle,Standard loyalty engagement
+397,Noida,Regular,7,2931.8,418.828571,14.28571,0.0,3.0,4.0,0.1374,LOW,Normal Ordering Cycle,Standard loyalty engagement
+398,Bengaluru,Premium,1,135.76,135.76,0.0,0.0,4.2,13.0,0.0223,LOW,Normal Ordering Cycle,Standard loyalty engagement
+399,Gurugram,Regular,8,2757.66,344.7075,0.0,12.5,3.0,25.0,0.0413,LOW,Normal Ordering Cycle,Standard loyalty engagement
+400,Delhi,Regular,9,3515.0,390.555556,0.0,0.0,3.5,11.0,0.0459,LOW,Normal Ordering Cycle,Standard loyalty engagement
+401,Bengaluru,Premium,5,2663.36,532.672,20.0,0.0,5.0,43.0,0.9013,HIGH,Inactivity (43.0d since last order) | Frequent Cancellations (20.0%),Send 'We Miss You' WhatsApp reminder with 25% off coupon
+402,Bengaluru,At-Risk,2,816.8,408.4,0.0,0.0,4.2,18.0,0.0249,LOW,Normal Ordering Cycle,Standard loyalty engagement
+403,Noida,Premium,2,1250.68,625.34,0.0,0.0,5.0,30.0,0.0482,LOW,Normal Ordering Cycle,Standard loyalty engagement
+404,Noida,Regular,7,2419.65,345.664286,0.0,28.57143,2.0,18.0,0.0135,LOW,Low Satisfaction (Rating 2.0),Standard loyalty engagement
+405,Gurugram,Regular,9,3961.06,440.117778,0.0,0.0,4.0,0.0,0.0503,LOW,Normal Ordering Cycle,Standard loyalty engagement
+406,Noida,Regular,8,3849.7,481.2125,0.0,0.0,4.0,5.0,0.3305,LOW,Normal Ordering Cycle,Standard loyalty engagement
+407,Noida,At-Risk,5,2437.32,487.464,0.0,20.0,3.0,24.0,0.0399,LOW,Normal Ordering Cycle,Standard loyalty engagement
+408,Delhi,At-Risk,6,2024.03,337.338333,0.0,0.0,4.0,2.0,0.016,LOW,Normal Ordering Cycle,Standard loyalty engagement
+409,Delhi,Regular,8,4469.23,558.65375,0.0,0.0,3.6667,1.0,0.0549,LOW,Normal Ordering Cycle,Standard loyalty engagement
+410,Gurugram,Regular,7,2011.97,287.424286,0.0,0.0,5.0,11.0,0.0086,LOW,Normal Ordering Cycle,Standard loyalty engagement
+411,Delhi,New,10,4414.44,441.444,0.0,10.0,3.0,1.0,0.1181,LOW,Normal Ordering Cycle,Standard loyalty engagement
+412,Bengaluru,Premium,12,4707.73,392.310833,0.0,8.33333,3.0,0.0,0.0363,LOW,Normal Ordering Cycle,Standard loyalty engagement
+413,Noida,Regular,8,3852.15,481.51875,0.0,0.0,3.5,1.0,0.0806,LOW,Normal Ordering Cycle,Standard loyalty engagement
+414,Bengaluru,Regular,7,3348.5,478.357143,0.0,28.57143,5.0,14.0,0.0197,LOW,Normal Ordering Cycle,Standard loyalty engagement
+415,Noida,Regular,6,1203.85,200.641667,0.0,16.66667,5.0,20.0,0.0277,LOW,Normal Ordering Cycle,Standard loyalty engagement
+416,Noida,At-Risk,3,1709.05,569.683333,0.0,0.0,4.2,62.0,0.9528,HIGH,Inactivity (62.0d since last order),Send 'We Miss You' WhatsApp reminder with 25% off coupon
+417,Gurugram,Regular,6,2556.03,426.005,0.0,0.0,4.0,14.0,0.0126,LOW,Normal Ordering Cycle,Standard loyalty engagement
+418,Delhi,Regular,5,2168.16,433.632,0.0,0.0,5.0,23.0,0.012,LOW,Normal Ordering Cycle,Standard loyalty engagement
+419,Delhi,Regular,4,2174.02,543.505,25.0,0.0,5.0,23.0,0.0209,LOW,Frequent Cancellations (25.0%),Standard loyalty engagement
+420,Bengaluru,Premium,6,3005.69,500.948333,0.0,33.33333,5.0,20.0,0.0068,LOW,High Delivery Delays (33.3%),Standard loyalty engagement
+421,Bengaluru,New,6,2654.28,442.38,0.0,0.0,5.0,7.0,0.0068,LOW,Normal Ordering Cycle,Standard loyalty engagement
+422,Delhi,Regular,3,1403.58,467.86,0.0,0.0,4.2,43.0,0.9822,HIGH,Inactivity (43.0d since last order),Send 'We Miss You' WhatsApp reminder with 25% off coupon
+423,Bengaluru,Regular,2,1289.18,644.59,0.0,0.0,4.2,2.0,0.0465,LOW,Normal Ordering Cycle,Standard loyalty engagement
+424,Noida,Regular,6,1899.12,316.52,0.0,0.0,4.0,0.0,0.1628,LOW,Normal Ordering Cycle,Standard loyalty engagement
+425,Bengaluru,Regular,6,2202.33,367.055,0.0,0.0,4.5,3.0,0.0547,LOW,Normal Ordering Cycle,Standard loyalty engagement
+426,Noida,Premium,4,1606.72,401.68,0.0,0.0,3.5,8.0,0.0126,LOW,Normal Ordering Cycle,Standard loyalty engagement
+427,Gurugram,New,6,2044.54,340.756667,0.0,0.0,3.0,3.0,0.0227,LOW,Normal Ordering Cycle,Standard loyalty engagement
+428,Delhi,Regular,6,2349.66,391.61,16.66667,20.0,4.2,29.0,0.0425,LOW,Frequent Cancellations (16.7%),Standard loyalty engagement
+429,Noida,Premium,4,1695.28,423.82,0.0,0.0,3.6667,17.0,0.0203,LOW,Normal Ordering Cycle,Standard loyalty engagement
+430,Delhi,New,9,3120.93,346.77,0.0,0.0,4.2,6.0,0.2503,LOW,Normal Ordering Cycle,Standard loyalty engagement
+431,Gurugram,Premium,7,2506.57,358.081429,0.0,14.28571,4.5,5.0,0.0523,LOW,Normal Ordering Cycle,Standard loyalty engagement
+432,Gurugram,Regular,7,3554.96,507.851429,0.0,0.0,4.0,19.0,0.0526,LOW,Normal Ordering Cycle,Standard loyalty engagement
+433,Bengaluru,New,6,2210.39,368.398333,0.0,0.0,3.6667,4.0,0.0255,LOW,Normal Ordering Cycle,Standard loyalty engagement
+434,Noida,Regular,6,2561.52,426.92,0.0,0.0,4.0,6.0,0.0413,LOW,Normal Ordering Cycle,Standard loyalty engagement
+435,Delhi,Regular,6,2683.34,447.223333,16.66667,0.0,4.0,5.0,0.0925,LOW,Frequent Cancellations (16.7%),Standard loyalty engagement
+436,Bengaluru,Regular,3,1774.69,591.563333,33.33333,0.0,3.0,13.0,0.0377,LOW,Frequent Cancellations (33.3%),Standard loyalty engagement
+437,Gurugram,Regular,11,5365.4,487.763636,0.0,0.0,4.3333,15.0,0.1078,LOW,Normal Ordering Cycle,Standard loyalty engagement
+438,Delhi,Regular,5,2441.78,488.356,0.0,0.0,4.2,36.0,0.9606,HIGH,Inactivity (36.0d since last order),Send 'We Miss You' WhatsApp reminder with 25% off coupon
+439,Noida,Regular,6,3057.16,509.526667,0.0,0.0,4.0,20.0,0.0313,LOW,Normal Ordering Cycle,Standard loyalty engagement
+440,Noida,Regular,4,2220.94,555.235,0.0,0.0,4.2,46.0,0.9112,HIGH,Inactivity (46.0d since last order),Send 'We Miss You' WhatsApp reminder with 25% off coupon
+441,Gurugram,Regular,5,1633.35,326.67,0.0,0.0,4.5,11.0,0.0304,LOW,Normal Ordering Cycle,Standard loyalty engagement
+442,Gurugram,Regular,7,2620.09,374.298571,0.0,0.0,5.0,2.0,0.0146,LOW,Normal Ordering Cycle,Standard loyalty engagement
+443,Delhi,Premium,1,571.01,571.01,0.0,0.0,4.2,3.0,0.0223,LOW,Normal Ordering Cycle,Standard loyalty engagement
+444,Noida,Premium,13,6602.06,507.850769,0.0,0.0,4.0,8.0,0.0364,LOW,Normal Ordering Cycle,Standard loyalty engagement
+445,Gurugram,New,5,2517.96,503.592,0.0,0.0,3.0,36.0,0.8927,HIGH,Inactivity (36.0d since last order),Send 'We Miss You' WhatsApp reminder with 25% off coupon
+446,Delhi,Premium,7,2977.6,425.371429,0.0,0.0,3.0,16.0,0.035,LOW,Normal Ordering Cycle,Standard loyalty engagement
+447,Delhi,Regular,5,1788.78,357.756,0.0,0.0,4.0,10.0,0.0467,LOW,Normal Ordering Cycle,Standard loyalty engagement
+448,Bengaluru,Regular,6,2604.42,434.07,0.0,16.66667,2.5,5.0,0.0209,LOW,Low Satisfaction (Rating 2.5),Standard loyalty engagement
+449,Noida,New,4,1926.36,481.59,0.0,0.0,4.2,50.0,0.9747,HIGH,Inactivity (50.0d since last order),Send 'We Miss You' WhatsApp reminder with 25% off coupon
+450,Noida,Premium,7,3501.69,500.241429,14.28571,20.0,2.3333,6.0,0.2954,LOW,Low Satisfaction (Rating 2.3333),Standard loyalty engagement
+451,Delhi,Regular,5,1431.71,286.342,0.0,0.0,4.0,7.0,0.0423,LOW,Normal Ordering Cycle,Standard loyalty engagement
+452,Bengaluru,Regular,4,1056.37,264.0925,25.0,0.0,3.0,35.0,0.9638,HIGH,Inactivity (35.0d since last order) | Frequent Cancellations (25.0%),Send 'We Miss You' WhatsApp reminder with 25% off coupon
+453,Noida,Regular,8,3542.94,442.8675,0.0,0.0,3.0,13.0,0.0931,LOW,Normal Ordering Cycle,Standard loyalty engagement
+454,Noida,Regular,4,1291.63,322.9075,0.0,0.0,4.2,47.0,0.9715,HIGH,Inactivity (47.0d since last order),Send 'We Miss You' WhatsApp reminder with 25% off coupon
+455,Noida,Regular,2,433.95,216.975,0.0,0.0,4.2,0.0,0.1725,LOW,Normal Ordering Cycle,Standard loyalty engagement
+456,Delhi,Premium,10,3635.14,363.514,0.0,0.0,3.3333,2.0,0.0497,LOW,Normal Ordering Cycle,Standard loyalty engagement
+457,Noida,At-Risk,2,779.36,389.68,0.0,0.0,4.2,9.0,0.0161,LOW,Normal Ordering Cycle,Standard loyalty engagement
+458,Delhi,Premium,9,3703.98,411.553333,0.0,0.0,5.0,0.0,0.0253,LOW,Normal Ordering Cycle,Standard loyalty engagement
+459,Noida,Regular,9,4923.7,547.077778,0.0,0.0,3.0,5.0,0.0841,LOW,Normal Ordering Cycle,Standard loyalty engagement
+460,Delhi,New,5,2154.8,430.96,0.0,25.0,3.0,4.0,0.0136,LOW,Normal Ordering Cycle,Standard loyalty engagement
+461,Gurugram,At-Risk,6,3274.32,545.72,0.0,0.0,5.0,8.0,0.0041,LOW,Normal Ordering Cycle,Standard loyalty engagement
+462,Gurugram,Regular,2,921.97,460.985,0.0,0.0,4.2,1.0,0.119,LOW,Normal Ordering Cycle,Standard loyalty engagement
+463,Gurugram,Regular,3,1323.85,441.283333,0.0,0.0,4.0,11.0,0.0264,LOW,Normal Ordering Cycle,Standard loyalty engagement
+464,Bengaluru,At-Risk,4,1494.38,373.595,0.0,0.0,4.5,27.0,0.0523,LOW,Normal Ordering Cycle,Standard loyalty engagement
+465,Bengaluru,Regular,3,1303.53,434.51,0.0,0.0,5.0,40.0,0.9686,HIGH,Inactivity (40.0d since last order),Send 'We Miss You' WhatsApp reminder with 25% off coupon
+466,Noida,Regular,6,3351.8,558.633333,0.0,0.0,3.0,24.0,0.0561,LOW,Normal Ordering Cycle,Standard loyalty engagement
+467,Gurugram,Regular,3,2046.47,682.156667,0.0,0.0,4.2,6.0,0.019,LOW,Normal Ordering Cycle,Standard loyalty engagement
+468,Gurugram,Premium,3,987.59,329.196667,0.0,0.0,4.2,37.0,0.9546,HIGH,Inactivity (37.0d since last order),Send 'We Miss You' WhatsApp reminder with 25% off coupon
+469,Bengaluru,At-Risk,9,4587.23,509.692222,0.0,0.0,3.0,2.0,0.0155,LOW,Normal Ordering Cycle,Standard loyalty engagement
+470,Gurugram,Regular,5,1570.55,314.11,0.0,20.0,4.2,42.0,0.9573,HIGH,Inactivity (42.0d since last order),Send 'We Miss You' WhatsApp reminder with 25% off coupon
+471,Noida,Regular,9,4647.26,516.362222,11.11111,0.0,5.0,1.0,0.0439,LOW,Normal Ordering Cycle,Standard loyalty engagement
+472,Delhi,New,8,3161.21,395.15125,0.0,0.0,4.0,0.0,0.0361,LOW,Normal Ordering Cycle,Standard loyalty engagement
+473,Delhi,At-Risk,5,2371.24,474.248,0.0,0.0,5.0,2.0,0.0314,LOW,Normal Ordering Cycle,Standard loyalty engagement
+474,Delhi,Premium,4,1205.41,301.3525,0.0,0.0,4.2,36.0,0.9738,HIGH,Inactivity (36.0d since last order),Send 'We Miss You' WhatsApp reminder with 25% off coupon
+475,Bengaluru,At-Risk,3,1576.47,525.49,0.0,0.0,3.0,13.0,0.0123,LOW,Normal Ordering Cycle,Standard loyalty engagement
+476,Gurugram,New,5,2513.37,502.674,0.0,0.0,4.2,4.0,0.0174,LOW,Normal Ordering Cycle,Standard loyalty engagement
+477,Gurugram,At-Risk,4,1416.98,354.245,0.0,0.0,3.0,3.0,0.0417,LOW,Normal Ordering Cycle,Standard loyalty engagement
+478,Bengaluru,At-Risk,6,2232.93,372.155,0.0,0.0,4.2,11.0,0.0088,LOW,Normal Ordering Cycle,Standard loyalty engagement
+479,Gurugram,Premium,9,5086.53,565.17,0.0,0.0,4.0,8.0,0.0647,LOW,Normal Ordering Cycle,Standard loyalty engagement
+480,Noida,Regular,8,2524.82,315.6025,0.0,0.0,4.2,4.0,0.0614,LOW,Normal Ordering Cycle,Standard loyalty engagement
+481,Bengaluru,Regular,7,3689.92,527.131429,0.0,14.28571,4.0,15.0,0.0611,LOW,Normal Ordering Cycle,Standard loyalty engagement
+482,Noida,At-Risk,5,2992.87,598.574,0.0,0.0,4.0,4.0,0.0161,LOW,Normal Ordering Cycle,Standard loyalty engagement
+483,Delhi,Regular,8,2616.1,327.0125,0.0,0.0,4.0,1.0,0.0667,LOW,Normal Ordering Cycle,Standard loyalty engagement
+484,Gurugram,At-Risk,10,6037.15,603.715,0.0,0.0,4.0,5.0,0.0602,LOW,Normal Ordering Cycle,Standard loyalty engagement
+485,Delhi,Regular,9,3991.74,443.526667,0.0,0.0,4.6667,19.0,0.0591,LOW,Normal Ordering Cycle,Standard loyalty engagement
+486,Delhi,Regular,14,6430.97,459.355,14.28571,0.0,4.0,0.0,0.0532,LOW,Normal Ordering Cycle,Standard loyalty engagement
+487,Gurugram,At-Risk,6,3199.58,533.263333,0.0,33.33333,4.2,22.0,0.0324,LOW,High Delivery Delays (33.3%),Standard loyalty engagement
+488,Delhi,Regular,11,5073.11,461.191818,0.0,0.0,3.0,2.0,0.1605,LOW,Normal Ordering Cycle,Standard loyalty engagement
+489,Noida,Regular,4,2749.95,687.4875,0.0,0.0,4.2,6.0,0.0105,LOW,Normal Ordering Cycle,Standard loyalty engagement
+490,Noida,Premium,2,1036.67,518.335,0.0,0.0,4.2,5.0,0.0703,LOW,Normal Ordering Cycle,Standard loyalty engagement
+491,Gurugram,At-Risk,4,1912.3,478.075,25.0,0.0,4.2,17.0,0.0295,LOW,Frequent Cancellations (25.0%),Standard loyalty engagement
+492,Delhi,New,6,2400.49,400.081667,0.0,0.0,4.2,29.0,0.0302,LOW,Normal Ordering Cycle,Standard loyalty engagement
+493,Noida,Premium,6,3090.87,515.145,0.0,16.66667,4.2,16.0,0.0228,LOW,Normal Ordering Cycle,Standard loyalty engagement
+494,Gurugram,Regular,9,3671.18,407.908889,0.0,0.0,3.0,9.0,0.0376,LOW,Normal Ordering Cycle,Standard loyalty engagement
+495,Gurugram,Regular,9,3847.31,427.478889,0.0,12.5,3.0,23.0,0.0569,LOW,Normal Ordering Cycle,Standard loyalty engagement
+496,Noida,Regular,7,2947.9,421.128571,0.0,0.0,5.0,2.0,0.0392,LOW,Normal Ordering Cycle,Standard loyalty engagement
+497,Bengaluru,New,5,2500.56,500.112,0.0,0.0,5.0,25.0,0.0256,LOW,Normal Ordering Cycle,Standard loyalty engagement
+498,Noida,At-Risk,9,4005.09,445.01,11.11111,12.5,4.0,25.0,0.0634,LOW,Normal Ordering Cycle,Standard loyalty engagement
+499,Gurugram,New,4,1822.99,455.7475,0.0,25.0,1.0,28.0,0.0613,LOW,Low Satisfaction (Rating 1.0),Standard loyalty engagement
+500,Bengaluru,Regular,8,3948.33,493.54125,0.0,12.5,4.0,17.0,0.0671,LOW,Normal Ordering Cycle,Standard loyalty engagement

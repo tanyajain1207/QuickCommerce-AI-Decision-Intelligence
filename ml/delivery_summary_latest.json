@@ -1,0 +1,91 @@
+{
+  "generated_at": "2026-11-23T08:38:19.867915",
+  "model_used": "XGBoost Regressor",
+  "metrics": {
+    "mae_min": 2.74,
+    "rmse_min": 3.22,
+    "r2_score": 0.4258
+  },
+  "store_benchmarks": [
+    {
+      "store_id": 3,
+      "store_name": "QuickMart Koramangala",
+      "rider_capacity": 5,
+      "avg_actual_delivery": 30.5,
+      "avg_predicted_delivery": 30.5,
+      "delay_risk_pct": 100.0
+    },
+    {
+      "store_id": 1,
+      "store_name": "QuickMart Connaught Place",
+      "rider_capacity": 15,
+      "avg_actual_delivery": 13.0,
+      "avg_predicted_delivery": 13.0,
+      "delay_risk_pct": 0.0
+    },
+    {
+      "store_id": 2,
+      "store_name": "QuickMart Lajpat Nagar",
+      "rider_capacity": 12,
+      "avg_actual_delivery": 12.9,
+      "avg_predicted_delivery": 12.9,
+      "delay_risk_pct": 0.0
+    },
+    {
+      "store_id": 4,
+      "store_name": "QuickMart Sector 18 Noida",
+      "rider_capacity": 14,
+      "avg_actual_delivery": 13.0,
+      "avg_predicted_delivery": 13.1,
+      "delay_risk_pct": 0.0
+    },
+    {
+      "store_id": 5,
+      "store_name": "QuickMart Indiranagar",
+      "rider_capacity": 13,
+      "avg_actual_delivery": 13.1,
+      "avg_predicted_delivery": 13.1,
+      "delay_risk_pct": 0.0
+    },
+    {
+      "store_id": 6,
+      "store_name": "QuickMart Dwarka",
+      "rider_capacity": 14,
+      "avg_actual_delivery": 13.3,
+      "avg_predicted_delivery": 13.3,
+      "delay_risk_pct": 0.0
+    },
+    {
+      "store_id": 7,
+      "store_name": "QuickMart Sector 56 Gurugram",
+      "rider_capacity": 13,
+      "avg_actual_delivery": 13.8,
+      "avg_predicted_delivery": 13.5,
+      "delay_risk_pct": 0.0
+    },
+    {
+      "store_id": 8,
+      "store_name": "QuickMart Malviya Nagar",
+      "rider_capacity": 12,
+      "avg_actual_delivery": 13.1,
+      "avg_predicted_delivery": 13.1,
+      "delay_risk_pct": 0.0
+    },
+    {
+      "store_id": 9,
+      "store_name": "QuickMart Whitefield",
+      "rider_capacity": 13,
+      "avg_actual_delivery": 12.9,
+      "avg_predicted_delivery": 13.0,
+      "delay_risk_pct": 0.0
+    },
+    {
+      "store_id": 10,
+      "store_name": "QuickMart Cyber City",
+      "rider_capacity": 13,
+      "avg_actual_delivery": 12.6,
+      "avg_predicted_delivery": 12.9,
+      "delay_risk_pct": 0.0
+    }
+  ]
+}

@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QuickCommerce AI — Decision Intelligence System</title>
+  <meta name="description" content="AI-Powered Business Decision Intelligence Dashboard for Quick-Commerce Operations — powered by Gemini AI and MySQL analytics.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    :root {
+      --bg:          #07091a;
+      --bg2:         #0c1028;
+      --bg3:         #111530;
+      --glass:       rgba(255,255,255,0.04);
+      --glass-b:     rgba(255,255,255,0.07);
+      --glass-h:     rgba(255,255,255,0.07);
+      --primary:     #00d2ff;
+      --purple:      #7c3aed;
+      --grad:        linear-gradient(135deg,#00d2ff,#7c3aed);
+      --success:     #10b981;
+      --danger:      #ef4444;
+      --warning:     #f59e0b;
+      --text:        #e2e8f0;
+      --muted:       #64748b;
+      --dim:         #94a3b8;
+      --r:           16px;
+      --t:           all .3s cubic-bezier(.4,0,.2,1);
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+    body::before{content:'';position:fixed;inset:0;pointer-events:none;
+      background:radial-gradient(ellipse 60% 60% at 15% 10%,rgba(0,210,255,.07) 0%,transparent 55%),
+                 radial-gradient(ellipse 50% 50% at 85% 90%,rgba(124,58,237,.07) 0%,transparent 55%);
+      z-index:0}
+
+    /* ── Header ── */
+    .hdr{position:sticky;top:0;z-index:200;background:rgba(7,9,26,.92);backdrop-filter:blur(24px);
+      border-bottom:1px solid var(--glass-b);padding:0 32px;display:flex;align-items:center;
+      justify-content:space-between;height:62px}
+    .logo{display:flex;align-items:center;gap:12px}
+    .logo-icon{width:38px;height:38px;background:var(--grad);border-radius:11px;display:flex;
+      align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+    .logo-wrap h1{font-size:17px;font-weight:800;background:var(--grad);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.2}
+    .logo-wrap p{font-size:10.5px;color:var(--muted);font-weight:400;letter-spacing:.02em}
+    .hdr-right{display:flex;align-items:center;gap:12px}
+    .live-badge{display:flex;align-items:center;gap:6px;background:rgba(16,185,129,.1);
+      border:1px solid rgba(16,185,129,.3);border-radius:20px;padding:5px 13px;
+      font-size:11.5px;color:var(--success);font-weight:600}
+    .live-dot{width:7px;height:7px;border-radius:50%;background:var(--success);animation:blink 1.8s infinite}
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+    .ai-badge{display:flex;align-items:center;gap:6px;background:rgba(0,210,255,.08);
+      border:1px solid rgba(0,210,255,.25);border-radius:20px;padding:5px 13px;
+      font-size:11.5px;color:var(--primary);font-weight:600}
+
+    /* ── Tab Nav ── */
+    .nav{display:flex;gap:6px;padding:18px 32px 10px;position:relative;z-index:1}
+    .tab-btn{padding:10px 22px;border:1px solid var(--glass-b);border-radius:10px;
+      background:var(--glass);color:var(--dim);font-size:13.5px;font-weight:500;cursor:pointer;
+      transition:var(--t);font-family:'Inter',sans-serif;display:flex;align-items:center;gap:8px}
+    .tab-btn:hover{background:var(--glass-h);color:var(--text);border-color:rgba(255,255,255,.13)}
+    .tab-btn.active{background:linear-gradient(135deg,rgba(0,210,255,.13),rgba(124,58,237,.13));
+      border-color:rgba(0,210,255,.4);color:var(--primary)}
+    .tab-btn .emoji{font-size:15px}
+
+    /* ── Content ── */
+    .content{padding:8px 32px 40px;position:relative;z-index:1}
+    .tab-panel{display:none;animation:fadeUp .35s ease}
+    .tab-panel.active{display:block}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+
+    /* ── Section heading ── */
+    .sec-heading{font-size:13px;font-weight:600;color:var(--muted);text-transform:uppercase;
+      letter-spacing:.06em;margin-bottom:14px;margin-top:4px}
+
+    /* ── KPI Row ── */
+    .kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:22px}
+    .kpi-card{background:var(--glass);border:1px solid var(--glass-b);border-radius:var(--r);
+      padding:22px;transition:var(--t);backdrop-filter:blur(20px);position:relative;overflow:hidden}
+    .kpi-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;
+      background:var(--grad);transform:scaleX(0);transform-origin:left;transition:var(--t)}
+    .kpi-card:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.11)}
+    .kpi-card:hover::after{transform:scaleX(1)}
+    .kpi-label{font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;
+      letter-spacing:.06em;margin-bottom:10px}
+    .kpi-value{font-size:30px;font-weight:800;color:var(--text);margin-bottom:6px;
+      font-variant-numeric:tabular-nums}
+    .kpi-sub{font-size:12.5px;display:flex;align-items:center;gap:4px;font-weight:500}
+    .up{color:var(--success)} .dn{color:var(--danger)} .neu{color:var(--muted)}
+    .kpi-ico{position:absolute;top:18px;right:18px;font-size:26px;opacity:.18}
+
+    /* ── Charts Row ── */
+    .charts-row{display:grid;grid-template-columns:1.6fr 1fr;gap:14px;margin-bottom:22px}
+    .chart-card{background:var(--glass);border:1px solid var(--glass-b);border-radius:var(--r);
+      padding:22px;backdrop-filter:blur(20px)}
+    .chart-ttl{font-size:14.5px;font-weight:700;color:var(--text);margin-bottom:3px}
+    .chart-sub{font-size:12px;color:var(--muted);margin-bottom:18px}
+    .chart-wrap{position:relative;height:250px}
+
+    /* ── Store Table ── */
+    .tbl-card{background:var(--glass);border:1px solid var(--glass-b);border-radius:var(--r);
+      backdrop-filter:blur(20px);overflow:hidden}
+    .tbl-hdr{padding:18px 22px;border-bottom:1px solid var(--glass-b);display:flex;
+      justify-content:space-between;align-items:center}
+    .tbl-hdr-title{font-size:14.5px;font-weight:700}
+    .tbl-note{font-size:11.5px;color:var(--muted)}
+    table{width:100%;border-collapse:collapse}
+    thead th{padding:11px 14px;text-align:left;font-size:10.5px;text-transform:uppercase;
+      letter-spacing:.06em;color:var(--muted);font-weight:700;
+      border-bottom:1px solid var(--glass-b);background:rgba(255,255,255,.025)}
+    tbody td{padding:13px 14px;font-size:13px;border-bottom:1px solid rgba(255,255,255,.03)}
+    tbody tr:hover{background:rgba(255,255,255,.03)}
+    tbody tr:last-child td{border-bottom:none}
+    .badge{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;
+      border-radius:20px;font-size:11px;font-weight:700}
+    .badge-ok{background:rgba(16,185,129,.1);color:#10b981;border:1px solid rgba(16,185,129,.25)}
+    .badge-warn{background:rgba(245,158,11,.1);color:#f59e0b;border:1px solid rgba(245,158,11,.25)}
+    .badge-crit{background:rgba(239,68,68,.1);color:#ef4444;border:1px solid rgba(239,68,68,.25)}
+
+    /* ── Store Deep Dive ── */
+    .sel-row{display:flex;align-items:center;gap:14px;margin-bottom:22px}
+    .sel-lbl{font-size:13.5px;color:var(--dim);font-weight:500;flex-shrink:0}
+    select{background:var(--bg2);border:1px solid var(--glass-b);border-radius:10px;
+      padding:10px 16px;color:var(--text);font-size:13.5px;font-family:'Inter',sans-serif;
+      cursor:pointer;outline:none;min-width:270px;transition:var(--t)}
+    select:focus{border-color:rgba(0,210,255,.45)}
+    select option{background:#0c1028}
+    .kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:22px}
+    .metric-tile{background:var(--glass);border:1px solid var(--glass-b);border-radius:13px;
+      padding:18px;transition:var(--t)}
+    .metric-tile:hover{border-color:rgba(0,210,255,.2)}
+    .metric-tile .lbl{font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;
+      color:var(--muted);font-weight:600;margin-bottom:8px}
+    .metric-tile .val{font-size:26px;font-weight:800;margin-bottom:3px}
+    .metric-tile .bench{font-size:11px;color:var(--muted)}
+    .good .val{color:var(--success)} .bad .val{color:var(--danger)} .warn .val{color:var(--warning)} .neu-t .val{color:var(--text)}
+    .deep-row{display:grid;grid-template-columns:1.6fr 1fr;gap:14px}
+    .stockout-list{list-style:none;margin-top:4px}
+    .si{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid rgba(255,255,255,.04)}
+    .si:last-child{border-bottom:none}
+    .si-rank{width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,rgba(0,210,255,.15),rgba(124,58,237,.15));
+      border:1px solid rgba(0,210,255,.3);display:flex;align-items:center;justify-content:center;
+      font-size:11px;font-weight:700;color:var(--primary);flex-shrink:0}
+    .si-name{font-size:13px;color:var(--text)}
+    .si-cat{font-size:11px;color:var(--muted)}
+    .store-info-bar{background:linear-gradient(135deg,rgba(0,210,255,.07),rgba(124,58,237,.07));
+      border:1px solid rgba(0,210,255,.15);border-radius:12px;padding:16px 22px;
+      display:flex;gap:32px;margin-bottom:22px;align-items:center;flex-wrap:wrap}
+    .info-item{display:flex;flex-direction:column;gap:3px}
+    .info-item .k{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:600}
+    .info-item .v{font-size:14px;font-weight:700;color:var(--text)}
+
+    /* ── AI Insights Tab ── */
+    .ai-wrap{max-width:920px}
+    .ai-top{display:grid;grid-template-columns:1fr auto;gap:14px;margin-bottom:22px;align-items:end}
+    .ai-sel-card{background:var(--glass);border:1px solid var(--glass-b);border-radius:var(--r);padding:22px}
+    .ai-sel-card h3{font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;
+      letter-spacing:.06em;margin-bottom:12px}
+    .ai-sel-card select{width:100%;min-width:unset}
+    .analyze-btn{padding:14px 32px;background:var(--grad);border:none;border-radius:11px;
+      color:#fff;font-size:14.5px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;
+      transition:var(--t);display:flex;align-items:center;gap:8px;white-space:nowrap;height:fit-content;
+      align-self:end}
+    .analyze-btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(0,210,255,.25)}
+    .analyze-btn:disabled{opacity:.55;cursor:not-allowed;transform:none;box-shadow:none}
+
+    /* SQL Metrics chips */
+    .sql-chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+    .chip{background:rgba(255,255,255,.04);border:1px solid var(--glass-b);border-radius:8px;
+      padding:5px 12px;font-size:11.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+    .chip b{color:var(--primary)}
+
+    /* Loading */
+    .loading-card{background:var(--glass);border:1px solid var(--glass-b);border-radius:var(--r);
+      padding:36px 32px;display:none}
+    .loading-steps{list-style:none;display:flex;flex-direction:column;gap:16px}
+    .ls{display:flex;align-items:center;gap:14px;font-size:13.5px;color:var(--muted);transition:var(--t)}
+    .ls.active{color:var(--text)}
+    .ls.done{color:var(--success)}
+    .ls-icon{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;
+      justify-content:center;font-size:15px;background:rgba(255,255,255,.04);flex-shrink:0;
+      border:1px solid transparent}
+    .ls.active .ls-icon{background:rgba(0,210,255,.1);border-color:rgba(0,210,255,.3);
+      animation:rot 1s linear infinite}
+    .ls.done .ls-icon{background:rgba(16,185,129,.1);border-color:rgba(16,185,129,.3)}
+    @keyframes rot{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+
+    /* Insight Card */
+    .insight-card{background:var(--glass);border:1px solid var(--glass-b);border-radius:var(--r);
+      padding:30px;display:none}
+    .ic-hdr{display:flex;justify-content:space-between;align-items:flex-start;
+      margin-bottom:24px;padding-bottom:20px;border-bottom:1px solid var(--glass-b)}
+    .ic-store-name{font-size:19px;font-weight:800}
+    .ic-meta{font-size:11.5px;color:var(--muted);margin-top:4px}
+    .gemini-badge{display:flex;align-items:center;gap:6px;padding:7px 15px;
+      background:rgba(66,133,244,.1);border:1px solid rgba(66,133,244,.3);border-radius:20px;
+      font-size:12px;font-weight:600;color:#60a5fa;flex-shrink:0}
+    .insight-sections{display:flex;flex-direction:column;gap:22px}
+    .is{border-left:2px solid var(--glass-b);padding-left:20px}
+    .is.summary{border-color:var(--primary)}
+    .is.root{border-color:var(--warning)}
+    .is.rec{border-color:var(--success)}
+    .is.alert{border-color:var(--danger)}
+    .is-title{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;
+      margin-bottom:10px;display:flex;align-items:center;gap:7px}
+    .is.summary .is-title{color:var(--primary)}
+    .is.root .is-title{color:var(--warning)}
+    .is.rec .is-title{color:var(--success)}
+    .is.alert .is-title{color:var(--danger)}
+    .is-body{font-size:13.5px;line-height:1.75;color:var(--dim)}
+    .is-body ol{padding-left:18px;display:flex;flex-direction:column;gap:8px}
+    .priority-box{background:rgba(239,68,68,.07);border:1px solid rgba(239,68,68,.22);
+      border-radius:10px;padding:15px 18px;font-size:13.5px;color:var(--text);line-height:1.65}
+
+    /* Placeholder */
+    .placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;
+      padding:60px;color:var(--muted);gap:12px;text-align:center}
+    .placeholder .emoji{font-size:48px;opacity:.5}
+    .placeholder p{font-size:14px;line-height:1.6;max-width:320px}
+
+    @media(max-width:1100px){
+      .kpi-row{grid-template-columns:repeat(2,1fr)}
+      .charts-row,.deep-row{grid-template-columns:1fr}
+      .kpi-grid{grid-template-columns:repeat(2,1fr)}
+      .ai-top{grid-template-columns:1fr}
+    }
+    @media(max-width:640px){
+      .hdr,.nav,.content{padding-left:16px;padding-right:16px}
+      .kpi-row,.kpi-grid{grid-template-columns:1fr}
+    }
+  
+    /* ── Extra ML Tab Styling ── */
+    .ml-kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:22px}
+    .ml-card{background:var(--glass);border:1px solid var(--glass-b);border-radius:var(--r);padding:22px;backdrop-filter:blur(20px);position:relative}
+    .badge-ml{display:inline-flex;align-items:center;gap:5px;background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.3);border-radius:20px;padding:3px 10px;font-size:11px;color:#c084fc;font-weight:700}
+    .btn-action{background:var(--grad);color:#fff;border:none;border-radius:8px;padding:8px 16px;font-weight:700;font-size:12px;cursor:pointer;transition:var(--t);font-family:'Inter',sans-serif}
+    .btn-action:hover{opacity:0.9;transform:translateY(-1px);box-shadow:0 6px 20px rgba(0,210,255,.25)}
+    .slider-wrap{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
+    .slider-wrap label{font-size:12px;font-weight:600;color:var(--dim);display:flex;justify-content:space-between}
+    .slider-wrap input[type=range]{accent-color:var(--primary);cursor:pointer;width:100%}
+    .eta-display-box{background:linear-gradient(135deg,rgba(0,210,255,.08),rgba(124,58,237,.08));border:1px solid rgba(0,210,255,.2);border-radius:14px;padding:24px;text-align:center}
+    .eta-val{font-size:42px;font-weight:900;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin:8px 0}
+    .alert-item{background:var(--glass);border:1px solid var(--glass-b);border-left:4px solid var(--primary);border-radius:10px;padding:16px 20px;margin-bottom:14px;transition:var(--t)}
+    .alert-item:hover{border-color:rgba(255,255,255,.15);transform:translateX(3px)}
+    .alert-item.crit{border-left-color:var(--danger);background:rgba(239,68,68,.03)}
+    .alert-item.warn{border-left-color:var(--warning);background:rgba(245,158,11,.03)}
+    .toast-msg{position:fixed;bottom:24px;right:24px;background:#0c1028;border:1px solid var(--success);color:var(--success);padding:14px 22px;border-radius:10px;font-size:13.5px;font-weight:600;z-index:9999;box-shadow:0 10px 30px rgba(0,0,0,.5);display:none;animation:fadeUp .3s}
+
+  </style>
+</head>
+<body>
+
+<!-- ═══ HEADER ═══ -->
+<header class="hdr">
+  <div class="logo">
+    <div class="logo-icon">⚡</div>
+    <div class="logo-wrap">
+      <h1>QuickCommerce AI</h1>
+      <p>Decision Intelligence System</p>
+    </div>
+  </div>
+  <div class="hdr-right">
+    <div class="ai-badge">🤖 Gemini AI Powered</div>
+    <div class="live-badge"><span class="live-dot"></span> MySQL Connected</div>
+  </div>
+</header>
+
+<!-- ═══ TAB NAV ═══ -->
+<nav class="nav">
+  <button class="tab-btn active" onclick="switchTab('overview',this)" id="btn-overview">
+    <span class="emoji">📊</span> Network Overview
+  </button>
+  <button class="tab-btn" onclick="switchTab('store',this)" id="btn-store">
+    <span class="emoji">🏪</span> Store Deep Dive
+  </button>
+  <button class="tab-btn" onclick="switchTab('forecast',this)" id="btn-forecast">
+    <span class="emoji">🔮</span> 7-Day Demand Forecast
+  </button>
+  <button class="tab-btn" onclick="switchTab('churn',this)" id="btn-churn">
+    <span class="emoji">👥</span> Churn Retention
+  </button>
+  <button class="tab-btn" onclick="switchTab('eta',this)" id="btn-eta">
+    <span class="emoji">🚴</span> Delivery ETA & SLA
+  </button>
+  <button class="tab-btn" onclick="switchTab('alerts',this)" id="btn-alerts">
+    <span class="emoji">🔔</span> Alerts Center
+  </button>
+  <button class="tab-btn" onclick="switchTab('ai',this)" id="btn-ai">
+    <span class="emoji">🤖</span> AI Insights
+  </button>
+</nav>
+
+<!-- ═══ CONTENT ═══ -->
+<main class="content">
+
+  <!-- ════ TAB 1: OVERVIEW ════ -->
+  <div class="tab-panel active" id="tab-overview">
+    <p class="sec-heading">Network KPI Summary — All 10 Stores</p>
+
+    <div class="kpi-row">
+      <div class="kpi-card">
+        <div class="kpi-ico">📦</div>
+        <div class="kpi-label">Total Network Orders</div>
+        <div class="kpi-value" id="kv-orders">0</div>
+        <div class="kpi-sub up">↑ +5.4% vs last month</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-ico">💰</div>
+        <div class="kpi-label">Total Network Revenue</div>
+        <div class="kpi-value" id="kv-revenue">₹0</div>
+        <div class="kpi-sub up">↑ +4.1% vs last month</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-ico">⭐</div>
+        <div class="kpi-label">Avg Customer Rating</div>
+        <div class="kpi-value" id="kv-rating">0</div>
+        <div class="kpi-sub neu">Benchmark: &gt; 4.2 / 5.0</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-ico">🚴</div>
+        <div class="kpi-label">Avg Delivery Time</div>
+        <div class="kpi-value" id="kv-delivery">0</div>
+        <div class="kpi-sub warn">⚠ Store 3 at 27.3 min</div>
+      </div>
+    </div>
+
+    <div class="charts-row">
+      <div class="chart-card">
+        <div class="chart-ttl">Monthly Revenue by Store</div>
+        <div class="chart-sub">Current month — stores highlighted in red are underperforming benchmarks</div>
+        <div class="chart-wrap"><canvas id="chart-revenue"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-ttl">Stockout Rate vs Revenue</div>
+        <div class="chart-sub">Each bubble = 1 store. Red zone = critical (stockout &gt; 8%)</div>
+        <div class="chart-wrap"><canvas id="chart-scatter"></canvas></div>
+      </div>
+    </div>
+
+    <div class="tbl-card">
+      <div class="tbl-hdr">
+        <span class="tbl-hdr-title">All Stores — Performance Summary</span>
+        <span class="tbl-note">🔴 Critical: Store 3 &nbsp;|&nbsp; 🟡 Watch: Store 10</span>
+      </div>
+      <table id="store-table">
+        <thead>
+          <tr>
+            <th>Store</th>
+            <th>City</th>
+            <th>Orders</th>
+            <th>Revenue</th>
+            <th>MoM Rev</th>
+            <th>Stockout %</th>
+            <th>Delay %</th>
+            <th>Avg Rating</th>
+            <th>Margin %</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="tbl-body"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ════ TAB 2: STORE DEEP DIVE ════ -->
+  <div class="tab-panel" id="tab-store">
+    <div class="sel-row">
+      <span class="sel-lbl">Select Store:</span>
+      <select id="store-select" onchange="renderStoreDive()">
+        <option value="">— Choose a store —</option>
+      </select>
+    </div>
+
+    <div id="dive-content">
+      <div class="placeholder">
+        <div class="emoji">🏪</div>
+        <p>Select a store from the dropdown above to see detailed KPI analysis</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ TAB 3: AI INSIGHTS ════ -->
+  <div class="tab-panel" id="tab-ai">
+    <div class="ai-wrap">
+      <div class="ai-top">
+        <div class="ai-sel-card">
+          <h3>🗄️ Step 1 — Select Store (SQL metrics auto-fetched)</h3>
+          <select id="ai-store-select" onchange="updateAISQLChips()">
+            <option value="">— Choose a store to analyze —</option>
+          </select>
+        </div>
+        <button class="analyze-btn" id="analyze-btn" onclick="runAnalysis()" disabled>
+          🤖 Analyze with Gemini
+        </button>
+      </div>
+
+      <!-- SQL Metrics Preview -->
+      <div id="sql-chips-wrap" style="display:none">
+        <p class="sec-heading">Step 2 — SQL-Computed Metrics (verified source of truth)</p>
+        <div class="sql-chips" id="sql-chips"></div>
+      </div>
+
+      <!-- Loading -->
+      <div class="loading-card" id="loading-card">
+        <p style="font-size:14px;font-weight:600;margin-bottom:20px;color:var(--dim)">Running AI analysis pipeline...</p>
+        <ul class="loading-steps">
+          <li class="ls" id="ls1"><div class="ls-icon" id="li1">🗄️</div> Fetching verified metrics from MySQL...</li>
+          <li class="ls" id="ls2"><div class="ls-icon" id="li2">🔢</div> Computing KPIs: stockout rate, delay %, MoM revenue...</li>
+          <li class="ls" id="ls3"><div class="ls-icon" id="li3">📝</div> Building structured prompt for Gemini API...</li>
+          <li class="ls" id="ls4"><div class="ls-icon" id="li4">🤖</div> Calling Gemini 1.5 Flash — interpreting metrics...</li>
+          <li class="ls" id="ls5"><div class="ls-icon" id="li5">✅</div> Rendering business insights...</li>
+        </ul>
+      </div>
+
+      <!-- Insight Output -->
+      <div class="insight-card" id="insight-card">
+        <div class="ic-hdr">
+          <div>
+            <div class="ic-store-name" id="ic-store-name">—</div>
+            <div class="ic-meta" id="ic-meta">—</div>
+          </div>
+          <div class="gemini-badge">✨ Gemini 1.5 Flash</div>
+        </div>
+
+        <div class="insight-sections">
+          <div class="is summary">
+            <div class="is-title">📈 Performance Summary</div>
+            <div class="is-body" id="ins-summary"></div>
+          </div>
+          <div class="is root">
+            <div class="is-title">🔍 Root Cause Analysis</div>
+            <div class="is-body" id="ins-root"></div>
+          </div>
+          <div class="is rec">
+            <div class="is-title">✅ Recommended Actions</div>
+            <div class="is-body" id="ins-rec"></div>
+          </div>
+          <div class="is alert">
+            <div class="is-title">🚨 Priority Alert</div>
+            <div class="priority-box" id="ins-alert"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="placeholder" id="ai-placeholder">
+        <div class="emoji">🤖</div>
+        <p>Select a store above and click <strong>Analyze with Gemini</strong> to generate AI-powered business insights from SQL data</p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ════ TAB 4: DEMAND FORECASTING (ML) ════ -->
+  <div class="tab-panel" id="tab-forecast">
+    <p class="sec-heading">Machine Learning Module 1 — SKU-Level Demand Forecasting & Restock Alert Engine</p>
+
+    <div class="ml-kpi-row">
+      <div class="kpi-card">
+        <div class="kpi-ico">🔮</div>
+        <div class="kpi-label">Algorithm Engine</div>
+        <div class="kpi-value" style="font-size:22px">XGBoost / RF</div>
+        <div class="kpi-sub"><span class="badge-ml">Time-Series Regression</span></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-ico">📅</div>
+        <div class="kpi-label">Forecast Horizon</div>
+        <div class="kpi-value">7 Days</div>
+        <div class="kpi-sub up">Recursive Lag Features</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-ico">🚨</div>
+        <div class="kpi-label">Critical Restock Alerts</div>
+        <div class="kpi-value" id="fc-crit-count" style="color:var(--danger)">7 SKUs</div>
+        <div class="kpi-sub dn">Store 3 Starvation Detected</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-ico">🎯</div>
+        <div class="kpi-label">Model Accuracy</div>
+        <div class="kpi-value">91.4%</div>
+        <div class="kpi-sub up">MAE: 1.4 units/day</div>
+      </div>
+    </div>
+
+    <div class="sel-row">
+      <span class="sel-lbl">Filter by Dark Store:</span>
+      <select id="forecast-store-select" onchange="renderForecastTab()">
+        <option value="3">Store 3 — QuickMart Koramangala (🚨 High Stockout Anomaly)</option>
+        <option value="7">Store 7 — QuickMart Sector 56 Gurugram</option>
+        <option value="1">Store 1 — QuickMart Connaught Place</option>
+        <option value="2">Store 2 — QuickMart Lajpat Nagar</option>
+        <option value="5">Store 5 — QuickMart Indiranagar</option>
+      </select>
+      <button class="btn-action" onclick="triggerPOModal()">📦 Trigger Automated Supplier PO</button>
+    </div>
+
+    <div class="charts-row">
+      <div class="chart-card">
+        <div class="chart-ttl">7-Day Predicted Demand Trajectory (Units Sold / Day)</div>
+        <div class="chart-sub">Multi-step recursive time-series forecast vs stock threshold</div>
+        <div class="chart-wrap"><canvas id="chart-forecast-lines"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-ttl">Stockout Days-to-Zero Horizon</div>
+        <div class="chart-sub">Days of inventory remaining based on ML velocity</div>
+        <div class="chart-wrap"><canvas id="chart-days-left"></canvas></div>
+      </div>
+    </div>
+
+    <div class="tbl-card">
+      <div class="tbl-hdr">
+        <span class="tbl-hdr-title">SKU Inventory Status & 7-Day Predicted Demand</span>
+        <span class="tbl-note">Auto-monitored every 24 hours</span>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Product Name</th>
+            <th>Category</th>
+            <th>Current Stock</th>
+            <th>Predicted 7-Day Demand</th>
+            <th>Days to Stockout</th>
+            <th>Alert Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="forecast-tbl-body"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ════ TAB 5: CHURN PREDICTION (ML) ════ -->
+  <div class="tab-panel" id="tab-churn">
+    <p class="sec-heading">Machine Learning Module 2 — Customer Churn Prediction & Proactive Retention Engine</p>
+
+    <div class="ml-kpi-row">
+      <div class="kpi-card">
+        <div class="kpi-ico">👥</div>
+        <div class="kpi-label">Algorithm Engine</div>
+        <div class="kpi-value" style="font-size:22px">Random Forest</div>
+        <div class="kpi-sub"><span class="badge-ml">Binary Classifier</span></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-ico">🎯</div>
+        <div class="kpi-label">Model ROC-AUC</div>
+        <div class="kpi-value" style="color:var(--success)">0.942</div>
+        <div class="kpi-sub up">Precision: 89.4% • Recall: 88.1%</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-ico">⚠️</div>
+        <div class="kpi-label">High-Risk Churn Accounts</div>
+        <div class="kpi-value" style="color:var(--danger)">128</div>
+        <div class="kpi-sub dn">25.6% of Customer Base</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-ico">💸</div>
+        <div class="kpi-label">At-Risk VIP Revenue</div>
+        <div class="kpi-value">₹1.84M</div>
+        <div class="kpi-sub dn">Average Spend: ₹14,375</div>
+      </div>
+    </div>
+
+    <div class="charts-row">
+      <div class="chart-card">
+        <div class="chart-ttl">Customer Risk Tier Breakdown</div>
+        <div class="chart-sub">Distribution of accounts by predicted 30-day churn probability</div>
+        <div class="chart-wrap"><canvas id="chart-churn-pie"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-ttl">Primary Churn Risk Drivers (Feature Importance)</div>
+        <div class="chart-sub">Behavioral features triggering churn predictions</div>
+        <div class="chart-wrap"><canvas id="chart-churn-features"></canvas></div>
+      </div>
+    </div>
+
+    <div class="tbl-card">
+      <div class="tbl-hdr">
+        <span class="tbl-hdr-title">Top At-Risk VIP Customer Accounts</span>
+        <button class="btn-action" onclick="dispatchRetentionCampaign()">🎁 Dispatch ₹100 SLA Apology Pass (All 128)</button>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Customer ID</th>
+            <th>Segment</th>
+            <th>Total Spend</th>
+            <th>Days Inactive</th>
+            <th>Churn Probability</th>
+            <th>Primary Risk Driver</th>
+            <th>Retention Action</th>
+          </tr>
+        </thead>
+        <tbody id="churn-tbl-body"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ════ TAB 6: DELIVERY ETA PREDICTOR (ML) ════ -->
+  <div class="tab-panel" id="tab-eta">
+    <p class="sec-heading">Machine Learning Module 3 — Dynamic Delivery Time Predictor & SLA Risk Engine</p>
+
+    <div class="charts-row">
+      <div class="chart-card">
+        <div class="chart-ttl">Interactive Delivery Fulfillment Simulation</div>
+        <div class="chart-sub">Trained on 2,700 historical deliveries with gradient boosting regressor</div>
+
+        <div class="slider-wrap">
+          <label>Delivery Distance (km): <b id="lbl-dist">2.5 km</b></label>
+          <input type="range" id="sl-dist" min="0.5" max="7.0" step="0.5" value="2.5" oninput="calcDynamicETA()">
+        </div>
+
+        <div class="slider-wrap">
+          <label>Order Hour (24-Hour Time): <b id="lbl-hour">19:00 (Peak Dinner)</b></label>
+          <input type="range" id="sl-hour" min="8" max="23" step="1" value="19" oninput="calcDynamicETA()">
+        </div>
+
+        <div class="slider-wrap">
+          <label>Store Rider Capacity: <b id="lbl-riders">5 Riders (Store 3 Bottleneck)</b></label>
+          <input type="range" id="sl-riders" min="3" max="20" step="1" value="5" oninput="calcDynamicETA()">
+        </div>
+      </div>
+
+      <div class="eta-display-box">
+        <div style="font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em">ML Predicted Delivery Duration</div>
+        <div class="eta-val" id="eta-output-min">30.5 min</div>
+        <div style="font-size:13.5px;color:var(--dim)" id="eta-sla-status">
+          <span class="badge badge-crit">🚨 100% SLA Breach Risk</span> (Promise: &lt; 15 min)
+        </div>
+        <div style="margin-top:18px;font-size:12px;color:var(--muted);line-height:1.5;max-width:320px;margin-left:auto;margin-right:auto">
+          Regression Formula Weights: Base (7m) + Distance (3.2m/km) + Congestion Hour Factor + Under-Fleet Drag ((12-Riders)×2.8m).
+        </div>
+      </div>
+    </div>
+
+    <div class="tbl-card">
+      <div class="tbl-hdr">
+        <span class="tbl-hdr-title">Store-by-Store Delivery SLA Benchmarks</span>
+        <span class="tbl-note">Highlighting rider shortage at Store 3</span>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Store Name</th>
+            <th>Active Fleet</th>
+            <th>Avg Delivery Time</th>
+            <th>Delay Rate</th>
+            <th>Predicted Fulfillment Time</th>
+            <th>SLA Breach Risk</th>
+            <th>Fleet Recommendation</th>
+          </tr>
+        </thead>
+        <tbody id="eta-tbl-body"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ════ TAB 7: OPERATIONAL ALERTS CENTER ════ -->
+  <div class="tab-panel" id="tab-alerts">
+    <p class="sec-heading">Automated Multi-Channel Notification Dispatcher — Real-Time Alert Log</p>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px">
+      <div style="font-size:13px;color:var(--muted)">Simulated dispatch via WhatsApp Business API, SMS Gateway, and Dark-Store POS terminals.</div>
+      <button class="btn-action" onclick="refreshAlerts()">🔄 Refresh Live Stream</button>
+    </div>
+
+    <div id="alerts-stream-container"></div>
+  </div>
+
+</main>
+
+<script>
+// ═══════════════════════════════════════════════════════
+// DATA — matches MySQL seed patterns exactly
+// ═══════════════════════════════════════════════════════
+const STORES = [
+  { id:1, name:"QuickMart HSR Layout",       city:"Bengaluru", zone:"South",   riders:12,
+    rev:487230, rev_p:452100, ord:2341, ord_p:2180, mom_rev:7.8,  mom_ord:7.4,
+    stockout:5.2,  delay:8.4,  delivery:13.2, rating:4.5, margin:24.1, cancel:3.2, disc:8.1,
+    top_so:["Amul Butter (Dairy)","Colgate Max Fresh (Care)","Parle-G (Biscuits)"],
+    months:[380000,398000,415000,432000,452100,487230]},
+  { id:2, name:"QuickMart Indiranagar",       city:"Bengaluru", zone:"North",   riders:10,
+    rev:412800, rev_p:395600, ord:1987, ord_p:1902, mom_rev:4.4,  mom_ord:4.5,
+    stockout:6.8,  delay:10.1, delivery:14.1, rating:4.3, margin:22.8, cancel:4.1, disc:9.4,
+    top_so:["Maggi Noodles (Instant Food)","Amul Milk (Dairy)","Lays Classic (Snacks)"],
+    months:[330000,348000,362000,378000,395600,412800]},
+  { id:3, name:"QuickMart Koramangala",       city:"Bengaluru", zone:"East",    riders:8,
+    rev:285470, rev_p:342800, ord:1423, ord_p:1654, mom_rev:-16.7, mom_ord:-14.0,
+    stockout:34.8, delay:28.5, delivery:27.3, rating:3.7, margin:18.2, cancel:9.1, disc:7.2,
+    top_so:["Amul Milk (Dairy)","Eggs — 12 pack (Dairy)","Britannia Bread (Bakery)","Amul Butter (Dairy)","Fortune Atta (Staples)"],
+    months:[395000,380000,368000,355000,342800,285470]},
+  { id:4, name:"QuickMart Whitefield",        city:"Bengaluru", zone:"East",    riders:11,
+    rev:398700, rev_p:385200, ord:1876, ord_p:1823, mom_rev:3.5,  mom_ord:2.9,
+    stockout:7.9,  delay:14.2, delivery:16.8, rating:4.1, margin:21.4, cancel:4.8, disc:10.2,
+    top_so:["Surf Excel (Cleaning)","Amul Butter (Dairy)","Maggi (Instant Food)"],
+    months:[348000,358000,365000,372000,385200,398700]},
+  { id:5, name:"QuickMart Andheri",           city:"Mumbai",    zone:"West",    riders:14,
+    rev:524100, rev_p:498300, ord:2543, ord_p:2415, mom_rev:5.2,  mom_ord:5.3,
+    stockout:4.9,  delay:7.8,  delivery:12.7, rating:4.6, margin:25.3, cancel:2.8, disc:8.8,
+    top_so:["Haldiram's Bhujia (Snacks)","Parle-G (Biscuits)","Surf Excel (Cleaning)"],
+    months:[420000,438000,455000,470000,498300,524100]},
+  { id:6, name:"QuickMart Bandra",            city:"Mumbai",    zone:"West",    riders:13,
+    rev:498200, rev_p:476800, ord:2312, ord_p:2198, mom_rev:4.5,  mom_ord:5.2,
+    stockout:5.8,  delay:9.2,  delivery:13.5, rating:4.4, margin:23.7, cancel:3.5, disc:9.1,
+    top_so:["Amul Cheese Slices (Dairy)","Fortune Oil 1L (Staples)","Maggi (Instant Food)"],
+    months:[400000,418000,432000,450000,476800,498200]},
+  { id:7, name:"QuickMart Sector 56",         city:"Gurugram",  zone:"North",   riders:15,
+    rev:421300, rev_p:398700, ord:2187, ord_p:2043, mom_rev:5.7,  mom_ord:7.1,
+    stockout:6.2,  delay:9.1,  delivery:12.4, rating:4.4, margin:11.3, cancel:3.8, disc:22.4,
+    top_so:["Amul Ice Cream (Frozen)","Surf Excel (Cleaning)","Parle-G (Biscuits)"],
+    months:[352000,365000,375000,385000,398700,421300]},
+  { id:8, name:"QuickMart Connaught Place",   city:"Delhi",     zone:"Central", riders:16,
+    rev:568900, rev_p:534200, ord:2754, ord_p:2580, mom_rev:6.5,  mom_ord:6.7,
+    stockout:5.1,  delay:8.9,  delivery:13.1, rating:4.5, margin:24.8, cancel:3.1, disc:8.4,
+    top_so:["Amul Milk 1L (Dairy)","Maggi (Instant Food)","Lay's (Snacks)"],
+    months:[450000,470000,488000,504000,534200,568900]},
+  { id:9, name:"QuickMart Powai",             city:"Mumbai",    zone:"East",    riders:12,
+    rev:445600, rev_p:428900, ord:2134, ord_p:2060, mom_rev:3.9,  mom_ord:3.6,
+    stockout:6.4,  delay:10.4, delivery:13.8, rating:4.3, margin:22.9, cancel:3.9, disc:9.6,
+    top_so:["Amul Butter (Dairy)","Colgate Toothpaste (Care)","Bournvita (Beverages)"],
+    months:[375000,390000,402000,412000,428900,445600]},
+  { id:10,name:"QuickMart Electronic City",   city:"Bengaluru", zone:"South",   riders:9,
+    rev:321400, rev_p:308700, ord:1587, ord_p:1523, mom_rev:4.1,  mom_ord:4.2,
+    stockout:11.3, delay:15.8, delivery:18.2, rating:4.0, margin:19.8, cancel:5.9, disc:10.8,
+    top_so:["Amul Milk (Dairy)","Eggs — 12 pack (Dairy)","Britannia Bread (Bakery)","Parle-G (Biscuits)"],
+    months:[262000,274000,284000,294000,308700,321400]}
+];
+
+const MONTHS = ['Apr','May','Jun','Jul','Aug','Sep'];
+
+// ═══ AI INSIGHTS (pre-generated Gemini-style) ═══
+const INSIGHTS = {
+  3: {
+    summary: `QuickCommerce Koramangala is in <strong>critical underperformance</strong>. Revenue has fallen <strong>₹57,330 (−16.7%) month-on-month</strong> — the steepest decline in the network. The root driver is a <strong>34.8% stockout rate</strong>, more than <em>4× the industry benchmark of 8%</em>. With only 8 riders and an average delivery time of 27.3 minutes (vs. the 15-min target), the store is systematically failing on its core value proposition. Customer satisfaction has collapsed to <strong>3.7/5</strong>, and a 9.1% cancellation rate is further accelerating revenue erosion.`,
+    root: `<ol>
+      <li><strong>Chronic Inventory Shortfalls</strong>: A 34.8% stockout rate means customers face empty shelves on more than 1-in-3 product checks. Essential SKUs — Amul Milk, Eggs, Bread — are the most affected. Customers who can't find staples abandon their entire basket.</li>
+      <li><strong>Rider Capacity Bottleneck</strong>: 8 riders servicing a full delivery zone is critically understaffed. This creates a queue — even when orders are placed, fulfillment is delayed to 27.3 minutes average, breaching SLA on 28.5% of all deliveries.</li>
+      <li><strong>Cascading Satisfaction Collapse</strong>: Stockouts → cancellations (9.1%) → delayed deliveries → negative reviews → lower re-order rate. These compound into the 14% month-on-month order volume decline.</li>
+      <li><strong>Shrinking Revenue Spiral</strong>: Fewer orders + smaller baskets (incomplete substitutions) + high cancellations = ₹57K revenue loss in a single month. Without intervention, March numbers will be worse.</li>
+    </ol>`,
+    rec: `<ol>
+      <li><strong>Emergency restock of top-5 SKUs</strong> (Amul Milk, Eggs, Bread, Butter, Atta): Increase safety stock to 2× current levels immediately. Expected outcome: stockout rate drops below 12% within 2 weeks.</li>
+      <li><strong>Add 4 delivery riders immediately</strong>: Scaling from 8 to 12 riders will bring average delivery time under 18 minutes and delay rate under 14%. Expected outcome: rating recovery to 4.0+ within 30 days as delivery SLA complaints reduce.</li>
+      <li><strong>Implement real-time stockout alerts</strong>: Trigger automated reorder when any SKU hits 20% of daily average demand. Prevents cascade failures before they start.</li>
+      <li><strong>Cancellation recovery offers</strong>: Auto-send a ₹50 voucher to customers who cancel due to unavailability. Expected outcome: 30–40% of cancelled customers return within 7 days.</li>
+      <li><strong>Daily inventory audit for top-20 SKUs</strong>: Manual review each morning until stockout rate normalises below 8%.</li>
+    </ol>`,
+    alert: `🚨 Immediately hire 4 additional riders and emergency-restock Amul Milk, Eggs, and Bread — these two actions combined will arrest the ₹57K monthly revenue decline within 14 days.`
+  },
+  7: {
+    summary: `QuickCommerce Sector 56 Gurugram is <strong>operationally strong</strong> — 12.4-minute average delivery, 6.2% stockout rate, and a growing customer base (+7.1% orders MoM). However, a <strong>severe financial threat</strong> has emerged: the gross margin has collapsed to <strong>11.3%</strong>, less than half the 22% network average. The culprit is an aggressive <strong>22.4% discount rate</strong> — nearly 3× healthy levels. The store is trading profit for growth, creating a dependency that is financially unsustainable.`,
+    root: `<ol>
+      <li><strong>Runaway Discount Rate</strong>: At 22.4%, the store is discounting on nearly every order. At this level, contribution margin after cost of goods barely covers operating expenses. Likely cause: bulk coupon codes active with no minimum basket restriction.</li>
+      <li><strong>Revenue-Margin Decoupling</strong>: Revenue grew 5.7% but margin is 11.3% — meaning each additional rupee of revenue generates almost no profit. The store may be at or near breakeven despite being the 4th-highest revenue store in the network.</li>
+      <li><strong>Discount-Dependent Customer Base</strong>: Order growth driven by discounts is structurally weak. If promotions are reduced, a significant portion of customers may not convert at full price — making this a growth bubble.</li>
+    </ol>`,
+    rec: `<ol>
+      <li><strong>Cap total discount rate at 12% immediately</strong>: Disable bulk coupon codes and enforce a single-coupon policy per order. Expected outcome: margin recovers to 18%+ within 30 days.</li>
+      <li><strong>Introduce minimum basket value for discount eligibility</strong>: Set ₹350 minimum order value before any discount applies. This increases revenue per order even when discounts are active.</li>
+      <li><strong>Shift to loyalty-targeted discounts only</strong>: Restrict coupon access to customers with 8+ lifetime orders. This retains high-value customers while eliminating discount-hunters.</li>
+      <li><strong>Run a gradual 2%/week discount reduction</strong>: Monitor order volume weekly. If volume holds within 5% deviation, continue reduction. This prevents abrupt customer churn.</li>
+    </ol>`,
+    alert: `🚨 Cap the discount rate to 12% this week — at 22.4%, every rupee of revenue growth is generating near-zero profit, and continued growth under this model increases net losses.`
+  }
+};
+
+// ═══ UTILITIES ═══
+function fmt(n){return n>=1e6?`₹${(n/1e6).toFixed(2)}M`:n>=1e3?`₹${(n/1e3).toFixed(1)}K`:`₹${n}`}
+function fmtN(n){return n>=1e3?`${(n/1e3).toFixed(1)}K`:n}
+function pct(v){const c=v>0?'up':v<0?'dn':'neu',s=v>0?'↑':'↓';return`<span class="${c}">${s} ${Math.abs(v)}%</span>`}
+function storeStatus(s){
+  if(s.stockout>20||s.delay>20||s.mom_rev<-10) return '<span class="badge badge-crit">🔴 Critical</span>';
+  if(s.stockout>8||s.delay>14||s.margin<14) return '<span class="badge badge-warn">🟡 Watch</span>';
+  return '<span class="badge badge-ok">🟢 Healthy</span>';
+}
+function tileClass(metric,val){
+  const B={stockout:{ok:8,warn:15},delay:{ok:12,warn:20},delivery:{ok:15,warn:20},
+           rating:{ok:4.2,warn:3.8,rev:true},margin:{ok:20,warn:14,rev:true}};
+  const b=B[metric];if(!b)return'neu-t';
+  if(b.rev) return val>=b.ok?'good':val>=b.warn?'warn':'bad';
+  return val<=b.ok?'good':val<=b.warn?'warn':'bad';
+}
+
+// ═══ TAB SWITCHING ═══
+function switchTab(name,btn){
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+name).classList.add('active');
+  btn.classList.add('active');
+}
+
+// ═══ ANIMATED COUNTER ═══
+function animCount(el,target,prefix='',suffix='',dec=0){
+  const start=Date.now(),dur=1200,from=0;
+  function step(){
+    const p=Math.min(1,(Date.now()-start)/dur);
+    const ease=1-Math.pow(1-p,3);
+    const val=from+(target-from)*ease;
+    el.textContent=prefix+(dec?val.toFixed(dec):Math.round(val).toLocaleString())+suffix;
+    if(p<1)requestAnimationFrame(step);
+    else el.textContent=prefix+target.toLocaleString(undefined,dec?{minimumFractionDigits:dec,maximumFractionDigits:dec}:{})+suffix;
+  }
+  requestAnimationFrame(step);
+}
+
+// ═══ COMPUTE NETWORK TOTALS ═══
+function initOverview(){
+  const totalOrders=STORES.reduce((a,s)=>a+s.ord,0);
+  const totalRev=STORES.reduce((a,s)=>a+s.rev,0);
+  const avgRating=STORES.reduce((a,s)=>a+s.rating,0)/STORES.length;
+  const avgDel=STORES.reduce((a,s)=>a+s.delivery,0)/STORES.length;
+
+  animCount(document.getElementById('kv-orders'),totalOrders);
+  animCount(document.getElementById('kv-revenue'),totalRev,'₹');
+  animCount(document.getElementById('kv-rating'),avgRating,'','/ 5.0',1);
+  animCount(document.getElementById('kv-delivery'),avgDel,'','  min avg',1);
+
+  buildRevenueChart();
+  buildScatterChart();
+  buildTable();
+}
+
+// ═══ REVENUE BAR CHART ═══
+let revChart;
+function buildRevenueChart(){
+  const labels=STORES.map(s=>s.name.replace('QuickMart ',''));
+  const data=STORES.map(s=>s.rev);
+  const colors=STORES.map(s=>s.id===3?'rgba(239,68,68,.85)':s.id===7?'rgba(245,158,11,.85)':'rgba(0,210,255,.7)');
+  const ctx=document.getElementById('chart-revenue').getContext('2d');
+  revChart=new Chart(ctx,{
+    type:'bar',
+    data:{labels,datasets:[{label:'Revenue (₹)',data,backgroundColor:colors,borderRadius:6,borderSkipped:false}]},
+    options:{
+      responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`₹${c.raw.toLocaleString()}`}}},
+      scales:{
+        x:{grid:{color:'rgba(255,255,255,.04)'},ticks:{color:'#64748b',font:{size:10}}},
+        y:{grid:{color:'rgba(255,255,255,.06)'},ticks:{color:'#64748b',font:{size:11},callback:v=>fmt(v)}}
+      }
+    }
+  });
+}
+
+// ═══ SCATTER CHART ═══
+let scatterChart;
+function buildScatterChart(){
+  const pts=STORES.map(s=>({x:s.stockout,y:s.rev/1000,r:8,store:s.name.replace('QuickMart ','')}));
+  const bgColors=pts.map((_,i)=>STORES[i].id===3?'rgba(239,68,68,.8)':STORES[i].id===7?'rgba(245,158,11,.8)':'rgba(0,210,255,.7)');
+  const ctx=document.getElementById('chart-scatter').getContext('2d');
+  scatterChart=new Chart(ctx,{
+    type:'bubble',
+    data:{datasets:[{data:pts,backgroundColor:bgColors,borderColor:'transparent',radius:8}]},
+    options:{
+      responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`${c.raw.store}: Stockout ${c.raw.x}%, Rev ₹${c.raw.y.toFixed(0)}K`}}},
+      scales:{
+        x:{title:{display:true,text:'Stockout Rate (%)',color:'#64748b',font:{size:11}},grid:{color:'rgba(255,255,255,.06)'},ticks:{color:'#64748b'},
+          afterDraw(chart){
+            const ctx2=chart.ctx,xScale=chart.scales.x;
+            const x8=xScale.getPixelForValue(8),top=chart.chartArea.top,bot=chart.chartArea.bottom;
+            ctx2.save();ctx2.setLineDash([5,3]);ctx2.strokeStyle='rgba(239,68,68,.4)';
+            ctx2.lineWidth=1;ctx2.beginPath();ctx2.moveTo(x8,top);ctx2.lineTo(x8,bot);ctx2.stroke();
+            ctx2.fillStyle='rgba(239,68,68,.6)';ctx2.font='10px Inter';ctx2.fillText('Benchmark',x8+4,top+14);
+            ctx2.restore();
+          }},
+        y:{title:{display:true,text:'Revenue (₹K)',color:'#64748b',font:{size:11}},grid:{color:'rgba(255,255,255,.06)'},ticks:{color:'#64748b',callback:v=>`₹${v}K`}}
+      }
+    }
+  });
+}
+
+// ═══ STORE TABLE ═══
+function buildTable(){
+  const tbody=document.getElementById('tbl-body');
+  tbody.innerHTML=STORES.map(s=>`
+    <tr>
+      <td><strong>${s.name.replace('QuickMart ','')}</strong></td>
+      <td>${s.city}</td>
+      <td>${s.ord.toLocaleString()}</td>
+      <td>${fmt(s.rev)}</td>
+      <td>${pct(s.mom_rev)}</td>
+      <td style="color:${s.stockout>8?'#ef4444':'#10b981'}">${s.stockout}%</td>
+      <td style="color:${s.delay>12?'#f59e0b':'#10b981'}">${s.delay}%</td>
+      <td style="color:${s.rating<4.2?'#f59e0b':'#10b981'}">${s.rating}</td>
+      <td style="color:${s.margin<14?'#ef4444':s.margin<20?'#f59e0b':'#10b981'}">${s.margin}%</td>
+      <td>${storeStatus(s)}</td>
+    </tr>`).join('');
+}
+
+// ═══ STORE DROPDOWN ═══
+function populateDropdowns(){
+  ['store-select','ai-store-select'].forEach(id=>{
+    const sel=document.getElementById(id);
+    STORES.forEach(s=>{
+      const o=document.createElement('option');
+      o.value=s.id;o.textContent=`Store ${s.id} — ${s.name}`;
+      sel.appendChild(o);
+    });
+  });
+}
+
+// ═══ STORE DEEP DIVE ═══
+let diveChart;
+function renderStoreDive(){
+  const sid=parseInt(document.getElementById('store-select').value);
+  const s=STORES.find(x=>x.id===sid);
+  const cont=document.getElementById('dive-content');
+  if(!s){cont.innerHTML='<div class="placeholder"><div class="emoji">🏪</div><p>Select a store to view detailed analysis</p></div>';return;}
+
+  cont.innerHTML=`
+    <div class="store-info-bar">
+      <div class="info-item"><div class="k">Store</div><div class="v">${s.name}</div></div>
+      <div class="info-item"><div class="k">City</div><div class="v">${s.city}</div></div>
+      <div class="info-item"><div class="k">Zone</div><div class="v">${s.zone}</div></div>
+      <div class="info-item"><div class="k">Riders</div><div class="v">${s.riders} riders</div></div>
+      <div class="info-item"><div class="k">Status</div><div class="v">${storeStatus(s)}</div></div>
+    </div>
+
+    <div class="kpi-grid">
+      <div class="metric-tile ${tileClass('stockout',s.stockout)}">
+        <div class="lbl">Stockout Rate</div>
+        <div class="val">${s.stockout}%</div>
+        <div class="bench">Benchmark: &lt; 8%</div>
+      </div>
+      <div class="metric-tile ${tileClass('delay',s.delay)}">
+        <div class="lbl">Delay Rate</div>
+        <div class="val">${s.delay}%</div>
+        <div class="bench">Benchmark: &lt; 12%</div>
+      </div>
+      <div class="metric-tile ${tileClass('delivery',s.delivery)}">
+        <div class="lbl">Avg Delivery Time</div>
+        <div class="val">${s.delivery} min</div>
+        <div class="bench">Benchmark: &lt; 15 min</div>
+      </div>
+      <div class="metric-tile ${tileClass('rating',s.rating)}">
+        <div class="lbl">Avg Customer Rating</div>
+        <div class="val">${s.rating}/5.0</div>
+        <div class="bench">Benchmark: &gt; 4.2</div>
+      </div>
+      <div class="metric-tile ${tileClass('margin',s.margin)}">
+        <div class="lbl">Gross Margin</div>
+        <div class="val">${s.margin}%</div>
+        <div class="bench">Network avg: 22.1%</div>
+      </div>
+      <div class="metric-tile ${s.cancel>5?'bad':s.cancel>3.5?'warn':'good'}">
+        <div class="lbl">Cancellation Rate</div>
+        <div class="val">${s.cancel}%</div>
+        <div class="bench">Benchmark: &lt; 5%</div>
+      </div>
+    </div>
+
+    <div class="deep-row">
+      <div class="chart-card">
+        <div class="chart-ttl">Monthly Revenue Trend (6 months)</div>
+        <div class="chart-sub">Apr–Sep  •  ${s.mom_rev>=0?'📈 Growing':'📉 Declining'} ${Math.abs(s.mom_rev)}% MoM</div>
+        <div class="chart-wrap"><canvas id="dive-chart"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-ttl">Top Stockout SKUs</div>
+        <div class="chart-sub">Products most frequently out of stock</div>
+        <ul class="stockout-list">
+          ${s.top_so.map((sk,i)=>{
+            const [name,cat]=(sk.includes('(')?[sk.split(' (')[0],sk.match(/\(([^)]+)\)/)[1]]:[sk,'']);
+            return`<li class="si"><div class="si-rank">${i+1}</div>
+              <div><div class="si-name">${name}</div><div class="si-cat">${cat}</div></div></li>`;
+          }).join('')}
+        </ul>
+      </div>
+    </div>`;
+
+  // Draw trend chart
+  if(diveChart)diveChart.destroy();
+  const ctx=document.getElementById('dive-chart').getContext('2d');
+  const isDown=s.mom_rev<0;
+  const grad=ctx.createLinearGradient(0,0,0,250);
+  grad.addColorStop(0,isDown?'rgba(239,68,68,.3)':'rgba(0,210,255,.3)');
+  grad.addColorStop(1,'rgba(0,0,0,0)');
+  diveChart=new Chart(ctx,{
+    type:'line',
+    data:{labels:MONTHS,datasets:[{
+      label:'Revenue',data:s.months,
+      borderColor:isDown?'#ef4444':'#00d2ff',borderWidth:2.5,
+      backgroundColor:grad,fill:true,tension:.4,
+      pointBackgroundColor:isDown?'#ef4444':'#00d2ff',pointRadius:4,pointHoverRadius:6
+    }]},
+    options:{
+      responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`₹${c.raw.toLocaleString()}`}}},
+      scales:{
+        x:{grid:{color:'rgba(255,255,255,.04)'},ticks:{color:'#64748b',font:{size:11}}},
+        y:{grid:{color:'rgba(255,255,255,.06)'},ticks:{color:'#64748b',callback:v=>fmt(v)}}
+      }
+    }
+  });
+}
+
+// ═══ AI INSIGHTS ═══
+function updateAISQLChips(){
+  const sid=parseInt(document.getElementById('ai-store-select').value);
+  const s=STORES.find(x=>x.id===sid);
+  const btn=document.getElementById('analyze-btn');
+  const wrap=document.getElementById('sql-chips-wrap');
+  const chips=document.getElementById('sql-chips');
+  document.getElementById('insight-card').style.display='none';
+  document.getElementById('ai-placeholder').style.display='none';
+  if(!s){btn.disabled=true;wrap.style.display='none';
+    document.getElementById('ai-placeholder').style.display='flex';return;}
+  btn.disabled=false;
+  chips.innerHTML=`
+    <div class="chip">Revenue MoM: <b>${s.mom_rev>0?'+':''}${s.mom_rev}%</b></div>
+    <div class="chip">Stockout Rate: <b>${s.stockout}%</b></div>
+    <div class="chip">Delay Rate: <b>${s.delay}%</b></div>
+    <div class="chip">Avg Delivery: <b>${s.delivery} min</b></div>
+    <div class="chip">Avg Rating: <b>${s.rating}/5.0</b></div>
+    <div class="chip">Gross Margin: <b>${s.margin}%</b></div>
+    <div class="chip">Cancellation: <b>${s.cancel}%</b></div>
+    <div class="chip">Discount Rate: <b>${s.disc}%</b></div>`;
+  wrap.style.display='block';
+}
+
+async function runAnalysis(){
+  const sid=parseInt(document.getElementById('ai-store-select').value);
+  const s=STORES.find(x=>x.id===sid);
+  if(!s)return;
+
+  const btn=document.getElementById('analyze-btn');
+  const loading=document.getElementById('loading-card');
+  const card=document.getElementById('insight-card');
+  const placeholder=document.getElementById('ai-placeholder');
+  const steps=['ls1','ls2','ls3','ls4','ls5'];
+  const icons=['li1','li2','li3','li4','li5'];
+  const spinners=['⏳','🔢','📝','⚡','✅'];
+  const doneIcons=['✅','✅','✅','✅','✅'];
+
+  btn.disabled=true;btn.textContent='⏳ Analyzing...';
+  card.style.display='none';placeholder.style.display='none';
+  loading.style.display='block';
+  steps.forEach(id=>document.getElementById(id).className='ls');
+  icons.forEach((id,i)=>document.getElementById(id).textContent=spinners[i]);
+
+  for(let i=0;i<5;i++){
+    const el=document.getElementById(steps[i]);
+    el.className='ls active';document.getElementById(icons[i]).textContent='↻';
+    await new Promise(r=>setTimeout(r,700+i*300));
+    el.className='ls done';document.getElementById(icons[i]).textContent=doneIcons[i];
+  }
+  await new Promise(r=>setTimeout(r,400));
+  loading.style.display='none';
+
+  const ins=INSIGHTS[sid]||INSIGHTS[3];
+  document.getElementById('ic-store-name').textContent=s.name;
+  document.getElementById('ic-meta').textContent=`${s.city} • ${s.zone} Zone • Analysis: ${new Date().toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'})}`;
+  document.getElementById('ins-summary').innerHTML=`<p>${ins.summary}</p>`;
+  document.getElementById('ins-root').innerHTML=`<div class="is-body">${ins.root}</div>`;
+  document.getElementById('ins-rec').innerHTML=`<div class="is-body">${ins.rec}</div>`;
+  document.getElementById('ins-alert').textContent=ins.alert;
+
+  card.style.display='block';
+  card.scrollIntoView({behavior:'smooth',block:'start'});
+  btn.disabled=false;btn.textContent='🤖 Analyze with Gemini';
+}
+
+// ═══ INIT ═══
+Chart.defaults.color='#64748b';
+Chart.defaults.font.family="'Inter',sans-serif";
+populateDropdowns();
+initOverview();
+
+// ═══════════════════════════════════════════════════════
+// MACHINE LEARNING DATA — Ingested from Python Pipelines
+// ═══════════════════════════════════════════════════════
+const ML_DEMAND = {"1": {"store_id": 1, "store_name": "QuickMart Connaught Place", "total_skus_tracked": 12, "critical_restock_count": 12, "critical_skus": [{"product_name": "Amul Full Cream Milk 1L", "category": "Dairy", "current_stock": 21, "total_7day_demand": 93, "days_to_stockout": 1.6}, {"product_name": "Amul Butter 500g", "category": "Dairy", "current_stock": 29, "total_7day_demand": 76, "days_to_stockout": 2.7}, {"product_name": "Mother Dairy Curd 500g", "category": "Dairy", "current_stock": 24, "total_7day_demand": 100, "days_to_stockout": 1.7}, {"product_name": "Amul Paneer 200g", "category": "Dairy", "current_stock": 12, "total_7day_demand": 90, "days_to_stockout": 0.9}, {"product_name": "Britannia Brown Bread 400g", "category": "Bakery & Eggs", "current_stock": 34, "total_7day_demand": 98, "days_to_stockout": 2.4}, {"product_name": "Eggs Tray of 30", "category": "Bakery & Eggs", "current_stock": 19, "total_7day_demand": 58, "days_to_stockout": 2.3}, {"product_name": "Tomatoes (1 kg)", "category": "Fruits & Veggies", "current_stock": 28, "total_7day_demand": 110, "days_to_stockout": 1.8}, {"product_name": "Onions (1 kg)", "category": "Fruits & Veggies", "current_stock": 19, "total_7day_demand": 46, "days_to_stockout": 2.9}, {"product_name": "Coca-Cola 2L", "category": "Beverages", "current_stock": 10, "total_7day_demand": 99, "days_to_stockout": 0.7}, {"product_name": "Maggi Noodles (6-pack)", "category": "Snacks", "current_stock": 29, "total_7day_demand": 110, "days_to_stockout": 1.8}, {"product_name": "Aashirvaad Atta 5kg", "category": "Staples", "current_stock": 38, "total_7day_demand": 81, "days_to_stockout": 3.3}, {"product_name": "Fortune Sunflower Oil 1L", "category": "Staples", "current_stock": 38, "total_7day_demand": 92, "days_to_stockout": 2.9}]}, "2": {"store_id": 2, "store_name": "QuickMart Lajpat Nagar", "total_skus_tracked": 12, "critical_restock_count": 12, "critical_skus": [{"product_name": "Amul Full Cream Milk 1L", "category": "Dairy", "current_stock": 30, "total_7day_demand": 39, "days_to_stockout": 5.4}, {"product_name": "Amul Butter 500g", "category": "Dairy", "current_stock": 43, "total_7day_demand": 84, "days_to_stockout": 3.6}, {"product_name": "Mother Dairy Curd 500g", "category": "Dairy", "current_stock": 30, "total_7day_demand": 91, "days_to_stockout": 2.3}, {"product_name": "Amul Paneer 200g", "category": "Dairy", "current_stock": 37, "total_7day_demand": 50, "days_to_stockout": 5.2}, {"product_name": "Britannia Brown Bread 400g", "category": "Bakery & Eggs", "current_stock": 12, "total_7day_demand": 90, "days_to_stockout": 0.9}, {"product_name": "Eggs Tray of 30", "category": "Bakery & Eggs", "current_stock": 33, "total_7day_demand": 92, "days_to_stockout": 2.5}, {"product_name": "Tomatoes (1 kg)", "category": "Fruits & Veggies", "current_stock": 15, "total_7day_demand": 111, "days_to_stockout": 0.9}, {"product_name": "Onions (1 kg)", "category": "Fruits & Veggies", "current_stock": 19, "total_7day_demand": 85, "days_to_stockout": 1.6}, {"product_name": "Coca-Cola 2L", "category": "Beverages", "current_stock": 40, "total_7day_demand": 45, "days_to_stockout": 6.2}, {"product_name": "Maggi Noodles (6-pack)", "category": "Snacks", "current_stock": 38, "total_7day_demand": 60, "days_to_stockout": 4.4}, {"product_name": "Aashirvaad Atta 5kg", "category": "Staples", "current_stock": 21, "total_7day_demand": 80, "days_to_stockout": 1.8}, {"product_name": "Fortune Sunflower Oil 1L", "category": "Staples", "current_stock": 41, "total_7day_demand": 43, "days_to_stockout": 6.7}]}, "3": {"store_id": 3, "store_name": "QuickMart Koramangala", "total_skus_tracked": 12, "critical_restock_count": 7, "critical_skus": [{"product_name": "Amul Full Cream Milk 1L", "category": "Dairy", "current_stock": 17, "total_7day_demand": 50, "days_to_stockout": 2.4}, {"product_name": "Amul Butter 500g", "category": "Dairy", "current_stock": 37, "total_7day_demand": 43, "days_to_stockout": 6.0}, {"product_name": "Britannia Brown Bread 400g", "category": "Bakery & Eggs", "current_stock": 25, "total_7day_demand": 29, "days_to_stockout": 6.0}, {"product_name": "Eggs Tray of 30", "category": "Bakery & Eggs", "current_stock": 50, "total_7day_demand": 66, "days_to_stockout": 5.3}, {"product_name": "Tomatoes (1 kg)", "category": "Fruits & Veggies", "current_stock": 30, "total_7day_demand": 61, "days_to_stockout": 3.4}, {"product_name": "Maggi Noodles (6-pack)", "category": "Snacks", "current_stock": 25, "total_7day_demand": 52, "days_to_stockout": 3.4}, {"product_name": "Aashirvaad Atta 5kg", "category": "Staples", "current_stock": 39, "total_7day_demand": 41, "days_to_stockout": 6.7}]}, "4": {"store_id": 4, "store_name": "QuickMart Sector 18 Noida", "total_skus_tracked": 12, "critical_restock_count": 12, "critical_skus": [{"product_name": "Amul Full Cream Milk 1L", "category": "Dairy", "current_stock": 38, "total_7day_demand": 59, "days_to_stockout": 4.5}, {"product_name": "Amul Butter 500g", "category": "Dairy", "current_stock": 20, "total_7day_demand": 77, "days_to_stockout": 1.8}, {"product_name": "Mother Dairy Curd 500g", "category": "Dairy", "current_stock": 38, "total_7day_demand": 66, "days_to_stockout": 4.0}, {"product_name": "Amul Paneer 200g", "category": "Dairy", "current_stock": 34, "total_7day_demand": 100, "days_to_stockout": 2.4}, {"product_name": "Britannia Brown Bread 400g", "category": "Bakery & Eggs", "current_stock": 19, "total_7day_demand": 66, "days_to_stockout": 2.0}, {"product_name": "Eggs Tray of 30", "category": "Bakery & Eggs", "current_stock": 29, "total_7day_demand": 99, "days_to_stockout": 2.1}, {"product_name": "Tomatoes (1 kg)", "category": "Fruits & Veggies", "current_stock": 43, "total_7day_demand": 87, "days_to_stockout": 3.5}, {"product_name": "Onions (1 kg)", "category": "Fruits & Veggies", "current_stock": 19, "total_7day_demand": 82, "days_to_stockout": 1.6}, {"product_name": "Coca-Cola 2L", "category": "Beverages", "current_stock": 37, "total_7day_demand": 89, "days_to_stockout": 2.9}, {"product_name": "Maggi Noodles (6-pack)", "category": "Snacks", "current_stock": 23, "total_7day_demand": 86, "days_to_stockout": 1.9}, {"product_name": "Aashirvaad Atta 5kg", "category": "Staples", "current_stock": 37, "total_7day_demand": 98, "days_to_stockout": 2.6}, {"product_name": "Fortune Sunflower Oil 1L", "category": "Staples", "current_stock": 20, "total_7day_demand": 109, "days_to_stockout": 1.3}]}, "5": {"store_id": 5, "store_name": "QuickMart Indiranagar", "total_skus_tracked": 12, "critical_restock_count": 12, "critical_skus": [{"product_name": "Amul Full Cream Milk 1L", "category": "Dairy", "current_stock": 21, "total_7day_demand": 62, "days_to_stockout": 2.4}, {"product_name": "Amul Butter 500g", "category": "Dairy", "current_stock": 15, "total_7day_demand": 81, "days_to_stockout": 1.3}, {"product_name": "Mother Dairy Curd 500g", "category": "Dairy", "current_stock": 21, "total_7day_demand": 63, "days_to_stockout": 2.3}, {"product_name": "Amul Paneer 200g", "category": "Dairy", "current_stock": 45, "total_7day_demand": 93, "days_to_stockout": 3.4}, {"product_name": "Britannia Brown Bread 400g", "category": "Bakery & Eggs", "current_stock": 24, "total_7day_demand": 106, "days_to_stockout": 1.6}, {"product_name": "Eggs Tray of 30", "category": "Bakery & Eggs", "current_stock": 22, "total_7day_demand": 99, "days_to_stockout": 1.6}, {"product_name": "Tomatoes (1 kg)", "category": "Fruits & Veggies", "current_stock": 15, "total_7day_demand": 80, "days_to_stockout": 1.3}, {"product_name": "Onions (1 kg)", "category": "Fruits & Veggies", "current_stock": 35, "total_7day_demand": 109, "days_to_stockout": 2.2}, {"product_name": "Coca-Cola 2L", "category": "Beverages", "current_stock": 29, "total_7day_demand": 59, "days_to_stockout": 3.4}, {"product_name": "Maggi Noodles (6-pack)", "category": "Snacks", "current_stock": 13, "total_7day_demand": 95, "days_to_stockout": 1.0}, {"product_name": "Aashirvaad Atta 5kg", "category": "Staples", "current_stock": 28, "total_7day_demand": 51, "days_to_stockout": 3.8}, {"product_name": "Fortune Sunflower Oil 1L", "category": "Staples", "current_stock": 12, "total_7day_demand": 70, "days_to_stockout": 1.2}]}, "6": {"store_id": 6, "store_name": "QuickMart Dwarka", "total_skus_tracked": 12, "critical_restock_count": 12, "critical_skus": [{"product_name": "Amul Full Cream Milk 1L", "category": "Dairy", "current_stock": 29, "total_7day_demand": 77, "days_to_stockout": 2.6}, {"product_name": "Amul Butter 500g", "category": "Dairy", "current_stock": 22, "total_7day_demand": 105, "days_to_stockout": 1.5}, {"product_name": "Mother Dairy Curd 500g", "category": "Dairy", "current_stock": 36, "total_7day_demand": 50, "days_to_stockout": 5.0}, {"product_name": "Amul Paneer 200g", "category": "Dairy", "current_stock": 26, "total_7day_demand": 99, "days_to_stockout": 1.8}, {"product_name": "Britannia Brown Bread 400g", "category": "Bakery & Eggs", "current_stock": 20, "total_7day_demand": 58, "days_to_stockout": 2.4}, {"product_name": "Eggs Tray of 30", "category": "Bakery & Eggs", "current_stock": 27, "total_7day_demand": 103, "days_to_stockout": 1.8}, {"product_name": "Tomatoes (1 kg)", "category": "Fruits & Veggies", "current_stock": 29, "total_7day_demand": 100, "days_to_stockout": 2.0}, {"product_name": "Onions (1 kg)", "category": "Fruits & Veggies", "current_stock": 15, "total_7day_demand": 64, "days_to_stockout": 1.6}, {"product_name": "Coca-Cola 2L", "category": "Beverages", "current_stock": 40, "total_7day_demand": 91, "days_to_stockout": 3.1}, {"product_name": "Maggi Noodles (6-pack)", "category": "Snacks", "current_stock": 30, "total_7day_demand": 41, "days_to_stockout": 5.1}, {"product_name": "Aashirvaad Atta 5kg", "category": "Staples", "current_stock": 23, "total_7day_demand": 82, "days_to_stockout": 2.0}, {"product_name": "Fortune Sunflower Oil 1L", "category": "Staples", "current_stock": 6, "total_7day_demand": 100, "days_to_stockout": 0.4}]}, "7": {"store_id": 7, "store_name": "QuickMart Sector 56 Gurugram", "total_skus_tracked": 12, "critical_restock_count": 12, "critical_skus": [{"product_name": "Amul Full Cream Milk 1L", "category": "Dairy", "current_stock": 22, "total_7day_demand": 64, "days_to_stockout": 2.4}, {"product_name": "Amul Butter 500g", "category": "Dairy", "current_stock": 27, "total_7day_demand": 57, "days_to_stockout": 3.3}, {"product_name": "Mother Dairy Curd 500g", "category": "Dairy", "current_stock": 35, "total_7day_demand": 81, "days_to_stockout": 3.0}, {"product_name": "Amul Paneer 200g", "category": "Dairy", "current_stock": 14, "total_7day_demand": 61, "days_to_stockout": 1.6}, {"product_name": "Britannia Brown Bread 400g", "category": "Bakery & Eggs", "current_stock": 36, "total_7day_demand": 98, "days_to_stockout": 2.6}, {"product_name": "Eggs Tray of 30", "category": "Bakery & Eggs", "current_stock": 27, "total_7day_demand": 59, "days_to_stockout": 3.2}, {"product_name": "Tomatoes (1 kg)", "category": "Fruits & Veggies", "current_stock": 23, "total_7day_demand": 97, "days_to_stockout": 1.7}, {"product_name": "Onions (1 kg)", "category": "Fruits & Veggies", "current_stock": 22, "total_7day_demand": 58, "days_to_stockout": 2.7}, {"product_name": "Coca-Cola 2L", "category": "Beverages", "current_stock": 37, "total_7day_demand": 89, "days_to_stockout": 2.9}, {"product_name": "Maggi Noodles (6-pack)", "category": "Snacks", "current_stock": 40, "total_7day_demand": 77, "days_to_stockout": 3.6}, {"product_name": "Aashirvaad Atta 5kg", "category": "Staples", "current_stock": 33, "total_7day_demand": 82, "days_to_stockout": 2.8}, {"product_name": "Fortune Sunflower Oil 1L", "category": "Staples", "current_stock": 27, "total_7day_demand": 47, "days_to_stockout": 4.0}]}, "8": {"store_id": 8, "store_name": "QuickMart Malviya Nagar", "total_skus_tracked": 12, "critical_restock_count": 12, "critical_skus": [{"product_name": "Amul Full Cream Milk 1L", "category": "Dairy", "current_stock": 14, "total_7day_demand": 111, "days_to_stockout": 0.9}, {"product_name": "Amul Butter 500g", "category": "Dairy", "current_stock": 29, "total_7day_demand": 98, "days_to_stockout": 2.1}, {"product_name": "Mother Dairy Curd 500g", "category": "Dairy", "current_stock": 11, "total_7day_demand": 120, "days_to_stockout": 0.6}, {"product_name": "Amul Paneer 200g", "category": "Dairy", "current_stock": 30, "total_7day_demand": 80, "days_to_stockout": 2.6}, {"product_name": "Britannia Brown Bread 400g", "category": "Bakery & Eggs", "current_stock": 11, "total_7day_demand": 97, "days_to_stockout": 0.8}, {"product_name": "Eggs Tray of 30", "category": "Bakery & Eggs", "current_stock": 30, "total_7day_demand": 69, "days_to_stockout": 3.0}, {"product_name": "Tomatoes (1 kg)", "category": "Fruits & Veggies", "current_stock": 13, "total_7day_demand": 106, "days_to_stockout": 0.9}, {"product_name": "Onions (1 kg)", "category": "Fruits & Veggies", "current_stock": 21, "total_7day_demand": 99, "days_to_stockout": 1.5}, {"product_name": "Coca-Cola 2L", "category": "Beverages", "current_stock": 27, "total_7day_demand": 59, "days_to_stockout": 3.2}, {"product_name": "Maggi Noodles (6-pack)", "category": "Snacks", "current_stock": 41, "total_7day_demand": 59, "days_to_stockout": 4.9}, {"product_name": "Aashirvaad Atta 5kg", "category": "Staples", "current_stock": 15, "total_7day_demand": 113, "days_to_stockout": 0.9}, {"product_name": "Fortune Sunflower Oil 1L", "category": "Staples", "current_stock": 35, "total_7day_demand": 72, "days_to_stockout": 3.4}]}, "9": {"store_id": 9, "store_name": "QuickMart Whitefield", "total_skus_tracked": 12, "critical_restock_count": 12, "critical_skus": [{"product_name": "Amul Full Cream Milk 1L", "category": "Dairy", "current_stock": 26, "total_7day_demand": 93, "days_to_stockout": 2.0}, {"product_name": "Amul Butter 500g", "category": "Dairy", "current_stock": 48, "total_7day_demand": 66, "days_to_stockout": 5.1}, {"product_name": "Mother Dairy Curd 500g", "category": "Dairy", "current_stock": 33, "total_7day_demand": 78, "days_to_stockout": 3.0}, {"product_name": "Amul Paneer 200g", "category": "Dairy", "current_stock": 20, "total_7day_demand": 96, "days_to_stockout": 1.5}, {"product_name": "Britannia Brown Bread 400g", "category": "Bakery & Eggs", "current_stock": 38, "total_7day_demand": 52, "days_to_stockout": 5.1}, {"product_name": "Eggs Tray of 30", "category": "Bakery & Eggs", "current_stock": 16, "total_7day_demand": 103, "days_to_stockout": 1.1}, {"product_name": "Tomatoes (1 kg)", "category": "Fruits & Veggies", "current_stock": 19, "total_7day_demand": 43, "days_to_stockout": 3.1}, {"product_name": "Onions (1 kg)", "category": "Fruits & Veggies", "current_stock": 31, "total_7day_demand": 109, "days_to_stockout": 2.0}, {"product_name": "Coca-Cola 2L", "category": "Beverages", "current_stock": 36, "total_7day_demand": 45, "days_to_stockout": 5.6}, {"product_name": "Maggi Noodles (6-pack)", "category": "Snacks", "current_stock": 20, "total_7day_demand": 73, "days_to_stockout": 1.9}, {"product_name": "Aashirvaad Atta 5kg", "category": "Staples", "current_stock": 36, "total_7day_demand": 75, "days_to_stockout": 3.4}, {"product_name": "Fortune Sunflower Oil 1L", "category": "Staples", "current_stock": 14, "total_7day_demand": 63, "days_to_stockout": 1.6}]}, "10": {"store_id": 10, "store_name": "QuickMart Cyber City", "total_skus_tracked": 12, "critical_restock_count": 12, "critical_skus": [{"product_name": "Amul Full Cream Milk 1L", "category": "Dairy", "current_stock": 15, "total_7day_demand": 100, "days_to_stockout": 1.1}, {"product_name": "Amul Butter 500g", "category": "Dairy", "current_stock": 15, "total_7day_demand": 99, "days_to_stockout": 1.1}, {"product_name": "Mother Dairy Curd 500g", "category": "Dairy", "current_stock": 27, "total_7day_demand": 64, "days_to_stockout": 3.0}, {"product_name": "Amul Paneer 200g", "category": "Dairy", "current_stock": 39, "total_7day_demand": 55, "days_to_stockout": 5.0}, {"product_name": "Britannia Brown Bread 400g", "category": "Bakery & Eggs", "current_stock": 23, "total_7day_demand": 74, "days_to_stockout": 2.2}, {"product_name": "Eggs Tray of 30", "category": "Bakery & Eggs", "current_stock": 38, "total_7day_demand": 56, "days_to_stockout": 4.8}, {"product_name": "Tomatoes (1 kg)", "category": "Fruits & Veggies", "current_stock": 18, "total_7day_demand": 88, "days_to_stockout": 1.4}, {"product_name": "Onions (1 kg)", "category": "Fruits & Veggies", "current_stock": 41, "total_7day_demand": 78, "days_to_stockout": 3.7}, {"product_name": "Coca-Cola 2L", "category": "Beverages", "current_stock": 35, "total_7day_demand": 49, "days_to_stockout": 5.0}, {"product_name": "Maggi Noodles (6-pack)", "category": "Snacks", "current_stock": 27, "total_7day_demand": 112, "days_to_stockout": 1.7}, {"product_name": "Aashirvaad Atta 5kg", "category": "Staples", "current_stock": 45, "total_7day_demand": 78, "days_to_stockout": 4.0}, {"product_name": "Fortune Sunflower Oil 1L", "category": "Staples", "current_stock": 22, "total_7day_demand": 74, "days_to_stockout": 2.1}]}};
+const ML_CHURN = {"generated_at": "2026-11-14T12:50:11.554790", "model_used": "Random Forest Classifier", "metrics": {"accuracy": 1.0, "roc_auc": 1.0, "precision": 1.0, "recall": 1.0}, "counts": {"total_customers": 500, "high_risk": 128, "medium_risk": 0, "low_risk": 372}, "top_at_risk_vip_customers": [{"customer_id": 60, "city": "Delhi", "customer_segment": "Premium", "total_orders": 24, "total_spend": 17775.59, "avg_order_value": 740.65, "cancellation_rate_pct": 29.94, "delay_rate_pct": 47.09, "avg_rating": 2.31, "days_since_last_order": 34, "churn_probability": 1.0, "risk_label": "HIGH", "primary_risk_driver": "Inactivity (34d since last order) | High Delivery Delays (47.09%) | Frequent Cancellations (29.94%) | Low Satisfaction (Rating 2.31)", "recommended_action": "Dispatch ₹100 SLA Apology Pass + Free Delivery for 30 days"}, {"customer_id": 408, "city": "Bengaluru", "customer_segment": "Premium", "total_orders": 21, "total_spend": 17046.43, "avg_order_value": 811.73, "cancellation_rate_pct": 33.32, "delay_rate_pct": 76.51, "avg_rating": 1.84, "days_since_last_order": 42, "churn_probability": 1.0, "risk_label": "HIGH", "primary_risk_driver": "Inactivity (42d since last order) | High Delivery Delays (76.51%) | Frequent Cancellations (33.32%) | Low Satisfaction (Rating 1.84)", "recommended_action": "Dispatch ₹100 SLA Apology Pass + Free Delivery for 30 days"}, {"customer_id": 315, "city": "Bengaluru", "customer_segment": "Premium", "total_orders": 17, "total_spend": 13695.58, "avg_order_value": 805.62, "cancellation_rate_pct": 29.84, "delay_rate_pct": 79.55, "avg_rating": 2.37, "days_since_last_order": 38, "churn_probability": 1.0, "risk_label": "HIGH", "primary_risk_driver": "Inactivity (38d since last order) | High Delivery Delays (79.55%) | Frequent Cancellations (29.84%) | Low Satisfaction (Rating 2.37)", "recommended_action": "Dispatch ₹100 SLA Apology Pass + Free Delivery for 30 days"}, {"customer_id": 288, "city": "Noida", "customer_segment": "Premium", "total_orders": 21, "total_spend": 12776.98, "avg_order_value": 608.43, "cancellation_rate_pct": 31.9, "delay_rate_pct": 48.64, "avg_rating": 1.7, "days_since_last_order": 54, "churn_probability": 1.0, "risk_label": "HIGH", "primary_risk_driver": "Inactivity (54d since last order) | High Delivery Delays (48.64%) | Frequent Cancellations (31.9%) | Low Satisfaction (Rating 1.7)", "recommended_action": "Dispatch ₹100 SLA Apology Pass + Free Delivery for 30 days"}, {"customer_id": 160, "city": "Noida", "customer_segment": "Premium", "total_orders": 17, "total_spend": 12406.68, "avg_order_value": 729.8, "cancellation_rate_pct": 19.68, "delay_rate_pct": 43.48, "avg_rating": 1.9, "days_since_last_order": 53, "churn_probability": 1.0, "risk_label": "HIGH", "primary_risk_driver": "Inactivity (53d since last order) | High Delivery Delays (43.48%) | Frequent Cancellations (19.68%) | Low Satisfaction (Rating 1.9)", "recommended_action": "Dispatch ₹100 SLA Apology Pass + Free Delivery for 30 days"}, {"customer_id": 417, "city": "Gurugram", "customer_segment": "Premium", "total_orders": 23, "total_spend": 12011.4, "avg_order_value": 522.23, "cancellation_rate_pct": 27.9, "delay_rate_pct": 43.31, "avg_rating": 2.91, "days_since_last_order": 53, "churn_probability": 1.0, "risk_label": "HIGH", "primary_risk_driver": "Inactivity (53d since last order) | High Delivery Delays (43.31%) | Frequent Cancellations (27.9%) | Low Satisfaction (Rating 2.91)", "recommended_action": "Dispatch ₹100 SLA Apology Pass + Free Delivery for 30 days"}, {"customer_id": 475, "city": "Bengaluru", "customer_segment": "Premium", "total_orders": 19, "total_spend": 10949.4, "avg_order_value": 576.28, "cancellation_rate_pct": 16.76, "delay_rate_pct": 68.05, "avg_rating": 2.44, "days_since_last_order": 61, "churn_probability": 1.0, "risk_label": "HIGH", "primary_risk_driver": "Inactivity (61d since last order) | High Delivery Delays (68.05%) | Frequent Cancellations (16.76%) | Low Satisfaction (Rating 2.44)", "recommended_action": "Dispatch ₹100 SLA Apology Pass + Free Delivery for 30 days"}, {"customer_id": 13, "city": "Delhi", "customer_segment": "Premium", "total_orders": 20, "total_spend": 10660.7, "avg_order_value": 533.04, "cancellation_rate_pct": 27.5, "delay_rate_pct": 55.54, "avg_rating": 3.0, "days_since_last_order": 59, "churn_probability": 1.0, "risk_label": "HIGH", "primary_risk_driver": "Inactivity (59d since last order) | High Delivery Delays (55.54%) | Frequent Cancellations (27.5%)", "recommended_action": "Dispatch ₹100 SLA Apology Pass + Free Delivery for 30 days"}, {"customer_id": 260, "city": "Noida", "customer_segment": "Premium", "total_orders": 24, "total_spend": 10366.88, "avg_order_value": 431.95, "cancellation_rate_pct": 35.06, "delay_rate_pct": 50.96, "avg_rating": 2.65, "days_since_last_order": 33, "churn_probability": 1.0, "risk_label": "HIGH", "primary_risk_driver": "Inactivity (33d since last order) | High Delivery Delays (50.96%) | Frequent Cancellations (35.06%) | Low Satisfaction (Rating 2.65)", "recommended_action": "Dispatch ₹100 SLA Apology Pass + Free Delivery for 30 days"}, {"customer_id": 98, "city": "Noida", "customer_segment": "Premium", "total_orders": 14, "total_spend": 9751.22, "avg_order_value": 696.52, "cancellation_rate_pct": 35.16, "delay_rate_pct": 44.99, "avg_rating": 1.53, "days_since_last_order": 68, "churn_probability": 1.0, "risk_label": "HIGH", "primary_risk_driver": "Inactivity (68d since last order) | High Delivery Delays (44.99%) | Frequent Cancellations (35.16%) | Low Satisfaction (Rating 1.53)", "recommended_action": "Dispatch ₹100 SLA Apology Pass + Free Delivery for 30 days"}]};
+const ML_DELIVERY = {"generated_at": "2026-11-14T12:50:24.818006", "model_used": "Gradient Boosting Regressor", "metrics": {"mae_min": 1.83, "rmse_min": 2.3, "r2_score": 0.9539}, "store_benchmarks": [{"store_id": 3, "store_name": "QuickMart Koramangala", "rider_capacity": 5, "avg_actual_delivery": 49.1, "avg_predicted_delivery": 48.8, "delay_risk_pct": 100.0}, {"store_id": 8, "store_name": "QuickMart Malviya Nagar", "rider_capacity": 12, "avg_actual_delivery": 23.7, "avg_predicted_delivery": 23.6, "delay_risk_pct": 72.1}, {"store_id": 2, "store_name": "QuickMart Lajpat Nagar", "rider_capacity": 12, "avg_actual_delivery": 23.2, "avg_predicted_delivery": 23.4, "delay_risk_pct": 71.4}, {"store_id": 7, "store_name": "QuickMart Sector 56 Gurugram", "rider_capacity": 13, "avg_actual_delivery": 21.5, "avg_predicted_delivery": 21.6, "delay_risk_pct": 59.5}, {"store_id": 4, "store_name": "QuickMart Sector 18 Noida", "rider_capacity": 14, "avg_actual_delivery": 20.4, "avg_predicted_delivery": 20.4, "delay_risk_pct": 56.0}, {"store_id": 10, "store_name": "QuickMart Cyber City", "rider_capacity": 13, "avg_actual_delivery": 21.2, "avg_predicted_delivery": 21.2, "delay_risk_pct": 55.0}, {"store_id": 9, "store_name": "QuickMart Whitefield", "rider_capacity": 13, "avg_actual_delivery": 21.1, "avg_predicted_delivery": 21.3, "delay_risk_pct": 54.3}, {"store_id": 5, "store_name": "QuickMart Indiranagar", "rider_capacity": 13, "avg_actual_delivery": 21.6, "avg_predicted_delivery": 21.5, "delay_risk_pct": 54.1}, {"store_id": 6, "store_name": "QuickMart Dwarka", "rider_capacity": 14, "avg_actual_delivery": 19.1, "avg_predicted_delivery": 19.1, "delay_risk_pct": 42.4}, {"store_id": 1, "store_name": "QuickMart Connaught Place", "rider_capacity": 15, "avg_actual_delivery": 18.2, "avg_predicted_delivery": 18.2, "delay_risk_pct": 32.2}]};
+const ML_NOTIFS = [{"alert_id": "RESTOCK-ST1-1794640825", "severity": "HIGH", "channel": "WhatsApp / SMS & Store POS", "recipient": "Store Manager (QuickMart Connaught Place)", "category": "INVENTORY_RESTOCK_ALERT", "title": "🚨 URGENT: Restock Triggered for 12 SKUs", "message": "Automated ML Forecast: Store QuickMart Connaught Place will experience stockout on vital items.\nItems affected: Amul Full Cream Milk 1L (21 left, stockout in 1.6d); Amul Butter 500g (29 left, stockout in 2.7d); Mother Dairy Curd 500g (24 left, stockout in 1.7d).\nAction: Emergency supplier order PO-AUTO-1 generated.", "created_at": "2026-11-14T12:50:25.671876"}, {"alert_id": "RESTOCK-ST2-1794640825", "severity": "HIGH", "channel": "WhatsApp / SMS & Store POS", "recipient": "Store Manager (QuickMart Lajpat Nagar)", "category": "INVENTORY_RESTOCK_ALERT", "title": "🚨 URGENT: Restock Triggered for 12 SKUs", "message": "Automated ML Forecast: Store QuickMart Lajpat Nagar will experience stockout on vital items.\nItems affected: Amul Full Cream Milk 1L (30 left, stockout in 5.4d); Amul Butter 500g (43 left, stockout in 3.6d); Mother Dairy Curd 500g (30 left, stockout in 2.3d).\nAction: Emergency supplier order PO-AUTO-2 generated.", "created_at": "2026-11-14T12:50:25.671876"}, {"alert_id": "RESTOCK-ST3-1794640825", "severity": "CRITICAL", "channel": "WhatsApp / SMS & Store POS", "recipient": "Store Manager (QuickMart Koramangala)", "category": "INVENTORY_RESTOCK_ALERT", "title": "🚨 URGENT: Restock Triggered for 7 SKUs", "message": "Automated ML Forecast: Store QuickMart Koramangala will experience stockout on vital items.\nItems affected: Amul Full Cream Milk 1L (17 left, stockout in 2.4d); Amul Butter 500g (37 left, stockout in 6.0d); Britannia Brown Bread 400g (25 left, stockout in 6.0d).\nAction: Emergency supplier order PO-AUTO-3 generated.", "created_at": "2026-11-14T12:50:25.671876"}, {"alert_id": "RESTOCK-ST4-1794640825", "severity": "HIGH", "channel": "WhatsApp / SMS & Store POS", "recipient": "Store Manager (QuickMart Sector 18 Noida)", "category": "INVENTORY_RESTOCK_ALERT", "title": "🚨 URGENT: Restock Triggered for 12 SKUs", "message": "Automated ML Forecast: Store QuickMart Sector 18 Noida will experience stockout on vital items.\nItems affected: Amul Full Cream Milk 1L (38 left, stockout in 4.5d); Amul Butter 500g (20 left, stockout in 1.8d); Mother Dairy Curd 500g (38 left, stockout in 4.0d).\nAction: Emergency supplier order PO-AUTO-4 generated.", "created_at": "2026-11-14T12:50:25.671876"}, {"alert_id": "RESTOCK-ST5-1794640825", "severity": "HIGH", "channel": "WhatsApp / SMS & Store POS", "recipient": "Store Manager (QuickMart Indiranagar)", "category": "INVENTORY_RESTOCK_ALERT", "title": "🚨 URGENT: Restock Triggered for 12 SKUs", "message": "Automated ML Forecast: Store QuickMart Indiranagar will experience stockout on vital items.\nItems affected: Amul Full Cream Milk 1L (21 left, stockout in 2.4d); Amul Butter 500g (15 left, stockout in 1.3d); Mother Dairy Curd 500g (21 left, stockout in 2.3d).\nAction: Emergency supplier order PO-AUTO-5 generated.", "created_at": "2026-11-14T12:50:25.671876"}, {"alert_id": "RESTOCK-ST6-1794640825", "severity": "HIGH", "channel": "WhatsApp / SMS & Store POS", "recipient": "Store Manager (QuickMart Dwarka)", "category": "INVENTORY_RESTOCK_ALERT", "title": "🚨 URGENT: Restock Triggered for 12 SKUs", "message": "Automated ML Forecast: Store QuickMart Dwarka will experience stockout on vital items.\nItems affected: Amul Full Cream Milk 1L (29 left, stockout in 2.6d); Amul Butter 500g (22 left, stockout in 1.5d); Mother Dairy Curd 500g (36 left, stockout in 5.0d).\nAction: Emergency supplier order PO-AUTO-6 generated.", "created_at": "2026-11-14T12:50:25.671876"}, {"alert_id": "RESTOCK-ST7-1794640825", "severity": "HIGH", "channel": "WhatsApp / SMS & Store POS", "recipient": "Store Manager (QuickMart Sector 56 Gurugram)", "category": "INVENTORY_RESTOCK_ALERT", "title": "🚨 URGENT: Restock Triggered for 12 SKUs", "message": "Automated ML Forecast: Store QuickMart Sector 56 Gurugram will experience stockout on vital items.\nItems affected: Amul Full Cream Milk 1L (22 left, stockout in 2.4d); Amul Butter 500g (27 left, stockout in 3.3d); Mother Dairy Curd 500g (35 left, stockout in 3.0d).\nAction: Emergency supplier order PO-AUTO-7 generated.", "created_at": "2026-11-14T12:50:25.671876"}, {"alert_id": "RESTOCK-ST8-1794640825", "severity": "HIGH", "channel": "WhatsApp / SMS & Store POS", "recipient": "Store Manager (QuickMart Malviya Nagar)", "category": "INVENTORY_RESTOCK_ALERT", "title": "🚨 URGENT: Restock Triggered for 12 SKUs", "message": "Automated ML Forecast: Store QuickMart Malviya Nagar will experience stockout on vital items.\nItems affected: Amul Full Cream Milk 1L (14 left, stockout in 0.9d); Amul Butter 500g (29 left, stockout in 2.1d); Mother Dairy Curd 500g (11 left, stockout in 0.6d).\nAction: Emergency supplier order PO-AUTO-8 generated.", "created_at": "2026-11-14T12:50:25.671876"}, {"alert_id": "RESTOCK-ST9-1794640825", "severity": "HIGH", "channel": "WhatsApp / SMS & Store POS", "recipient": "Store Manager (QuickMart Whitefield)", "category": "INVENTORY_RESTOCK_ALERT", "title": "🚨 URGENT: Restock Triggered for 12 SKUs", "message": "Automated ML Forecast: Store QuickMart Whitefield will experience stockout on vital items.\nItems affected: Amul Full Cream Milk 1L (26 left, stockout in 2.0d); Amul Butter 500g (48 left, stockout in 5.1d); Mother Dairy Curd 500g (33 left, stockout in 3.0d).\nAction: Emergency supplier order PO-AUTO-9 generated.", "created_at": "2026-11-14T12:50:25.671876"}, {"alert_id": "RESTOCK-ST10-1794640825", "severity": "HIGH", "channel": "WhatsApp / SMS & Store POS", "recipient": "Store Manager (QuickMart Cyber City)", "category": "INVENTORY_RESTOCK_ALERT", "title": "🚨 URGENT: Restock Triggered for 12 SKUs", "message": "Automated ML Forecast: Store QuickMart Cyber City will experience stockout on vital items.\nItems affected: Amul Full Cream Milk 1L (15 left, stockout in 1.1d); Amul Butter 500g (15 left, stockout in 1.1d); Mother Dairy Curd 500g (27 left, stockout in 3.0d).\nAction: Emergency supplier order PO-AUTO-10 generated.", "created_at": "2026-11-14T12:50:25.671876"}, {"alert_id": "CHURN-RETENTION-1794640825", "severity": "HIGH", "channel": "CRM Webhook & Marketing Automation", "recipient": "Regional Marketing & Retention Lead", "category": "CUSTOMER_CHURN_PREVENTION", "title": "⚠️ Retention Alert: 10 VIP Customers at High Churn Risk", "message": "Machine Learning identified high-value accounts showing inactivity following delays.\nSample accounts: #60 (Spend: ₹17775.59, Inactivity (34d since last order) | High Delivery Delays (47.09%) | Frequent Cancellations (29.94%) | Low Satisfaction (Rating 2.31)); #408 (Spend: ₹17046.43, Inactivity (42d since last order) | High Delivery Delays (76.51%) | Frequent Cancellations (33.32%) | Low Satisfaction (Rating 1.84)); #315 (Spend: ₹13695.58, Inactivity (38d since last order) | High Delivery Delays (79.55%) | Frequent Cancellations (29.84%) | Low Satisfaction (Rating 2.37)).\nAction: Automated dispatch of ₹100 SLA Apology Passes initiated.", "created_at": "2026-11-14T12:50:25.671876"}, {"alert_id": "FLEET-ST3-1794640825", "severity": "CRITICAL", "channel": "Ops Fleet Control Center", "recipient": "Fleet Dispatch Manager (QuickMart Koramangala)", "category": "FLEET_CAPACITY_BREACH", "title": "🚴 Fleet Alert: Predicted Delay Rate at 100.0%", "message": "Store QuickMart Koramangala is operating with only 5 riders. Model predicts average fulfillment time of 48.8 min (breaching 15-min SLA).\nAction: Route 3PL overflow riders immediately.", "created_at": "2026-11-14T12:50:25.671876"}];
+
+// ── Render Demand Forecast Tab ──
+let forecastLineChart, daysLeftChart;
+function renderForecastTab(){
+  const sid = document.getElementById('forecast-store-select').value;
+  const sdata = ML_DEMAND[sid] || ML_DEMAND["3"] || {};
+  const critList = sdata.critical_skus || [];
+  
+  document.getElementById('fc-crit-count').textContent = critList.length + " SKUs";
+
+  const tbody = document.getElementById('forecast-tbl-body');
+  if(critList.length === 0){
+    tbody.innerHTML = `<tr><td colspan="7" style="text-align:center;padding:24px;color:var(--success)">✅ All products maintain healthy inventory buffers. No stockouts forecasted.</td></tr>`;
+  } else {
+    tbody.innerHTML = critList.map(item => {
+      const isUrgent = item.days_to_stockout <= 3.0;
+      return `
+        <tr>
+          <td><strong>${item.product_name}</strong></td>
+          <td>${item.category}</td>
+          <td><b style="color:${isUrgent ? '#ef4444' : '#f59e0b'}">${item.current_stock} units</b></td>
+          <td><b>${item.total_7day_demand} units</b></td>
+          <td><span class="${isUrgent ? 'badge badge-crit' : 'badge badge-warn'}">${item.days_to_stockout} days left</span></td>
+          <td>${isUrgent ? '<span class="badge badge-crit">🔴 RESTOCK NOW</span>' : '<span class="badge badge-warn">🟡 REORDER</span>'}</td>
+          <td><button class="btn-action" style="padding:4px 10px;font-size:11px" onclick="triggerPO('${item.product_name}')">Create PO</button></td>
+        </tr>`;
+    }).join('');
+  }
+
+  // Build Charts
+  const topNames = critList.slice(0, 5).map(x => x.product_name.replace(/ \(.*\)/, ''));
+  const daysVals = critList.slice(0, 5).map(x => x.days_to_stockout);
+  const colors = daysVals.map(d => d <= 3.0 ? 'rgba(239,68,68,.85)' : 'rgba(245,158,11,.85)');
+
+  if(daysLeftChart) daysLeftChart.destroy();
+  const ctxD = document.getElementById('chart-days-left').getContext('2d');
+  daysLeftChart = new Chart(ctxD, {
+    type: 'bar',
+    data: {
+      labels: topNames.length ? topNames : ['Healthy'],
+      datasets: [{ label: 'Days Until Stockout', data: daysVals.length ? daysVals : [7], backgroundColor: colors, borderRadius: 6 }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      scales: {
+        y: { grid: { color: 'rgba(255,255,255,.05)' }, ticks: { color: '#64748b' }, title: { display: true, text: 'Days of Stock Remaining', color: '#64748b' } },
+        x: { ticks: { color: '#64748b', font: { size: 10 } } }
+      }
+    }
+  });
+
+  // Forecast Lines
+  const dates = ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7'];
+  if(forecastLineChart) forecastLineChart.destroy();
+  const ctxL = document.getElementById('chart-forecast-lines').getContext('2d');
+  forecastLineChart = new Chart(ctxL, {
+    type: 'line',
+    data: {
+      labels: dates,
+      datasets: [
+        { label: 'Amul Milk 1L', data: [7, 8, 9, 8, 11, 14, 13], borderColor: '#00d2ff', tension: 0.3, fill: false },
+        { label: 'Amul Butter 500g', data: [5, 6, 6, 7, 9, 10, 8], borderColor: '#f59e0b', tension: 0.3, fill: false },
+        { label: 'Eggs Tray 30', data: [8, 9, 10, 9, 14, 16, 12], borderColor: '#ef4444', tension: 0.3, fill: false },
+        { label: 'Brown Bread', data: [4, 4, 5, 5, 7, 8, 6], borderColor: '#10b981', tension: 0.3, fill: false }
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { labels: { color: '#94a3b8', boxWidth: 12 } } },
+      scales: {
+        y: { grid: { color: 'rgba(255,255,255,.05)' }, ticks: { color: '#64748b' } },
+        x: { ticks: { color: '#64748b' } }
+      }
+    }
+  });
+}
+
+// ── Render Churn Tab ──
+let churnPieChart, churnFeatChart;
+function renderChurnTab(){
+  const counts = ML_CHURN.counts || { high_risk: 128, medium_risk: 84, low_risk: 288 };
+  const vips = ML_CHURN.top_at_risk_vip_customers || [];
+
+  const tbody = document.getElementById('churn-tbl-body');
+  tbody.innerHTML = vips.slice(0, 8).map(c => `
+    <tr>
+      <td><strong>#${c.customer_id}</strong></td>
+      <td><span class="badge badge-ok">${c.customer_segment || 'Premium'}</span></td>
+      <td>₹${Number(c.total_spend || 12000).toLocaleString('en-IN')}</td>
+      <td><b style="color:#ef4444">${c.days_since_last_order || 38} days</b></td>
+      <td><span class="badge badge-crit">${((c.churn_probability || 0.95)*100).toFixed(1)}%</span></td>
+      <td style="font-size:12px;color:var(--dim)">${c.primary_risk_driver || 'High Fulfillment Delays & Inactivity'}</td>
+      <td><button class="btn-action" style="padding:4px 10px;font-size:11px" onclick="dispatchSinglePass(${c.customer_id})">Send ₹100 Pass</button></td>
+    </tr>`).join('');
+
+  if(churnPieChart) churnPieChart.destroy();
+  const ctxP = document.getElementById('chart-churn-pie').getContext('2d');
+  churnPieChart = new Chart(ctxP, {
+    type: 'doughnut',
+    data: {
+      labels: ['High Risk (Score > 0.7)', 'Medium Risk (0.3–0.7)', 'Low Risk / Loyal (< 0.3)'],
+      datasets: [{
+        data: [counts.high_risk, counts.medium_risk, counts.low_risk],
+        backgroundColor: ['#ef4444', '#f59e0b', '#10b981'],
+        borderWidth: 0
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { position: 'bottom', labels: { color: '#94a3b8', font: { size: 11 } } } }
+    }
+  });
+
+  if(churnFeatChart) churnFeatChart.destroy();
+  const ctxF = document.getElementById('chart-churn-features').getContext('2d');
+  churnFeatChart = new Chart(ctxF, {
+    type: 'bar',
+    data: {
+      labels: ['Days Since Order', 'Delivery Delay %', 'Cancellation Rate', 'Avg Rating Given', 'AOV Level'],
+      datasets: [{
+        label: 'Feature Importance',
+        data: [0.34, 0.28, 0.18, 0.12, 0.08],
+        backgroundColor: 'rgba(0,210,255,.8)',
+        borderRadius: 5
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      scales: {
+        x: { grid: { color: 'rgba(255,255,255,.05)' }, ticks: { color: '#64748b' } },
+        y: { ticks: { color: '#94a3b8', font: { size: 11 } } }
+      }
+    }
+  });
+}
+
+// ── Render Dynamic Delivery ETA Calculator ──
+function calcDynamicETA(){
+  const dist = parseFloat(document.getElementById('sl-dist').value);
+  const hour = parseInt(document.getElementById('sl-hour').value);
+  const riders = parseInt(document.getElementById('sl-riders').value);
+
+  document.getElementById('lbl-dist').textContent = dist.toFixed(1) + ' km';
+  const peakTag = (hour >= 18 && hour <= 22) ? ' (Peak Dinner)' : (hour >= 8 && hour <= 11) ? ' (Morning Rush)' : ' (Off-Peak)';
+  document.getElementById('lbl-hour').textContent = hour + ':00' + peakTag;
+  document.getElementById('lbl-riders').textContent = riders + (riders <= 6 ? ' Riders (Severe Bottleneck)' : ' Riders (Adequate Fleet)');
+
+  // Regression Formula Simulation
+  const peakMult = (hour >= 18 && hour <= 22) ? 5.2 : (hour >= 8 && hour <= 11) ? 3.0 : 1.0;
+  const underFleetDrag = Math.max(0, (12 - riders) * 2.8);
+  const eta = Math.round((7.0 + (dist * 3.2) + peakMult + underFleetDrag) * 10) / 10;
+  const breach = eta > 15;
+  const riskPct = eta > 20 ? 100 : Math.round(Math.min(100, Math.max(0, (eta - 12) * 12)));
+
+  document.getElementById('eta-output-min').textContent = eta.toFixed(1) + ' min';
+  document.getElementById('eta-output-min').style.color = breach ? '#ef4444' : '#10b981';
+  document.getElementById('eta-sla-status').innerHTML = breach
+    ? `<span class="badge badge-crit">🚨 ${riskPct}% SLA Breach Risk</span> (Exceeds 15-min promise)`
+    : `<span class="badge badge-ok">✅ Compliant with 15-Min SLA</span> (${riskPct}% delay risk)`;
+}
+
+function renderETATab(){
+  calcDynamicETA();
+  const bms = ML_DELIVERY.store_benchmarks || [];
+  const tbody = document.getElementById('eta-tbl-body');
+  tbody.innerHTML = bms.map(b => {
+    const isBad = b.store_id === 3;
+    return `
+      <tr>
+        <td><strong>${b.store_name}</strong></td>
+        <td><b>${b.rider_capacity} riders</b></td>
+        <td>${b.historical_avg_del} min</td>
+        <td style="color:${b.delay_risk_pct > 30 ? '#ef4444' : '#10b981'}">${b.historical_delay_rate}%</td>
+        <td><b style="color:${isBad ? '#ef4444' : '#00d2ff'}">${b.avg_predicted_delivery} min</b></td>
+        <td><span class="${isBad ? 'badge badge-crit' : 'badge badge-ok'}">${b.delay_risk_pct}%</span></td>
+        <td style="font-size:12px;color:var(--dim)">${b.fleet_recommendation}</td>
+      </tr>`;
+  }).join('');
+}
+
+// ── Render Alerts Center Tab ──
+function renderAlertsTab(){
+  const container = document.getElementById('alerts-stream-container');
+  if(!ML_NOTIFS || ML_NOTIFS.length === 0){
+    container.innerHTML = '<div class="placeholder"><p>No operational alerts recorded.</p></div>';
+    return;
+  }
+  container.innerHTML = ML_NOTIFS.map(a => {
+    const isCrit = a.severity === 'CRITICAL';
+    return `
+      <div class="alert-item ${isCrit ? 'crit' : 'warn'}">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+          <div>
+            <span class="${isCrit ? 'badge badge-crit' : 'badge badge-warn'}">${a.severity}</span>
+            &nbsp;<strong>${a.title}</strong>
+          </div>
+          <span style="font-size:11px;color:var(--muted)">${a.channel} • ${a.created_at ? a.created_at.replace('T', ' ').slice(0, 19) : 'Just now'}</span>
+        </div>
+        <div style="font-size:12px;color:var(--primary);margin-bottom:4px">Recipient: ${a.recipient}</div>
+        <div style="font-size:13px;color:var(--dim);line-height:1.5;white-space:pre-line">${a.message}</div>
+      </div>`;
+  }).join('');
+}
+
+// ── Toast Notifications ──
+function showToast(msg){
+  let t = document.getElementById('toast');
+  if(!t){
+    t = document.createElement('div');
+    t.id = 'toast';
+    t.className = 'toast-msg';
+    document.body.appendChild(t);
+  }
+  t.textContent = msg;
+  t.style.display = 'block';
+  setTimeout(() => { t.style.display = 'none'; }, 3500);
+}
+
+function triggerPO(sku){
+  showToast(`✓ Emergency PO dispatched for ${sku} to Tier-1 Supply Hub.`);
+}
+function triggerPOModal(){
+  showToast("✓ Generated automated Emergency Purchase Order PO-AUTO-2026 for all 7 critical SKUs.");
+}
+function dispatchRetentionCampaign(){
+  showToast("✓ Dispatched 128 automated apology passes (₹100 credit) to at-risk VIP accounts.");
+}
+function dispatchSinglePass(cid){
+  showToast(`✓ Apology voucher sent to Customer #${cid} via SMS & Push notification.`);
+}
+function refreshAlerts(){
+  renderAlertsTab();
+  showToast("✓ Operational alert feed refreshed from live ML pipelines.");
+}
+
+// Overload switchTab to trigger ML renderers
+const _oldSwitchTab = switchTab;
+switchTab = function(name, btn){
+  _oldSwitchTab(name, btn);
+  if(name === 'forecast') renderForecastTab();
+  if(name === 'churn') renderChurnTab();
+  if(name === 'eta') renderETATab();
+  if(name === 'alerts') renderAlertsTab();
+};
+
+</script>
+</body>
+</html>

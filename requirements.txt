@@ -1,0 +1,34 @@
+# ============================================================
+# AI-Powered Business Decision Intelligence System
+# Quick-Commerce Operations | Major Project (15B29CI692)
+# JIIT 4th Year | Supervisor: Dr. Diksha Chawla
+# ============================================================
+#
+# INSTALL ALL DEPENDENCIES:
+#   pip install -r requirements.txt
+#
+# Python version: 3.11.x (recommended), 3.10+ minimum
+# ============================================================
+
+# ── Core Data & ML ───────────────────────────────────────────
+pandas==2.3.3
+numpy==2.3.5
+scikit-learn==1.8.0
+xgboost==3.2.0
+
+# ── Database ─────────────────────────────────────────────────
+mysql-connector-python==26.7.0
+
+# ── AI / Generative ──────────────────────────────────────────
+google-generativeai==0.8.3
+
+# ── Web App (Streamlit Dashboard) ────────────────────────────
+streamlit==1.67.0
+
+# ── Utilities ────────────────────────────────────────────────
+python-dotenv==1.0.1
+Faker>=24.0.0            # For database/seed_data.py synthetic data generation
+
+# ── Optional (for future visualisation exports) ───────────────
+# matplotlib>=3.9.0
+# seaborn>=0.13.0

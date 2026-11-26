@@ -1,0 +1,483 @@
+{
+  "diagnostics": {
+    "store_id": 7,
+    "store_name": "QuickMart Sector 56 Gurugram",
+    "city": "Gurugram",
+    "zone": "Sector 56",
+    "rider_capacity": 13,
+    "analysis_date": "2026-11-14",
+    "current_month": {
+      "month": "2025-03",
+      "orders": 116,
+      "revenue": 45336.77,
+      "total_discounts": 13440.41,
+      "cancellation_rate_pct": 2.59
+    },
+    "previous_month": {
+      "month": "2025-02",
+      "orders": 100,
+      "revenue": 38613.86,
+      "total_discounts": 11374.32,
+      "cancellation_rate_pct": 2.0
+    },
+    "mom_revenue_change_pct": 17.41,
+    "mom_order_change_pct": 16.0,
+    "stockout_rate_pct": 5.54,
+    "total_stockout_events": 304.0,
+    "avg_delivery_time_min": 13.78,
+    "delay_rate_pct": 0.0,
+    "avg_customer_rating": 4.17,
+    "negative_feedback_count": 0,
+    "total_feedback": 65,
+    "gross_margin_pct": 28.13,
+    "top_stockout_products": [
+      "Head & Shoulders 340ml (Personal Care)",
+      "Coca-Cola 2L (Beverages)",
+      "Amul Full Cream Milk 1L (Dairy)",
+      "Amul Paneer 200g (Dairy)",
+      "Bisleri Water 1L (Beverages)"
+    ],
+    "ml_forecast": {
+      "restock_alerts": [
+        {
+          "product_name": "Amul Full Cream Milk 1L",
+          "category": "Dairy",
+          "current_stock": 22,
+          "total_7day_demand": 52,
+          "days_to_stockout": 3.0
+        },
+        {
+          "product_name": "Amul Butter 500g",
+          "category": "Dairy",
+          "current_stock": 27,
+          "total_7day_demand": 54,
+          "days_to_stockout": 3.5
+        },
+        {
+          "product_name": "Mother Dairy Curd 500g",
+          "category": "Dairy",
+          "current_stock": 28,
+          "total_7day_demand": 62,
+          "days_to_stockout": 3.2
+        },
+        {
+          "product_name": "Amul Paneer 200g",
+          "category": "Dairy",
+          "current_stock": 25,
+          "total_7day_demand": 52,
+          "days_to_stockout": 3.4
+        },
+        {
+          "product_name": "Amul Cheese Slices 750g",
+          "category": "Dairy",
+          "current_stock": 49,
+          "total_7day_demand": 55,
+          "days_to_stockout": 6.2
+        },
+        {
+          "product_name": "Amul Taaza Milk 500ml",
+          "category": "Dairy",
+          "current_stock": 22,
+          "total_7day_demand": 59,
+          "days_to_stockout": 2.6
+        },
+        {
+          "product_name": "Epigamia Greek Yogurt 90g",
+          "category": "Dairy",
+          "current_stock": 24,
+          "total_7day_demand": 47,
+          "days_to_stockout": 3.6
+        },
+        {
+          "product_name": "Amul Kool Milk 200ml",
+          "category": "Dairy",
+          "current_stock": 20,
+          "total_7day_demand": 62,
+          "days_to_stockout": 2.3
+        },
+        {
+          "product_name": "Tomatoes (1 kg)",
+          "category": "Fruits & Veggies",
+          "current_stock": 41,
+          "total_7day_demand": 63,
+          "days_to_stockout": 4.6
+        },
+        {
+          "product_name": "Onions (1 kg)",
+          "category": "Fruits & Veggies",
+          "current_stock": 14,
+          "total_7day_demand": 59,
+          "days_to_stockout": 1.7
+        },
+        {
+          "product_name": "Potatoes (1 kg)",
+          "category": "Fruits & Veggies",
+          "current_stock": 29,
+          "total_7day_demand": 69,
+          "days_to_stockout": 2.9
+        },
+        {
+          "product_name": "Bananas (Dozen)",
+          "category": "Fruits & Veggies",
+          "current_stock": 32,
+          "total_7day_demand": 51,
+          "days_to_stockout": 4.4
+        },
+        {
+          "product_name": "Green Capsicum 500g",
+          "category": "Fruits & Veggies",
+          "current_stock": 33,
+          "total_7day_demand": 62,
+          "days_to_stockout": 3.7
+        },
+        {
+          "product_name": "Apples (1 kg)",
+          "category": "Fruits & Veggies",
+          "current_stock": 39,
+          "total_7day_demand": 50,
+          "days_to_stockout": 5.5
+        },
+        {
+          "product_name": "Spinach 250g",
+          "category": "Fruits & Veggies",
+          "current_stock": 28,
+          "total_7day_demand": 64,
+          "days_to_stockout": 3.1
+        },
+        {
+          "product_name": "Coca-Cola 2L",
+          "category": "Beverages",
+          "current_stock": 18,
+          "total_7day_demand": 50,
+          "days_to_stockout": 2.5
+        },
+        {
+          "product_name": "Pepsi 2L",
+          "category": "Beverages",
+          "current_stock": 23,
+          "total_7day_demand": 35,
+          "days_to_stockout": 4.6
+        },
+        {
+          "product_name": "Bisleri Water 1L",
+          "category": "Beverages",
+          "current_stock": 31,
+          "total_7day_demand": 44,
+          "days_to_stockout": 4.9
+        },
+        {
+          "product_name": "Real Orange Juice 1L",
+          "category": "Beverages",
+          "current_stock": 26,
+          "total_7day_demand": 66,
+          "days_to_stockout": 2.8
+        },
+        {
+          "product_name": "Red Bull 250ml",
+          "category": "Beverages",
+          "current_stock": 32,
+          "total_7day_demand": 50,
+          "days_to_stockout": 4.5
+        },
+        {
+          "product_name": "Nescafe Classic 50g",
+          "category": "Beverages",
+          "current_stock": 3,
+          "total_7day_demand": 52,
+          "days_to_stockout": 0.4
+        },
+        {
+          "product_name": "Tata Tea Premium 500g",
+          "category": "Beverages",
+          "current_stock": 27,
+          "total_7day_demand": 61,
+          "days_to_stockout": 3.1
+        },
+        {
+          "product_name": "Frooti 600ml",
+          "category": "Beverages",
+          "current_stock": 15,
+          "total_7day_demand": 42,
+          "days_to_stockout": 2.5
+        },
+        {
+          "product_name": "Lays Classic Salted 26g",
+          "category": "Snacks",
+          "current_stock": 30,
+          "total_7day_demand": 60,
+          "days_to_stockout": 3.5
+        },
+        {
+          "product_name": "Kurkure Masala Munch 90g",
+          "category": "Snacks",
+          "current_stock": 42,
+          "total_7day_demand": 47,
+          "days_to_stockout": 6.3
+        },
+        {
+          "product_name": "Parle-G Original 800g",
+          "category": "Snacks",
+          "current_stock": 39,
+          "total_7day_demand": 70,
+          "days_to_stockout": 3.9
+        },
+        {
+          "product_name": "Britannia Good Day 216g",
+          "category": "Snacks",
+          "current_stock": 39,
+          "total_7day_demand": 51,
+          "days_to_stockout": 5.4
+        },
+        {
+          "product_name": "Maggi Noodles 420g (6-pack)",
+          "category": "Snacks",
+          "current_stock": 29,
+          "total_7day_demand": 50,
+          "days_to_stockout": 4.1
+        },
+        {
+          "product_name": "Haldiram Bhujia 400g",
+          "category": "Snacks",
+          "current_stock": 44,
+          "total_7day_demand": 58,
+          "days_to_stockout": 5.3
+        },
+        {
+          "product_name": "Cadbury Dairy Milk 90g",
+          "category": "Snacks",
+          "current_stock": 22,
+          "total_7day_demand": 35,
+          "days_to_stockout": 4.4
+        },
+        {
+          "product_name": "Kit Kat 4-Finger 41.5g",
+          "category": "Snacks",
+          "current_stock": 18,
+          "total_7day_demand": 43,
+          "days_to_stockout": 2.9
+        },
+        {
+          "product_name": "Hide & Seek Fab Vanilla 100g",
+          "category": "Snacks",
+          "current_stock": 27,
+          "total_7day_demand": 56,
+          "days_to_stockout": 3.4
+        },
+        {
+          "product_name": "Lay's Wafer 52g",
+          "category": "Snacks",
+          "current_stock": 15,
+          "total_7day_demand": 43,
+          "days_to_stockout": 2.4
+        },
+        {
+          "product_name": "Dove Soap 75g (3-pack)",
+          "category": "Personal Care",
+          "current_stock": 36,
+          "total_7day_demand": 46,
+          "days_to_stockout": 5.5
+        },
+        {
+          "product_name": "Colgate Strong Teeth 300g",
+          "category": "Personal Care",
+          "current_stock": 23,
+          "total_7day_demand": 35,
+          "days_to_stockout": 4.6
+        },
+        {
+          "product_name": "Head & Shoulders 340ml",
+          "category": "Personal Care",
+          "current_stock": 12,
+          "total_7day_demand": 40,
+          "days_to_stockout": 2.1
+        },
+        {
+          "product_name": "Nivea Body Lotion 400ml",
+          "category": "Personal Care",
+          "current_stock": 28,
+          "total_7day_demand": 70,
+          "days_to_stockout": 2.8
+        },
+        {
+          "product_name": "Lifebuoy Handwash 215ml",
+          "category": "Personal Care",
+          "current_stock": 38,
+          "total_7day_demand": 55,
+          "days_to_stockout": 4.8
+        },
+        {
+          "product_name": "Gillette Vector Plus Razor",
+          "category": "Personal Care",
+          "current_stock": 20,
+          "total_7day_demand": 39,
+          "days_to_stockout": 3.6
+        },
+        {
+          "product_name": "Always Dry Regular 30-pack",
+          "category": "Personal Care",
+          "current_stock": 34,
+          "total_7day_demand": 48,
+          "days_to_stockout": 5.0
+        },
+        {
+          "product_name": "Surf Excel Easy Wash 1kg",
+          "category": "Household",
+          "current_stock": 22,
+          "total_7day_demand": 61,
+          "days_to_stockout": 2.5
+        },
+        {
+          "product_name": "Vim Bar 155g (3-pack)",
+          "category": "Household",
+          "current_stock": 34,
+          "total_7day_demand": 66,
+          "days_to_stockout": 3.6
+        },
+        {
+          "product_name": "Dettol Original 500ml",
+          "category": "Household",
+          "current_stock": 30,
+          "total_7day_demand": 38,
+          "days_to_stockout": 5.5
+        },
+        {
+          "product_name": "Colin Glass Cleaner 500ml",
+          "category": "Household",
+          "current_stock": 36,
+          "total_7day_demand": 44,
+          "days_to_stockout": 5.7
+        },
+        {
+          "product_name": "Scotch-Brite Scrubber 3-pack",
+          "category": "Household",
+          "current_stock": 30,
+          "total_7day_demand": 36,
+          "days_to_stockout": 5.8
+        },
+        {
+          "product_name": "Harpic Power Plus 1L",
+          "category": "Household",
+          "current_stock": 17,
+          "total_7day_demand": 76,
+          "days_to_stockout": 1.6
+        },
+        {
+          "product_name": "Britannia Brown Bread 400g",
+          "category": "Bakery & Eggs",
+          "current_stock": 29,
+          "total_7day_demand": 66,
+          "days_to_stockout": 3.1
+        },
+        {
+          "product_name": "Eggs Tray of 30",
+          "category": "Bakery & Eggs",
+          "current_stock": 27,
+          "total_7day_demand": 62,
+          "days_to_stockout": 3.0
+        },
+        {
+          "product_name": "Modern White Bread 400g",
+          "category": "Bakery & Eggs",
+          "current_stock": 28,
+          "total_7day_demand": 42,
+          "days_to_stockout": 4.7
+        },
+        {
+          "product_name": "Aashirvaad Atta 5kg",
+          "category": "Staples",
+          "current_stock": 8,
+          "total_7day_demand": 63,
+          "days_to_stockout": 0.9
+        },
+        {
+          "product_name": "India Gate Basmati Rice 1kg",
+          "category": "Staples",
+          "current_stock": 34,
+          "total_7day_demand": 57,
+          "days_to_stockout": 4.2
+        },
+        {
+          "product_name": "Tata Salt 1kg",
+          "category": "Staples",
+          "current_stock": 42,
+          "total_7day_demand": 42,
+          "days_to_stockout": 7.0
+        },
+        {
+          "product_name": "Fortune Sunflower Oil 1L",
+          "category": "Staples",
+          "current_stock": 26,
+          "total_7day_demand": 68,
+          "days_to_stockout": 2.7
+        },
+        {
+          "product_name": "Tata Sugar 1kg",
+          "category": "Staples",
+          "current_stock": 28,
+          "total_7day_demand": 45,
+          "days_to_stockout": 4.4
+        },
+        {
+          "product_name": "MDH Garam Masala 100g",
+          "category": "Staples",
+          "current_stock": 33,
+          "total_7day_demand": 38,
+          "days_to_stockout": 6.1
+        },
+        {
+          "product_name": "Dabur Honey 500g",
+          "category": "Staples",
+          "current_stock": 43,
+          "total_7day_demand": 55,
+          "days_to_stockout": 5.5
+        },
+        {
+          "product_name": "Kissan Mixed Fruit Jam 500g",
+          "category": "Staples",
+          "current_stock": 29,
+          "total_7day_demand": 53,
+          "days_to_stockout": 3.8
+        },
+        {
+          "product_name": "Maggi Hot Sweet Ketchup 500g",
+          "category": "Staples",
+          "current_stock": 31,
+          "total_7day_demand": 59,
+          "days_to_stockout": 3.7
+        },
+        {
+          "product_name": "Lipton Green Tea 25 bags",
+          "category": "Beverages",
+          "current_stock": 17,
+          "total_7day_demand": 47,
+          "days_to_stockout": 2.5
+        },
+        {
+          "product_name": "Amul Gold Milk 500ml",
+          "category": "Dairy",
+          "current_stock": 25,
+          "total_7day_demand": 59,
+          "days_to_stockout": 3.0
+        },
+        {
+          "product_name": "Bournvita 500g",
+          "category": "Beverages",
+          "current_stock": 33,
+          "total_7day_demand": 45,
+          "days_to_stockout": 5.1
+        }
+      ],
+      "predicted_delivery_min": 13.5,
+      "delay_risk_pct": 0.0,
+      "high_risk_churn_count": 61,
+      "sample_churn_accounts": [
+        "Cust #314 (Spend: ₹3848.56, Inactivity (31.0d since last order))",
+        "Cust #250 (Spend: ₹3117.52, Inactivity (32.0d since last order))",
+        "Cust #193 (Spend: ₹2672.94, Inactivity (61.0d since last order))"
+      ]
+    }
+  },
+  "ai_insight": "## Performance Summary\n\nQuickMart Sector 56 Gurugram (Store ID: 7) is currently operating within healthy performance parameters. Historical SQL analytics record monthly revenue of ₹45,336.77 (+17.41% MoM) across 116 orders (+16.0% MoM), with an average delivery duration of 13.78 minutes and customer rating of 4.17/5.0. Predictive ML models project stable 7-day demand with balanced fleet utilization.\n\n## Root Cause Analysis\n\n1. **Systemic Inventory Stockouts on Core SKUs:** Historical stockout rate of 5.54% significantly breaches the <8% threshold. 7-day ML time-series forecasts indicate that high-velocity staples (Amul Full Cream Milk 1L, Amul Butter 500g, Mother Dairy Curd 500g, Amul Paneer 200g) will exhaust closing stock within 2 to 6 days without emergency PO dispatch.\n2. **Customer Experience Degradation & Attrition:** Prolonged fulfillment latencies and stock unavailability have depressed customer satisfaction to 4.17/5.0 with 0 logged negative reviews. The XGBoost churn classifier identifies 61 high-value accounts exhibiting attrition indicators.\n\n## Recommended Actions\n\n1. **Trigger Automated Emergency PO Restock:** Dispatch replenishment purchase orders for critical SKUs: Amul Full Cream Milk 1L (min. 52 units); Amul Butter 500g (min. 54 units); Mother Dairy Curd 500g (min. 62 units) to prevent imminent inventory exhaustion.\n2. **Deploy Targeted Retention Interventions:** Trigger automated compensation vouchers (₹100 delivery apology pass) to the 61 flagged VIP customers with dedicated customer support outreach.\n3. **Establish Real-Time Telemetry & SLA Auditing:** Monitor dynamic delivery ETAs and automated restock triggers via the decision intelligence console to shift operations from reactive to proactive.\n\n## Priority Alert\n\nMONITORING ALERT: Maintain proactive stock replenishment and monitor peak-hour fleet allocation to ensure sustained SLA compliance.",
+  "generated_at": "2026-11-14T21:33:38.284571",
+  "model_engine": "Gemini-2.5-Flash + XGBoost/RF ML Pipeline"
+}

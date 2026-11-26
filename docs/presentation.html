@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI-Powered Business Decision Intelligence — Final Major Project Viva</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:      #07091a;
+      --bg2:     #0c1028;
+      --bg3:     #111535;
+      --primary: #00d2ff;
+      --purple:  #7c3aed;
+      --grad:    linear-gradient(135deg,#00d2ff,#7c3aed);
+      --success: #10b981;
+      --danger:  #ef4444;
+      --warning: #f59e0b;
+      --text:    #e2e8f0;
+      --muted:   #64748b;
+      --dim:     #94a3b8;
+      --glass:   rgba(255,255,255,0.04);
+      --glassb:  rgba(255,255,255,0.08);
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    html,body{width:100%;height:100%;overflow:hidden;font-family:'Inter',sans-serif;background:var(--bg);color:var(--text)}
+    .deck{width:100vw;height:100vh;position:relative;overflow:hidden}
+    .slide{
+      position:absolute;inset:0;display:flex;flex-direction:column;
+      justify-content:center;align-items:center;padding:36px 60px 52px;
+      opacity:0;pointer-events:none;
+      transition:opacity .5s ease, transform .5s ease;
+      transform:translateX(60px);
+    }
+    .slide.active{opacity:1;pointer-events:all;transform:translateX(0)}
+    .slide.out{opacity:0;transform:translateX(-60px)}
+    .slide::before{
+      content:'';position:absolute;inset:0;pointer-events:none;
+      background:
+        radial-gradient(ellipse 55% 55% at 15% 10%,rgba(0,210,255,.09) 0%,transparent 60%),
+        radial-gradient(ellipse 45% 45% at 85% 90%,rgba(124,58,237,.09) 0%,transparent 60%);
+    }
+    .nav-bar{
+      position:fixed;bottom:22px;left:50%;transform:translateX(-50%);
+      display:flex;align-items:center;gap:12px;z-index:100;
+      background:rgba(12,16,40,.9);backdrop-filter:blur(18px);
+      border:1px solid var(--glassb);border-radius:50px;
+      padding:9px 20px;
+    }
+    .nav-bar button{
+      background:var(--glass);border:1px solid var(--glassb);
+      color:var(--text);border-radius:50px;padding:7px 20px;
+      font-size:13px;font-weight:600;cursor:pointer;
+      transition:all .2s;font-family:'Inter',sans-serif;
+    }
+    .nav-bar button:hover{background:var(--glassb);color:#fff}
+    .slide-counter{font-size:13px;color:var(--muted);min-width:65px;text-align:center;font-weight:600}
+    .label{font-size:10.5px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--primary);margin-bottom:6px}
+    .big-title{
+      font-size:clamp(22px,3.5vw,44px);font-weight:900;line-height:1.15;
+      background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+      background-clip:text;text-align:center;margin-bottom:8px;
+    }
+    .sub-title{font-size:clamp(12px,1.3vw,16px);color:var(--dim);text-align:center;font-weight:400;line-height:1.4}
+    .section-title{
+      font-size:clamp(18px,2.4vw,28px);font-weight:800;
+      background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+      background-clip:text;margin-bottom:12px;text-align:center;
+    }
+    .card{background:var(--glass);border:1px solid var(--glassb);border-radius:12px;padding:12px 16px}
+    .cards-grid{display:grid;gap:10px;width:100%;max-width:1000px}
+    .cards-2{grid-template-columns:1fr 1fr}
+    .cards-3{grid-template-columns:1fr 1fr 1fr}
+    .cards-4{grid-template-columns:1fr 1fr 1fr 1fr}
+    .jiit-badge{
+      display:inline-flex;align-items:center;gap:8px;
+      background:var(--glass);border:1px solid var(--glassb);
+      border-radius:8px;padding:4px 14px;font-size:10.5px;color:var(--dim);
+      margin-bottom:12px;
+    }
+    .team-row{display:flex;gap:12px;margin-top:16px;flex-wrap:wrap;justify-content:center}
+    .team-chip{background:var(--glass);border:1px solid var(--glassb);border-radius:10px;padding:7px 14px;font-size:12px;color:var(--dim)}
+    .team-chip span{color:var(--primary);font-weight:600}
+    .pill{display:inline-flex;align-items:center;border-radius:20px;padding:4px 13px;font-size:12px;font-weight:600;margin:3px}
+    .pill-blue{background:rgba(0,210,255,.12);border:1px solid rgba(0,210,255,.3);color:var(--primary)}
+    .pill-purple{background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.3);color:#a78bfa}
+    .pill-green{background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.3);color:var(--success)}
+    .pill-red{background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.3);color:var(--danger)}
+    .blist{list-style:none;display:flex;flex-direction:column;gap:5px;text-align:left}
+    .blist li{display:flex;gap:9px;align-items:flex-start;font-size:clamp(11px,1.1vw,13px);color:var(--dim);line-height:1.4}
+    .blist li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--grad);flex-shrink:0;margin-top:4px}
+    .blist li strong{color:var(--text)}
+    .num-box{background:var(--grad);border-radius:8px;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#fff;flex-shrink:0}
+    .flow-row{display:flex;align-items:center;justify-content:center;gap:4px;width:100%}
+    .flow-box{background:var(--glass);border:1px solid var(--glassb);border-radius:10px;padding:9px 11px;text-align:center;font-size:11px;font-weight:600;color:var(--text);min-width:115px}
+    .flow-box .icon{font-size:18px;margin-bottom:3px}
+    .flow-box .sub{font-size:9.5px;color:var(--muted);margin-top:2px;font-weight:400}
+    .flow-arr{font-size:18px;color:var(--muted);padding:0 2px;flex-shrink:0}
+    .code-block{background:rgba(0,0,0,.4);border:1px solid var(--glassb);border-radius:10px;padding:12px 16px;font-family:monospace;font-size:11.5px;color:#a78bfa;line-height:1.5;text-align:left;overflow-x:auto}
+    .cmd{color:var(--primary);font-weight:bold}
+    .out{color:#e2e8f0}
+    .highlight-bar{background:linear-gradient(135deg,rgba(0,210,255,.08),rgba(124,58,237,.08));border:1px solid rgba(0,210,255,.2);border-radius:10px;padding:10px 16px;text-align:center;color:var(--dim)}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px;width:100%;max-width:1000px}
+    .dots{position:fixed;bottom:70px;left:50%;transform:translateX(-50%);display:flex;gap:6px;z-index:90}
+    .dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.2);cursor:pointer;transition:all .2s}
+    .dot.active{background:var(--primary);width:18px;border-radius:10px}
+  </style>
+</head>
+<body>
+<div class="deck">
+
+  <!-- SLIDE 1: TITLE -->
+  <div class="slide active" id="s1">
+    <div class="jiit-badge">🏫 Jaypee Institute of Information Technology, Noida | Major Project (15B29CI692)</div>
+    <div class="label">FINAL MAJOR PROJECT VIVA EXAMINATION</div>
+    <div class="big-title">AI-Powered Business Decision Intelligence System<br>for Quick-Commerce Operations</div>
+    <div class="sub-title">Bridging Relational Data, Time-Series Machine Learning &amp; Generative AI for Dark-Store Operational Fulfillment</div>
+    <div style="margin:14px 0">
+      <span class="pill pill-blue">MySQL 8.0</span>
+      <span class="pill pill-purple">XGBoost &amp; Random Forest</span>
+      <span class="pill pill-green">Google Gemini 2.5 Flash</span>
+      <span class="pill pill-blue">Anti-Hallucination Architecture</span>
+    </div>
+    <div class="team-row">
+      <div class="team-chip"><span>Tanya Jain (23104034):</span> Data Engineering &amp; SQL Analytics</div>
+      <div class="team-chip"><span>Tanmay Tiwari (23104032):</span> Machine Learning &amp; AI Engine</div>
+      <div class="team-chip"><span>Tanishq Jain (23104060):</span> Web Console &amp; Presentation</div>
+      <div class="team-chip" style="border-color:rgba(124,58,237,.4)"><span>Supervisor:</span> Dr. Diksha Chawla</div>
+    </div>
+  </div>
+
+  <!-- SLIDE 2: AGENDA -->
+  <div class="slide" id="s2">
+    <div class="label">Overview</div>
+    <div class="section-title">Presentation Agenda</div>
+    <div class="cards-grid cards-2" style="max-width:850px">
+      <div class="card"><div style="display:flex;gap:10px;align-items:center"><div class="num-box">1</div><div><strong>The Quick-Commerce Operational Crisis</strong><p style="font-size:11.5px;color:var(--muted)">Why traditional dashboards fail in 10-minute delivery logistics</p></div></div></div>
+      <div class="card"><div style="display:flex;gap:10px;align-items:center"><div class="num-box">2</div><div><strong>5-Layer Decision Intelligence Architecture</strong><p style="font-size:11.5px;color:var(--muted)">Data foundation, SQL analytics, predictive ML, and LLM synthesis</p></div></div></div>
+      <div class="card"><div style="display:flex;gap:10px;align-items:center"><div class="num-box">3</div><div><strong>Relational Database &amp; Anomaly Injection</strong><p style="font-size:11.5px;color:var(--muted)">8 tables, 3,000+ orders, Store 3 &amp; Store 7 realistic failure patterns</p></div></div></div>
+      <div class="card"><div style="display:flex;gap:10px;align-items:center"><div class="num-box">4</div><div><strong>15 Business Intelligence SQL Queries</strong><p style="font-size:11.5px;color:var(--muted)">Parameter-driven KPIs, Window Functions, and CTEs</p></div></div></div>
+      <div class="card"><div style="display:flex;gap:10px;align-items:center"><div class="num-box">5</div><div><strong>Predictive Machine Learning Engine</strong><p style="font-size:11.5px;color:var(--muted)">Demand Forecasting, Customer Churn, Dynamic ETA Predictor</p></div></div></div>
+      <div class="card"><div style="display:flex;gap:10px;align-items:center"><div class="num-box">6</div><div><strong>Anti-Hallucination AI &amp; Gemini 2.5 Flash</strong><p style="font-size:11.5px;color:var(--muted)">SQL handles numbers; Gemini interprets root causes &amp; actions</p></div></div></div>
+      <div class="card"><div style="display:flex;gap:10px;align-items:center"><div class="num-box">7</div><div><strong>Automated Alerts &amp; Multi-Console Interface</strong><p style="font-size:11.5px;color:var(--muted)">Multi-channel dispatch (WhatsApp/SMS) and Glassmorphic web app</p></div></div></div>
+      <div class="card"><div style="display:flex;gap:10px;align-items:center"><div class="num-box">8</div><div><strong>Live Viva Demonstration &amp; Results</strong><p style="font-size:11.5px;color:var(--muted)">Real-time diagnosis of Store 3 crisis and economic ROI recovery</p></div></div></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 3: PROBLEM STATEMENT -->
+  <div class="slide" id="s3">
+    <div class="label">Context &amp; Motivation</div>
+    <div class="section-title">The Quick-Commerce Problem</div>
+    <div class="cards-grid cards-3" style="max-width:980px">
+      <div class="card">
+        <div style="font-size:24px;margin-bottom:8px">⏱️</div>
+        <div style="font-weight:700;color:var(--text);margin-bottom:4px">10-15 Min SLA Pressure</div>
+        <p style="font-size:11.5px;color:var(--dim);line-height:1.45">Dark stores operate on razor-thin margins. A single stockout or rider bottleneck triggers severe cascading cancellations and customer defection.</p>
+      </div>
+      <div class="card">
+        <div style="font-size:24px;margin-bottom:8px">📉</div>
+        <div style="font-weight:700;color:var(--danger);margin-bottom:4px">Dashboards Only Show "What"</div>
+        <p style="font-size:11.5px;color:var(--dim);line-height:1.45">Power BI and Tableau report that revenue is down 23%, but store managers don't know WHY it happened or WHAT operational action to take next.</p>
+      </div>
+      <div class="card">
+        <div style="font-size:24px;margin-bottom:8px">🤖</div>
+        <div style="font-weight:700;color:var(--warning);margin-bottom:4px">LLM Hallucination Risk</div>
+        <p style="font-size:11.5px;color:var(--dim);line-height:1.45">Querying an LLM directly on database questions leads to invented numbers. Enterprise decisions require 100% deterministic mathematical verification.</p>
+      </div>
+    </div>
+    <div class="highlight-bar" style="margin-top:16px;max-width:980px">
+      💡 <strong>Our Solution:</strong> Decision Intelligence combining <strong>Deterministic SQL</strong> (Numbers) + <strong>Predictive ML</strong> (Forecasts) + <strong>Generative AI</strong> (Reasoning).
+    </div>
+  </div>
+
+  <!-- SLIDE 4: SYSTEM ARCHITECTURE -->
+  <div class="slide" id="s4">
+    <div class="label">Architecture</div>
+    <div class="section-title">5-Layer Decision Intelligence Pipeline</div>
+    <div style="width:100%;max-width:1020px">
+      <div class="flow-row" style="margin-bottom:18px">
+        <div class="flow-box"><div class="icon">🗄️</div><div>Layer 1: Data</div><div class="sub">MySQL (11 Tables, 3NF)</div></div>
+        <div class="flow-arr">→</div>
+        <div class="flow-box"><div class="icon">📊</div><div>Layer 2: SQL BI</div><div class="sub">15 Parametric BI Queries</div></div>
+        <div class="flow-arr">→</div>
+        <div class="flow-box" style="border-color:rgba(124,58,237,.4)"><div class="icon">🔮</div><div>Layer 3: ML Engine</div><div class="sub">XGBoost (3 Production Models)</div></div>
+        <div class="flow-arr">→</div>
+        <div class="flow-box" style="border-color:rgba(0,210,255,.4)"><div class="icon">🤖</div><div>Layer 4: GenAI</div><div class="sub">Gemini 2.5 Flash</div></div>
+        <div class="flow-arr">→</div>
+        <div class="flow-box" style="border-color:rgba(16,185,129,.4)"><div class="icon">📱</div><div>Layer 5: Actions</div><div class="sub">12 Alerts &amp; Web Console</div></div>
+      </div>
+      <div class="two-col">
+        <div class="card">
+          <div style="color:var(--primary);font-weight:700;font-size:12px;margin-bottom:6px">🛡️ Anti-Hallucination Design (Core USP)</div>
+          <ul class="blist">
+            <li><strong>Strict Division of Responsibility:</strong> Python/SQL executes all arithmetic; Gemini receives ONLY pre-computed numbers.</li>
+            <li><strong>Zero Direct DB Access for LLM:</strong> The model cannot run exploratory queries or invent phantom metrics.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div style="color:#c084fc;font-weight:700;font-size:12px;margin-bottom:6px">🔄 Proactive vs. Reactive Shift</div>
+          <ul class="blist">
+            <li><strong>Predictive Triggers:</strong> 7-day demand forecasting alerts store managers BEFORE stock runs out.</li>
+            <li><strong>Automated Interventions:</strong> Automated apology coupons dispatched to churning accounts.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 5: DATABASE DESIGN -->
+  <div class="slide" id="s5">
+    <div class="label">Layer 1 — Data Foundation</div>
+    <div class="section-title">Relational Database &amp; Anomaly Injection</div>
+    <div class="two-col">
+      <div class="card">
+        <div style="font-weight:700;color:var(--primary);margin-bottom:8px">11-Table Schema in 3NF (54,900+ Records)</div>
+        <ul class="blist">
+          <li><strong>stores (10 records):</strong> Dark stores across Delhi, Bengaluru, Gurugram, Noida.</li>
+          <li><strong>products (~200 records):</strong> SKU catalog with category, price, shelf-life.</li>
+          <li><strong>orders (3,000+ records) &amp; order_items (~9,000):</strong> High-frequency transactions.</li>
+          <li><strong>inventory (54,900 records):</strong> 90-day daily closing stock per SKU per store.</li>
+          <li><strong>delivery_logs (2,848 records):</strong> Fulfillment latencies &amp; ratings.</li>
+          <li><strong>3 ML Output Tables:</strong> <code>demand_forecasts</code>, <code>churn_scores</code>, <code>delivery_predictions</code>.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div style="font-weight:700;color:var(--warning);margin-bottom:8px">Embedded Real-World Anomalies</div>
+        <ul class="blist">
+          <li><strong>Store 3 (QuickMart Koramangala):</strong> Fleet starvation (only 5 riders) + severe stockouts (33.48%) &rarr; 30.5 min ETA (100% SLA risk) &rarr; -23.57% MoM revenue collapse &amp; 2.15/5 rating.</li>
+          <li><strong>Store 7 (Sector 56 Gurugram):</strong> High order growth (+17.41% revenue, +16% orders) but gross margin erosion (28.13% vs &gt;35% target) due to discount subsidies.</li>
+          <li><strong>Control Stores (Store 1, 2, 5):</strong> Stable operational benchmarks (&lt;14 min ETA, &lt;8% stockout).</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 6: 15 SQL QUERIES -->
+  <div class="slide" id="s6">
+    <div class="label">Layer 2 — Analytics</div>
+    <div class="section-title">15 Enterprise Business Intelligence SQL Queries</div>
+    <div class="cards-grid cards-3">
+      <div class="card">
+        <div style="color:var(--primary);font-weight:700;margin-bottom:6px">📈 Financial Performance</div>
+        <ul class="blist">
+          <li>Q1: Monthly Revenue &amp; AOV</li>
+          <li>Q2: Store Performance Ranking</li>
+          <li>Q3: MoM City Revenue Growth</li>
+          <li>Q13: Revenue vs Margin Dual Rank</li>
+          <li>Q14: Hidden Loss Products</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div style="color:var(--warning);font-weight:700;margin-bottom:6px">📦 Inventory &amp; Stockouts</div>
+        <ul class="blist">
+          <li>Q4: Highest Stockout Rates</li>
+          <li>Q5: Top Stockout-Causing SKUs</li>
+          <li>Q6: High-Demand Low-Stock SKUs</li>
+          <li>Q15: Multi-CTE Store Root Cause</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div style="color:var(--success);font-weight:700;margin-bottom:6px">🚴 Fulfillment &amp; Customers</div>
+        <ul class="blist">
+          <li>Q7: Slowest Delivery Stores</li>
+          <li>Q8: Delay vs Cancellation Corr.</li>
+          <li>Q9: Peak Ordering Hours</li>
+          <li>Q10: Customer Segment Margins</li>
+          <li>Q11: Inactivity Churn Risk</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 7: ML MODULE 1 -->
+  <div class="slide" id="s7">
+    <div class="label">Layer 3 — Machine Learning Module 1</div>
+    <div class="section-title">SKU-Level 7-Day Demand Forecasting</div>
+    <div class="two-col">
+      <div class="card">
+        <div style="font-weight:700;color:var(--primary);margin-bottom:8px">Time-Series Formulation</div>
+        <ul class="blist">
+          <li><strong>Architecture:</strong> 610 Store-SKU XGBoost Regressor models trained across 54,900 sales records.</li>
+          <li><strong>Feature Engineering:</strong> Lags (y_lag_1, y_lag_7, y_lag_14), Rolling Means &amp; Std (7-day), Day of Week.</li>
+          <li><strong>Restock Prediction:</strong> Recursive 7-day forward horizon predicting unit demand per SKU.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div style="font-weight:700;color:var(--danger);margin-bottom:8px">Automated Restock Alert Logic</div>
+        <ul class="blist">
+          <li>If <strong>Predicted 7-Day Demand &gt; Current Stock</strong>: Trigger <code>RESTOCK_ALERT</code>.</li>
+          <li><strong>Execution Results:</strong> 577 store-SKU restock alerts triggered automatically.</li>
+          <li><strong>Store 3 Finding:</strong> Amul Paneer 200g (Stock: 20, 7-Day Demand: 67) &rarr; Stockout in <strong>2.1 days</strong>!</li>
+          <li>Auto-populates MySQL <code>demand_forecasts</code> &amp; generates PO notifications.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 8: ML MODULES 2 & 3 -->
+  <div class="slide" id="s8">
+    <div class="label">Layer 3 — Machine Learning Modules 2 &amp; 3</div>
+    <div class="section-title">Customer Churn &amp; Dynamic Delivery ETA Engines</div>
+    <div class="two-col">
+      <div class="card">
+        <div style="font-weight:700;color:#c084fc;margin-bottom:8px">Module 2: Customer Churn Classification</div>
+        <ul class="blist">
+          <li><strong>Model:</strong> XGBoost Classifier with 12 behavioral features (days_since_last_order at 45.6% impact, order frequency, spend, ratings).</li>
+          <li><strong>Validation:</strong> <strong>94.40% Accuracy</strong>, ROC-AUC = <strong>0.8357</strong>, 5-Fold CV AUC = <strong>0.8684 &plusmn; 0.0600</strong>, Precision = 93.33%, Recall = 70.00%.</li>
+          <li><strong>Outcome:</strong> Flagged <strong>61 HIGH-risk accounts</strong> (&gt;70% churn prob) &rarr; ₹100 retention voucher dispatched (~800% ROI).</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div style="font-weight:700;color:var(--success);margin-bottom:8px">Module 3: Dynamic Delivery ETA Engine</div>
+        <ul class="blist">
+          <li><strong>Model:</strong> XGBoost Regressor trained on 2,848 delivery fulfillment records.</li>
+          <li><strong>Metrics:</strong> <strong>MAE = &plusmn;2.74 min</strong>, RMSE = &plusmn;3.22 min, R&sup2; = 42.6% (urban stochastic traffic noise).</li>
+          <li><strong>Key Driver:</strong> <code>rider_capacity</code> drives <strong>89.0%</strong> of delivery latency.</li>
+          <li><strong>Store 3 Insight:</strong> Predicts <strong>30.5-min fulfillment time</strong> (100% SLA breach risk) directly exposing the 5-rider bottleneck.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 9: OPERATIONAL ALERTING -->
+  <div class="slide" id="s9">
+    <div class="label">Layer 5 — Automated Interventions</div>
+    <div class="section-title">Automated Multi-Channel Alert Dispatcher</div>
+    <div style="width:100%;max-width:960px">
+      <div class="cards-grid cards-3" style="margin-bottom:14px">
+        <div class="card" style="border-left:4px solid var(--danger)">
+          <div style="font-weight:700;color:var(--danger)">🚨 Restock PO Trigger</div>
+          <p style="font-size:11px;color:var(--dim);margin-top:4px">Dispatches automated WhatsApp/SMS notifications to store manager when SKU days-to-zero drops &lt; 4 days.</p>
+        </div>
+        <div class="card" style="border-left:4px solid var(--warning)">
+          <div style="font-weight:700;color:var(--warning)">🎁 VIP Retention Passes</div>
+          <p style="font-size:11px;color:var(--dim);margin-top:4px">Automatically issues ₹100 SLA apology coupons to high-value customers experiencing delays before they churn.</p>
+        </div>
+        <div class="card" style="border-left:4px solid var(--primary)">
+          <div style="font-weight:700;color:var(--primary)">🚴 Fleet Capacity Alert</div>
+          <p style="font-size:11px;color:var(--dim);margin-top:4px">Alerts central dispatch when dynamic ETA exceeds 20 minutes to allocate 3PL overflow riders immediately.</p>
+        </div>
+      </div>
+      <div class="highlight-bar">
+        ⚡ <strong>Viva Differentiator:</strong> Moves beyond passive dashboards into an active, self-healing operational decision system.
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 10: GENAI ENGINE -->
+  <div class="slide" id="s10">
+    <div class="label">Layer 4 — Generative AI Synthesis</div>
+    <div class="section-title">Google Gemini 2.5 Flash Decision Engine</div>
+    <div style="width:100%;max-width:960px">
+      <div class="flow-row" style="margin-bottom:14px">
+        <div class="flow-box"><div class="icon">🔢</div><div>SQL KPIs</div><div class="sub">Historical Truth</div></div>
+        <div class="flow-arr">+</div>
+        <div class="flow-box"><div class="icon">🔮</div><div>ML Forecasts</div><div class="sub">7-Day Forward Risk</div></div>
+        <div class="flow-arr">&rarr;</div>
+        <div class="flow-box" style="border-color:rgba(0,210,255,.4)"><div class="icon">✍️</div><div>Grounded Prompt</div><div class="sub">Strict Rules</div></div>
+        <div class="flow-arr">&rarr;</div>
+        <div class="flow-box" style="border-color:rgba(124,58,237,.4)"><div class="icon">🤖</div><div>Gemini 2.5 Flash</div><div class="sub">4-Section Synthesis</div></div>
+      </div>
+      <div class="code-block" style="font-size:11px">
+        <span class="cmd">$ python ai/insights.py 3</span><br>
+        <span class="out">## Performance Summary:</span> QuickMart Koramangala is in critical distress (-23.57% MoM revenue, 30.5 min avg delivery, 33.48% stockout rate, 2.15/5 rating).<br>
+        <span class="out">## Root Cause Analysis:</span> 1. Severe fleet bottleneck (5 riders vs 12-15 benchmark) &rarr; 2. Imminent stockout on Amul Paneer (2.1 days) &rarr; 3. 23 customers at high churn risk.<br>
+        <span class="out">## Recommended Actions:</span> 1. Deploy 8 overflow riders immediately; 2. Emergency PO for dairy/staples; 3. Dispatch ₹100 retention vouchers.<br>
+        <span class="out">## Priority Alert:</span> High-priority fleet overflow and inventory restock alerts dispatched to Regional Ops &amp; Store POS.
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 11: INTERACTIVE CONSOLE -->
+  <div class="slide" id="s11">
+    <div class="label">Visualization &amp; Operations</div>
+    <div class="section-title">Interactive Decision Intelligence Consoles</div>
+    <div class="cards-grid cards-3" style="max-width:980px">
+      <div class="card">
+        <div style="font-size:20px;margin-bottom:6px">🌐</div>
+        <div style="font-weight:700;color:var(--primary);margin-bottom:4px">Glassmorphic Web App</div>
+        <p style="font-size:11.5px;color:var(--dim)"><code>dashboard/index.html</code> — Standalone browser console featuring Network Overview, Store Deep Dive, ML Demand Forecast, Churn Visualizer, Dynamic ETA Simulator, and Alerts Center.</p>
+      </div>
+      <div class="card">
+        <div style="font-size:20px;margin-bottom:6px">⚡</div>
+        <div style="font-weight:700;color:#c084fc;margin-bottom:4px">Streamlit Web Console</div>
+        <p style="font-size:11.5px;color:var(--dim)"><code>app/streamlit_app.py</code> — Python-native interactive UI for live model parameter tuning, trigger actions, and instant executive AI re-evaluations.</p>
+      </div>
+      <div class="card">
+        <div style="font-size:20px;margin-bottom:6px">📊</div>
+        <div style="font-weight:700;color:var(--success);margin-bottom:4px">Power BI Architecture</div>
+        <p style="font-size:11.5px;color:var(--dim)">MySQL ODBC integration blueprint with 12 DAX measures, star-schema relationships, and 3-page executive reporting layouts.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 12: VIVA DEMO SCENARIO -->
+  <div class="slide" id="s12">
+    <div class="label">Live Viva Demonstration</div>
+    <div class="section-title">Store 3 &amp; Store 7 Live Diagnostic Workflow</div>
+    <div class="two-col">
+      <div class="card">
+        <div style="color:var(--danger);font-weight:700;margin-bottom:8px">Demo Scenario 1: Store 3 (Operational Crisis)</div>
+        <ul class="blist">
+          <li><strong>Step 1:</strong> Select Store 3 on Dashboard &rarr; Observe CRITICAL status, -23.57% revenue drop, 33.48% stockout rate, 2.15/5 rating.</li>
+          <li><strong>Step 2:</strong> Check ML Demand Forecast &rarr; Amul Paneer stocks out in 2.1 days (20 units stock vs 67 units 7-day demand).</li>
+          <li><strong>Step 3:</strong> Check Delivery Tab &rarr; 30.5 min predicted ETA with 100% SLA breach risk rooted in 5 active riders.</li>
+          <li><strong>Step 4:</strong> Check AI Tab &rarr; Gemini synthesis identifies 5-rider root cause and suggests 8 overflow riders + PO restock.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div style="color:var(--warning);font-weight:700;margin-bottom:8px">Demo Scenario 2: Store 7 (Margin Erosion)</div>
+        <ul class="blist">
+          <li><strong>Step 1:</strong> Select Store 7 &rarr; Star metrics on surface (+17.41% revenue MoM, +16.0% orders, 13.78 min ETA, 4.17 rating).</li>
+          <li><strong>Step 2:</strong> System flags <strong>PROFITABILITY WARNING</strong> &rarr; Gross Margin eroded to <strong>28.13%</strong> (target &gt;35%).</li>
+          <li><strong>Step 3:</strong> Diagnosis reveals high customer subsidies &rarr; Gemini advises capping discount rate to 12% and enforcing minimum basket size to avoid growth trap.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 13: PROJECT COMPLETION STATUS -->
+  <div class="slide" id="s13">
+    <div class="label">Deliverables Status</div>
+    <div class="section-title">Final Project Completion Inventory (100% Deployed)</div>
+    <div class="cards-grid cards-2" style="max-width:920px">
+      <div class="card" style="border-color:rgba(16,185,129,.4)">
+        <div style="color:var(--success);font-weight:700;margin-bottom:6px">✅ Core Software Components</div>
+        <ul class="blist">
+          <li><strong>MySQL 8.0 Schema:</strong> 8 core tables + 3 ML tables (schema.sql + add_ml_tables.sql)</li>
+          <li><strong>15 BI SQL Queries:</strong> queries.sql fully validated</li>
+          <li><strong>Gemini AI Engine:</strong> ai/insights.py with live &amp; offline synthesis</li>
+          <li><strong>Interactive Web App:</strong> dashboard/index.html (7 tabs)</li>
+          <li><strong>Streamlit App:</strong> app/streamlit_app.py complete</li>
+        </ul>
+      </div>
+      <div class="card" style="border-color:rgba(16,185,129,.4)">
+        <div style="color:var(--success);font-weight:700;margin-bottom:6px">✅ Machine Learning &amp; Automation</div>
+        <ul class="blist">
+          <li><strong>Demand Forecast:</strong> ml/demand_forecast.py (XGBoost/RF)</li>
+          <li><strong>Churn Model:</strong> ml/churn_model.py (Random Forest)</li>
+          <li><strong>Delivery Regressor:</strong> ml/delivery_predictor.py</li>
+          <li><strong>Alert Notifier:</strong> ml/alert_notifier.py (Multi-channel)</li>
+          <li><strong>Master Pipeline:</strong> ml/run_all_ml.py (One-command run)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 14: BUSINESS IMPACT -->
+  <div class="slide" id="s14">
+    <div class="label">Empirical Results</div>
+    <div class="section-title">Quantified Business &amp; Operational Impact</div>
+    <div class="cards-grid cards-3" style="max-width:980px">
+      <div class="card">
+        <div style="font-size:24px;margin-bottom:6px">💰</div>
+        <div style="font-weight:700;color:var(--success)">~2,500% Net ROI</div>
+        <div style="font-size:11px;color:var(--muted);margin-bottom:6px">₹23.4L Total Annual Value</div>
+        <p style="font-size:11.5px;color:var(--dim)">System cost of ₹90K/yr delivers ₹23.4L in total economic value via stockout recovery, churn salvage, SLA penalties avoided, and analyst labor savings.</p>
+      </div>
+      <div class="card">
+        <div style="font-size:24px;margin-bottom:6px">⏱️</div>
+        <div style="font-weight:700;color:var(--primary)">65 Sec Diagnosis</div>
+        <div style="font-size:11px;color:var(--muted);margin-bottom:6px">From 4-6 Hours Manual Work</div>
+        <p style="font-size:11.5px;color:var(--dim)">Saves 4 hours/day of senior BI analyst work (~₹20 Lakhs/year) while catching operational failures 2-3 weeks before standard accounting reports.</p>
+      </div>
+      <div class="card">
+        <div style="font-size:24px;margin-bottom:6px">👥</div>
+        <div style="font-weight:700;color:#c084fc">800% Churn ROI</div>
+        <div style="font-size:11px;color:var(--muted);margin-bottom:6px">Customer Retention Engine</div>
+        <p style="font-size:11.5px;color:var(--dim)">Dispatches ₹100 retention passes to 61 HIGH-risk accounts (₹6,100 cost) recovering ₹54,900 in Customer Lifetime Value (LTV).</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 15: CONCLUSION -->
+  <div class="slide" id="s15">
+    <div class="label">Summary</div>
+    <div class="section-title">Conclusion &amp; Key Takeaways</div>
+    <div class="cards-grid cards-2" style="max-width:900px">
+      <div class="card">
+        <div style="font-weight:700;color:var(--primary);margin-bottom:6px">Technical Contributions</div>
+        <ul class="blist">
+          <li>End-to-end data pipeline uniting SQL, Machine Learning, and LLM reasoning.</li>
+          <li>Rigorous anti-hallucination paradigm suitable for enterprise production.</li>
+          <li>Multi-feature time series &amp; classifier models solving core supply-chain challenges.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div style="font-weight:700;color:var(--success);margin-bottom:6px">Commercial Feasibility</div>
+        <ul class="blist">
+          <li>Open-source tech stack with zero proprietary licensing costs.</li>
+          <li>Direct applicability to quick-commerce majors (Blinkit, Zepto, Swiggy Instamart).</li>
+          <li>Modular architecture allowing continuous model retraining &amp; expansion.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 16: THANK YOU -->
+  <div class="slide" id="s16">
+    <div class="label">Examination Defense</div>
+    <div class="big-title">Thank You!</div>
+    <div class="sub-title">AI-Powered Business Decision Intelligence System for Quick-Commerce Operations</div>
+    <div style="margin:20px 0">
+      <span class="pill pill-blue">Open for Viva Voce Q&amp;A</span>
+    </div>
+    <div class="card" style="max-width:500px;text-align:center;padding:16px 24px">
+      <p style="font-size:12px;color:var(--dim)">Ready to demonstrate live MySQL queries, ML model executions, and Gemini AI diagnosis.</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- Navigation Dots -->
+<div class="dots" id="dots"></div>
+
+<!-- Nav bar -->
+<div class="nav-bar">
+  <button onclick="go(-1)">&#8592; Prev</button>
+  <span class="slide-counter" id="counter">1 / 16</span>
+  <button onclick="go(1)">Next &#8594;</button>
+  <button onclick="toggleFS()" style="margin-left:8px">&#9974; Full</button>
+</div>
+
+<script>
+  const TOTAL = 16;
+  let cur = 1;
+  const counter = document.getElementById('counter');
+  const dotsEl  = document.getElementById('dots');
+  for (let i = 1; i <= TOTAL; i++) {
+    const d = document.createElement('div');
+    d.className = 'dot' + (i === 1 ? ' active' : '');
+    d.onclick = () => goTo(i);
+    dotsEl.appendChild(d);
+  }
+  function goTo(n) {
+    const prev = document.getElementById('s' + cur);
+    prev.classList.remove('active'); prev.classList.add('out');
+    setTimeout(() => prev.classList.remove('out'), 500);
+    cur = n;
+    document.getElementById('s' + cur).classList.add('active');
+    counter.textContent = cur + ' / ' + TOTAL;
+    dotsEl.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i + 1 === cur));
+  }
+  function go(dir) { const n = Math.min(TOTAL, Math.max(1, cur + dir)); if (n !== cur) goTo(n); }
+  document.addEventListener('keydown', e => {
+    if (['ArrowRight','ArrowDown',' '].includes(e.key)) { e.preventDefault(); go(1); }
+    if (['ArrowLeft','ArrowUp'].includes(e.key)) { e.preventDefault(); go(-1); }
+  });
+  function toggleFS() {
+    if (!document.fullscreenElement) document.documentElement.requestFullscreen();
+    else document.exitFullscreen();
+  }
+</script>
+</body>
+</html>

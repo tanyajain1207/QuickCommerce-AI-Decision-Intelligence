@@ -1,0 +1,329 @@
+{
+  "diagnostics": {
+    "store_id": 3,
+    "store_name": "QuickMart Koramangala",
+    "city": "Bengaluru",
+    "zone": "South",
+    "rider_capacity": 5,
+    "analysis_date": "2026-11-23",
+    "current_month": {
+      "month": "2025-03",
+      "orders": 30,
+      "revenue": 15492.56,
+      "total_discounts": 1091.35,
+      "cancellation_rate_pct": 10.0
+    },
+    "previous_month": {
+      "month": "2025-02",
+      "orders": 43,
+      "revenue": 20271.53,
+      "total_discounts": 1430.38,
+      "cancellation_rate_pct": 2.33
+    },
+    "mom_revenue_change_pct": -23.57,
+    "mom_order_change_pct": -30.23,
+    "stockout_rate_pct": 33.48,
+    "total_stockout_events": 1838.0,
+    "avg_delivery_time_min": 30.53,
+    "delay_rate_pct": 100.0,
+    "avg_customer_rating": 2.15,
+    "negative_feedback_count": 11,
+    "total_feedback": 20,
+    "gross_margin_pct": 27.86,
+    "top_stockout_products": [
+      "Kissan Mixed Fruit Jam 500g (Staples)",
+      "Amul Cheese Slices 750g (Dairy)",
+      "Pepsi 2L (Beverages)",
+      "Epigamia Greek Yogurt 90g (Dairy)",
+      "Vim Bar 155g (3-pack) (Household)"
+    ],
+    "ml_forecast": {
+      "restock_alerts": [
+        {
+          "product_name": "Amul Full Cream Milk 1L",
+          "category": "Dairy",
+          "current_stock": 31,
+          "total_7day_demand": 55,
+          "days_to_stockout": 3.9
+        },
+        {
+          "product_name": "Mother Dairy Curd 500g",
+          "category": "Dairy",
+          "current_stock": 28,
+          "total_7day_demand": 42,
+          "days_to_stockout": 4.7
+        },
+        {
+          "product_name": "Amul Paneer 200g",
+          "category": "Dairy",
+          "current_stock": 20,
+          "total_7day_demand": 67,
+          "days_to_stockout": 2.1
+        },
+        {
+          "product_name": "Amul Cheese Slices 750g",
+          "category": "Dairy",
+          "current_stock": 31,
+          "total_7day_demand": 37,
+          "days_to_stockout": 5.9
+        },
+        {
+          "product_name": "Amul Taaza Milk 500ml",
+          "category": "Dairy",
+          "current_stock": 22,
+          "total_7day_demand": 40,
+          "days_to_stockout": 3.9
+        },
+        {
+          "product_name": "Onions (1 kg)",
+          "category": "Fruits & Veggies",
+          "current_stock": 21,
+          "total_7day_demand": 24,
+          "days_to_stockout": 6.1
+        },
+        {
+          "product_name": "Potatoes (1 kg)",
+          "category": "Fruits & Veggies",
+          "current_stock": 18,
+          "total_7day_demand": 33,
+          "days_to_stockout": 3.8
+        },
+        {
+          "product_name": "Bananas (Dozen)",
+          "category": "Fruits & Veggies",
+          "current_stock": 45,
+          "total_7day_demand": 49,
+          "days_to_stockout": 6.4
+        },
+        {
+          "product_name": "Green Capsicum 500g",
+          "category": "Fruits & Veggies",
+          "current_stock": 46,
+          "total_7day_demand": 59,
+          "days_to_stockout": 5.5
+        },
+        {
+          "product_name": "Apples (1 kg)",
+          "category": "Fruits & Veggies",
+          "current_stock": 29,
+          "total_7day_demand": 41,
+          "days_to_stockout": 5.0
+        },
+        {
+          "product_name": "Real Orange Juice 1L",
+          "category": "Beverages",
+          "current_stock": 31,
+          "total_7day_demand": 35,
+          "days_to_stockout": 6.2
+        },
+        {
+          "product_name": "Red Bull 250ml",
+          "category": "Beverages",
+          "current_stock": 25,
+          "total_7day_demand": 29,
+          "days_to_stockout": 6.0
+        },
+        {
+          "product_name": "Nescafe Classic 50g",
+          "category": "Beverages",
+          "current_stock": 31,
+          "total_7day_demand": 34,
+          "days_to_stockout": 6.4
+        },
+        {
+          "product_name": "Frooti 600ml",
+          "category": "Beverages",
+          "current_stock": 35,
+          "total_7day_demand": 50,
+          "days_to_stockout": 4.9
+        },
+        {
+          "product_name": "Parle-G Original 800g",
+          "category": "Snacks",
+          "current_stock": 34,
+          "total_7day_demand": 45,
+          "days_to_stockout": 5.3
+        },
+        {
+          "product_name": "Britannia Good Day 216g",
+          "category": "Snacks",
+          "current_stock": 31,
+          "total_7day_demand": 54,
+          "days_to_stockout": 4.0
+        },
+        {
+          "product_name": "Haldiram Bhujia 400g",
+          "category": "Snacks",
+          "current_stock": 38,
+          "total_7day_demand": 38,
+          "days_to_stockout": 7.0
+        },
+        {
+          "product_name": "Cadbury Dairy Milk 90g",
+          "category": "Snacks",
+          "current_stock": 18,
+          "total_7day_demand": 41,
+          "days_to_stockout": 3.1
+        },
+        {
+          "product_name": "Kit Kat 4-Finger 41.5g",
+          "category": "Snacks",
+          "current_stock": 30,
+          "total_7day_demand": 46,
+          "days_to_stockout": 4.6
+        },
+        {
+          "product_name": "Hide & Seek Fab Vanilla 100g",
+          "category": "Snacks",
+          "current_stock": 33,
+          "total_7day_demand": 45,
+          "days_to_stockout": 5.1
+        },
+        {
+          "product_name": "Lay's Wafer 52g",
+          "category": "Snacks",
+          "current_stock": 29,
+          "total_7day_demand": 43,
+          "days_to_stockout": 4.7
+        },
+        {
+          "product_name": "Dove Soap 75g (3-pack)",
+          "category": "Personal Care",
+          "current_stock": 9,
+          "total_7day_demand": 35,
+          "days_to_stockout": 1.8
+        },
+        {
+          "product_name": "Head & Shoulders 340ml",
+          "category": "Personal Care",
+          "current_stock": 33,
+          "total_7day_demand": 40,
+          "days_to_stockout": 5.8
+        },
+        {
+          "product_name": "Nivea Body Lotion 400ml",
+          "category": "Personal Care",
+          "current_stock": 37,
+          "total_7day_demand": 45,
+          "days_to_stockout": 5.8
+        },
+        {
+          "product_name": "Lifebuoy Handwash 215ml",
+          "category": "Personal Care",
+          "current_stock": 33,
+          "total_7day_demand": 33,
+          "days_to_stockout": 7.0
+        },
+        {
+          "product_name": "Gillette Vector Plus Razor",
+          "category": "Personal Care",
+          "current_stock": 39,
+          "total_7day_demand": 42,
+          "days_to_stockout": 6.5
+        },
+        {
+          "product_name": "Always Dry Regular 30-pack",
+          "category": "Personal Care",
+          "current_stock": 16,
+          "total_7day_demand": 38,
+          "days_to_stockout": 2.9
+        },
+        {
+          "product_name": "Surf Excel Easy Wash 1kg",
+          "category": "Household",
+          "current_stock": 37,
+          "total_7day_demand": 57,
+          "days_to_stockout": 4.5
+        },
+        {
+          "product_name": "Vim Bar 155g (3-pack)",
+          "category": "Household",
+          "current_stock": 26,
+          "total_7day_demand": 29,
+          "days_to_stockout": 6.3
+        },
+        {
+          "product_name": "Dettol Original 500ml",
+          "category": "Household",
+          "current_stock": 39,
+          "total_7day_demand": 45,
+          "days_to_stockout": 6.1
+        },
+        {
+          "product_name": "Harpic Power Plus 1L",
+          "category": "Household",
+          "current_stock": 53,
+          "total_7day_demand": 54,
+          "days_to_stockout": 6.9
+        },
+        {
+          "product_name": "Britannia Brown Bread 400g",
+          "category": "Bakery & Eggs",
+          "current_stock": 27,
+          "total_7day_demand": 40,
+          "days_to_stockout": 4.7
+        },
+        {
+          "product_name": "Modern White Bread 400g",
+          "category": "Bakery & Eggs",
+          "current_stock": 24,
+          "total_7day_demand": 24,
+          "days_to_stockout": 7.0
+        },
+        {
+          "product_name": "India Gate Basmati Rice 1kg",
+          "category": "Staples",
+          "current_stock": 14,
+          "total_7day_demand": 41,
+          "days_to_stockout": 2.4
+        },
+        {
+          "product_name": "Tata Sugar 1kg",
+          "category": "Staples",
+          "current_stock": 27,
+          "total_7day_demand": 28,
+          "days_to_stockout": 6.8
+        },
+        {
+          "product_name": "Dabur Honey 500g",
+          "category": "Staples",
+          "current_stock": 26,
+          "total_7day_demand": 51,
+          "days_to_stockout": 3.6
+        },
+        {
+          "product_name": "Maggi Hot Sweet Ketchup 500g",
+          "category": "Staples",
+          "current_stock": 36,
+          "total_7day_demand": 43,
+          "days_to_stockout": 5.9
+        },
+        {
+          "product_name": "Lipton Green Tea 25 bags",
+          "category": "Beverages",
+          "current_stock": 30,
+          "total_7day_demand": 49,
+          "days_to_stockout": 4.3
+        },
+        {
+          "product_name": "Bournvita 500g",
+          "category": "Beverages",
+          "current_stock": 28,
+          "total_7day_demand": 50,
+          "days_to_stockout": 3.9
+        }
+      ],
+      "predicted_delivery_min": 30.5,
+      "delay_risk_pct": 100.0,
+      "high_risk_churn_count": 61,
+      "sample_churn_accounts": [
+        "Cust #314 (Spend: ₹3848.56, Inactivity (31.0d since last order))",
+        "Cust #250 (Spend: ₹3117.52, Inactivity (32.0d since last order))",
+        "Cust #193 (Spend: ₹2672.94, Inactivity (61.0d since last order))"
+      ]
+    }
+  },
+  "ai_insight": "## Performance Summary\n\nQuickMart Koramangala (Store ID: 3) is currently in a critical operational and financial distress state. Historical SQL analytics record monthly revenue of ₹15,492.56 (-23.57% MoM) across 30 orders (-30.23% MoM), with an average delivery duration of 30.53 minutes and customer rating of 2.15/5.0. Predictive ML models warn of continuing instability with 39 impending SKU stockouts and 61 VIP/Regular customer accounts at immediate risk of defection.\n\n## Root Cause Analysis\n\n1. **Fleet Capacity Constraints & Delivery Delays:** The store operates with an under-allocated fleet of only 5 active riders. This creates acute delivery bottlenecks (historical delay rate of 100.00%), and ML regression models predict fulfillment times stretching to 30.5 minutes with an SLA breach risk of 100.0%.\n2. **Systemic Inventory Stockouts on Core SKUs:** Historical stockout rate of 33.48% significantly breaches the <8% threshold. 7-day ML time-series forecasts indicate that high-velocity staples (Amul Full Cream Milk 1L, Mother Dairy Curd 500g, Amul Paneer 200g, Amul Cheese Slices 750g) will exhaust closing stock within 2 to 6 days without emergency PO dispatch.\n3. **Customer Experience Degradation & Attrition:** Prolonged fulfillment latencies and stock unavailability have depressed customer satisfaction to 2.15/5.0 with 11 logged negative reviews. The XGBoost churn classifier identifies 61 high-value accounts exhibiting attrition indicators.\n\n## Recommended Actions\n\n1. **Augment Rider Capacity & Dynamic Routing:** Scale active fleet from 5 to at least 12–15 riders or onboard on-demand 3PL logistics to compress average delivery times back below the 15-minute SLA.\n2. **Trigger Automated Emergency PO Restock:** Dispatch replenishment purchase orders for critical SKUs: Amul Full Cream Milk 1L (min. 55 units); Mother Dairy Curd 500g (min. 42 units); Amul Paneer 200g (min. 67 units) to prevent imminent inventory exhaustion.\n3. **Deploy Targeted Retention Interventions:** Trigger automated compensation vouchers (₹100 delivery apology pass) to the 61 flagged VIP customers with dedicated customer support outreach.\n4. **Establish Real-Time Telemetry & SLA Auditing:** Monitor dynamic delivery ETAs and automated restock triggers via the decision intelligence console to shift operations from reactive to proactive.\n\n## Priority Alert\n\nCRITICAL ALERT: Immediately inject emergency fleet capacity and restock high-demand dairy/staples to prevent operational collapse and customer churn.",
+  "generated_at": "2026-11-23T08:39:05.174597",
+  "model_engine": "Gemini-2.5-Flash + XGBoost/RF ML Pipeline"
+}

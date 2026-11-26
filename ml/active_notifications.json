@@ -1,0 +1,122 @@
+[
+  {
+    "alert_id": "RESTOCK-ST1-1795403301",
+    "severity": "HIGH",
+    "channel": "WhatsApp / SMS & Store POS",
+    "recipient": "Store Manager (QuickMart Connaught Place)",
+    "category": "INVENTORY_RESTOCK_ALERT",
+    "title": "\ud83d\udea8 URGENT: Restock Triggered for 60 SKUs",
+    "message": "Automated ML Forecast: Store QuickMart Connaught Place will experience stockout on vital items.\nItems affected: Amul Full Cream Milk 1L (23 left, stockout in 2.7d); Amul Butter 500g (26 left, stockout in 2.7d); Mother Dairy Curd 500g (44 left, stockout in 6.7d).\nAction: Emergency supplier order PO-AUTO-1 generated.",
+    "created_at": "2026-11-23T08:38:21.215139"
+  },
+  {
+    "alert_id": "RESTOCK-ST2-1795403301",
+    "severity": "HIGH",
+    "channel": "WhatsApp / SMS & Store POS",
+    "recipient": "Store Manager (QuickMart Lajpat Nagar)",
+    "category": "INVENTORY_RESTOCK_ALERT",
+    "title": "\ud83d\udea8 URGENT: Restock Triggered for 61 SKUs",
+    "message": "Automated ML Forecast: Store QuickMart Lajpat Nagar will experience stockout on vital items.\nItems affected: Amul Full Cream Milk 1L (19 left, stockout in 2.2d); Amul Butter 500g (34 left, stockout in 3.4d); Mother Dairy Curd 500g (9 left, stockout in 1.0d).\nAction: Emergency supplier order PO-AUTO-2 generated.",
+    "created_at": "2026-11-23T08:38:21.215139"
+  },
+  {
+    "alert_id": "RESTOCK-ST3-1795403301",
+    "severity": "CRITICAL",
+    "channel": "WhatsApp / SMS & Store POS",
+    "recipient": "Store Manager (QuickMart Koramangala)",
+    "category": "INVENTORY_RESTOCK_ALERT",
+    "title": "\ud83d\udea8 URGENT: Restock Triggered for 39 SKUs",
+    "message": "Automated ML Forecast: Store QuickMart Koramangala will experience stockout on vital items.\nItems affected: Amul Full Cream Milk 1L (31 left, stockout in 3.9d); Mother Dairy Curd 500g (28 left, stockout in 4.7d); Amul Paneer 200g (20 left, stockout in 2.1d).\nAction: Emergency supplier order PO-AUTO-3 generated.",
+    "created_at": "2026-11-23T08:38:21.216142"
+  },
+  {
+    "alert_id": "RESTOCK-ST4-1795403301",
+    "severity": "HIGH",
+    "channel": "WhatsApp / SMS & Store POS",
+    "recipient": "Store Manager (QuickMart Sector 18 Noida)",
+    "category": "INVENTORY_RESTOCK_ALERT",
+    "title": "\ud83d\udea8 URGENT: Restock Triggered for 57 SKUs",
+    "message": "Automated ML Forecast: Store QuickMart Sector 18 Noida will experience stockout on vital items.\nItems affected: Amul Full Cream Milk 1L (38 left, stockout in 5.5d); Amul Butter 500g (29 left, stockout in 4.1d); Mother Dairy Curd 500g (32 left, stockout in 4.1d).\nAction: Emergency supplier order PO-AUTO-4 generated.",
+    "created_at": "2026-11-23T08:38:21.216142"
+  },
+  {
+    "alert_id": "RESTOCK-ST5-1795403301",
+    "severity": "HIGH",
+    "channel": "WhatsApp / SMS & Store POS",
+    "recipient": "Store Manager (QuickMart Indiranagar)",
+    "category": "INVENTORY_RESTOCK_ALERT",
+    "title": "\ud83d\udea8 URGENT: Restock Triggered for 59 SKUs",
+    "message": "Automated ML Forecast: Store QuickMart Indiranagar will experience stockout on vital items.\nItems affected: Amul Full Cream Milk 1L (38 left, stockout in 5.5d); Amul Butter 500g (27 left, stockout in 3.6d); Mother Dairy Curd 500g (12 left, stockout in 2.0d).\nAction: Emergency supplier order PO-AUTO-5 generated.",
+    "created_at": "2026-11-23T08:38:21.216142"
+  },
+  {
+    "alert_id": "RESTOCK-ST6-1795403301",
+    "severity": "HIGH",
+    "channel": "WhatsApp / SMS & Store POS",
+    "recipient": "Store Manager (QuickMart Dwarka)",
+    "category": "INVENTORY_RESTOCK_ALERT",
+    "title": "\ud83d\udea8 URGENT: Restock Triggered for 60 SKUs",
+    "message": "Automated ML Forecast: Store QuickMart Dwarka will experience stockout on vital items.\nItems affected: Amul Full Cream Milk 1L (18 left, stockout in 2.9d); Amul Butter 500g (32 left, stockout in 5.0d); Mother Dairy Curd 500g (18 left, stockout in 2.6d).\nAction: Emergency supplier order PO-AUTO-6 generated.",
+    "created_at": "2026-11-23T08:38:21.216142"
+  },
+  {
+    "alert_id": "RESTOCK-ST7-1795403301",
+    "severity": "HIGH",
+    "channel": "WhatsApp / SMS & Store POS",
+    "recipient": "Store Manager (QuickMart Sector 56 Gurugram)",
+    "category": "INVENTORY_RESTOCK_ALERT",
+    "title": "\ud83d\udea8 URGENT: Restock Triggered for 61 SKUs",
+    "message": "Automated ML Forecast: Store QuickMart Sector 56 Gurugram will experience stockout on vital items.\nItems affected: Amul Full Cream Milk 1L (22 left, stockout in 3.0d); Amul Butter 500g (27 left, stockout in 3.5d); Mother Dairy Curd 500g (28 left, stockout in 3.2d).\nAction: Emergency supplier order PO-AUTO-7 generated.",
+    "created_at": "2026-11-23T08:38:21.216142"
+  },
+  {
+    "alert_id": "RESTOCK-ST8-1795403301",
+    "severity": "HIGH",
+    "channel": "WhatsApp / SMS & Store POS",
+    "recipient": "Store Manager (QuickMart Malviya Nagar)",
+    "category": "INVENTORY_RESTOCK_ALERT",
+    "title": "\ud83d\udea8 URGENT: Restock Triggered for 60 SKUs",
+    "message": "Automated ML Forecast: Store QuickMart Malviya Nagar will experience stockout on vital items.\nItems affected: Amul Full Cream Milk 1L (27 left, stockout in 4.0d); Amul Butter 500g (28 left, stockout in 4.5d); Mother Dairy Curd 500g (44 left, stockout in 5.7d).\nAction: Emergency supplier order PO-AUTO-8 generated.",
+    "created_at": "2026-11-23T08:38:21.216142"
+  },
+  {
+    "alert_id": "RESTOCK-ST9-1795403301",
+    "severity": "HIGH",
+    "channel": "WhatsApp / SMS & Store POS",
+    "recipient": "Store Manager (QuickMart Whitefield)",
+    "category": "INVENTORY_RESTOCK_ALERT",
+    "title": "\ud83d\udea8 URGENT: Restock Triggered for 60 SKUs",
+    "message": "Automated ML Forecast: Store QuickMart Whitefield will experience stockout on vital items.\nItems affected: Amul Full Cream Milk 1L (18 left, stockout in 2.1d); Amul Butter 500g (36 left, stockout in 5.2d); Mother Dairy Curd 500g (32 left, stockout in 3.7d).\nAction: Emergency supplier order PO-AUTO-9 generated.",
+    "created_at": "2026-11-23T08:38:21.216142"
+  },
+  {
+    "alert_id": "RESTOCK-ST10-1795403301",
+    "severity": "HIGH",
+    "channel": "WhatsApp / SMS & Store POS",
+    "recipient": "Store Manager (QuickMart Cyber City)",
+    "category": "INVENTORY_RESTOCK_ALERT",
+    "title": "\ud83d\udea8 URGENT: Restock Triggered for 60 SKUs",
+    "message": "Automated ML Forecast: Store QuickMart Cyber City will experience stockout on vital items.\nItems affected: Amul Full Cream Milk 1L (27 left, stockout in 3.1d); Amul Butter 500g (40 left, stockout in 5.0d); Mother Dairy Curd 500g (22 left, stockout in 2.9d).\nAction: Emergency supplier order PO-AUTO-10 generated.",
+    "created_at": "2026-11-23T08:38:21.216142"
+  },
+  {
+    "alert_id": "CHURN-RETENTION-1795403301",
+    "severity": "HIGH",
+    "channel": "CRM Webhook & Marketing Automation",
+    "recipient": "Regional Marketing & Retention Lead",
+    "category": "CUSTOMER_CHURN_PREVENTION",
+    "title": "\u26a0\ufe0f Retention Alert: 10 VIP Customers at High Churn Risk",
+    "message": "Machine Learning identified high-value accounts showing inactivity following delays.\nSample accounts: #314 (Spend: \u20b93848.56, Inactivity (31.0d since last order)); #250 (Spend: \u20b93117.52, Inactivity (32.0d since last order)); #193 (Spend: \u20b92672.94, Inactivity (61.0d since last order)).\nAction: Automated dispatch of \u20b9100 SLA Apology Passes initiated.",
+    "created_at": "2026-11-23T08:38:21.216142"
+  },
+  {
+    "alert_id": "FLEET-ST3-1795403301",
+    "severity": "CRITICAL",
+    "channel": "Ops Fleet Control Center",
+    "recipient": "Fleet Dispatch Manager (QuickMart Koramangala)",
+    "category": "FLEET_CAPACITY_BREACH",
+    "title": "\ud83d\udeb4 Fleet Alert: Predicted Delay Rate at 100.0%",
+    "message": "Store QuickMart Koramangala is operating with only 5 riders. Model predicts average fulfillment time of 30.5 min (breaching 15-min SLA).\nAction: Route 3PL overflow riders immediately.",
+    "created_at": "2026-11-23T08:38:21.216142"
+  }
+]
